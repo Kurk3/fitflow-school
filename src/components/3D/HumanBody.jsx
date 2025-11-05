@@ -18,13 +18,18 @@ function HumanBody({ onMuscleClick }) {
     if (!modelError) setModelError(true)
   }
 
-  // Uložiť originálne materiály
+  // Clone materiály pre každý mesh aby boli independent
   useEffect(() => {
     if (gltf && gltf.scene) {
       const materials = new Map()
       gltf.scene.traverse((child) => {
         if (child.isMesh && child.material) {
-          materials.set(child.uuid, child.material.clone())
+          // Uložiť originál
+          const originalMaterial = child.material.clone()
+          materials.set(child.uuid, originalMaterial)
+
+          // Priradiť nový cloned material každému meshu
+          child.material = child.material.clone()
         }
       })
       setOriginalMaterials(materials)
