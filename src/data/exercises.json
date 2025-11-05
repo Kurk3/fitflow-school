@@ -4,9 +4,7 @@
       "name": "Bench Press",
       "difficulty": "intermediate",
       "equipment": "barbell",
-      "description": "Klasický cvik na hrudník s čin
-
-kou na lavici"
+      "description": "Klasický cvik na hrudník s činkou na lavici"
     },
     {
       "name": "Push-ups",
@@ -64,9 +62,7 @@ kou na lavici"
       "name": "Overhead Extension",
       "difficulty": "beginner",
       "equipment": "dumbbell",
-      "description": "Jednoruc
-
-ný predpažovanie za hlavou"
+      "description": "Jednoručný predpažovanie za hlavou"
     },
     {
       "name": "Tricep Pushdown",
@@ -176,9 +172,7 @@ ný predpažovanie za hlavou"
       "name": "Leg Extensions",
       "difficulty": "beginner",
       "equipment": "machine",
-      "description": "Predpaží
-
-nie nôh na stroji"
+      "description": "Predpažovanie nôh na stroji"
     }
   ],
   "Zadné stehenné svaly (Hamstrings)": [
