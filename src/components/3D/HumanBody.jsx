@@ -23,13 +23,19 @@ function HumanBody({ onMuscleClick }) {
     if (gltf && gltf.scene) {
       const materials = new Map()
       gltf.scene.traverse((child) => {
-        if (child.isMesh && child.material) {
-          // Uložiť originál
-          const originalMaterial = child.material.clone()
-          materials.set(child.uuid, originalMaterial)
-
-          // Priradiť nový cloned material každému meshu
-          child.material = child.material.clone()
+        if (child.isMesh) {
+          // Handle both single material and array of materials
+          if (Array.isArray(child.material)) {
+            // Array of materials
+            const originalMaterials = child.material.map(mat => mat.clone())
+            materials.set(child.uuid, originalMaterials)
+            child.material = child.material.map(mat => mat.clone())
+          } else if (child.material) {
+            // Single material
+            const originalMaterial = child.material.clone()
+            materials.set(child.uuid, originalMaterial)
+            child.material = child.material.clone()
+          }
         }
       })
       setOriginalMaterials(materials)
@@ -56,27 +62,43 @@ function HumanBody({ onMuscleClick }) {
       setHoveredPart(mesh.name)
       document.body.style.cursor = 'pointer'
 
-      // Zvýrazni materiál
-      if (mesh.material) {
-        const material = mesh.material
-        if (material.emissive) {
-          material.emissive = new THREE.Color(0xff6b35)
-          material.emissiveIntensity = 0.5
+      // Zvýrazni materiál (handle both single and array)
+      if (Array.isArray(mesh.material)) {
+        mesh.material.forEach(mat => {
+          if (mat.emissive) {
+            mat.emissive = new THREE.Color(0xff6b35)
+            mat.emissiveIntensity = 0.5
+          }
+        })
+      } else if (mesh.material) {
+        if (mesh.material.emissive) {
+          mesh.material.emissive = new THREE.Color(0xff6b35)
+          mesh.material.emissiveIntensity = 0.5
         }
-        material.opacity = 0.9
       }
     } else {
       setHoveredPart(null)
       document.body.style.cursor = 'default'
 
       // Obnov originálny materiál
-      if (mesh.material && originalMaterials.has(mesh.uuid)) {
+      if (originalMaterials.has(mesh.uuid)) {
         const original = originalMaterials.get(mesh.uuid)
-        if (mesh.material.emissive) {
-          mesh.material.emissive.copy(original.emissive || new THREE.Color(0x000000))
-          mesh.material.emissiveIntensity = original.emissiveIntensity || 0
+
+        if (Array.isArray(mesh.material) && Array.isArray(original)) {
+          // Array of materials
+          mesh.material.forEach((mat, index) => {
+            if (mat.emissive && original[index]) {
+              mat.emissive.copy(original[index].emissive || new THREE.Color(0x000000))
+              mat.emissiveIntensity = original[index].emissiveIntensity || 0
+            }
+          })
+        } else if (mesh.material && !Array.isArray(mesh.material)) {
+          // Single material
+          if (mesh.material.emissive) {
+            mesh.material.emissive.copy(original.emissive || new THREE.Color(0x000000))
+            mesh.material.emissiveIntensity = original.emissiveIntensity || 0
+          }
         }
-        mesh.material.opacity = original.opacity || 1
       }
     }
   }
