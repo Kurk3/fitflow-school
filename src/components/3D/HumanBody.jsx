@@ -1,10 +1,13 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { getMuscleName } from '../../constants/muscleMapping'
+import * as THREE from 'three'
 
-function HumanBody() {
+function HumanBody({ onMuscleClick }) {
   const groupRef = useRef()
   const [hoveredPart, setHoveredPart] = useState(null)
   const [modelError, setModelError] = useState(false)
+  const [originalMaterials, setOriginalMaterials] = useState(new Map())
 
   // Pokus načítať GLTF model
   let gltf = null
@@ -15,11 +18,62 @@ function HumanBody() {
     if (!modelError) setModelError(true)
   }
 
+  // Uložiť originálne materiály
+  useEffect(() => {
+    if (gltf && gltf.scene) {
+      const materials = new Map()
+      gltf.scene.traverse((child) => {
+        if (child.isMesh && child.material) {
+          materials.set(child.uuid, child.material.clone())
+        }
+      })
+      setOriginalMaterials(materials)
+    }
+  }, [gltf])
+
   const handleClick = (event) => {
     event.stopPropagation()
     const partName = event.object.name || 'Unknown'
-    console.log('Clicked muscle group:', partName)
-    alert(`Clicked: ${partName}`)
+    const muscleName = getMuscleName(partName)
+    console.log('Clicked:', partName, '→', muscleName)
+
+    // Zavolaj callback pre otvorenie popupu
+    if (onMuscleClick) {
+      onMuscleClick(muscleName)
+    }
+  }
+
+  const handleHover = (event, isHovering) => {
+    event.stopPropagation()
+    const mesh = event.object
+
+    if (isHovering) {
+      setHoveredPart(mesh.name)
+      document.body.style.cursor = 'pointer'
+
+      // Zvýrazni materiál
+      if (mesh.material) {
+        const material = mesh.material
+        if (material.emissive) {
+          material.emissive = new THREE.Color(0xff6b35)
+          material.emissiveIntensity = 0.5
+        }
+        material.opacity = 0.9
+      }
+    } else {
+      setHoveredPart(null)
+      document.body.style.cursor = 'default'
+
+      // Obnov originálny materiál
+      if (mesh.material && originalMaterials.has(mesh.uuid)) {
+        const original = originalMaterials.get(mesh.uuid)
+        if (mesh.material.emissive) {
+          mesh.material.emissive.copy(original.emissive || new THREE.Color(0x000000))
+          mesh.material.emissiveIntensity = original.emissiveIntensity || 0
+        }
+        mesh.material.opacity = original.opacity || 1
+      }
+    }
   }
 
   const MuscleGroup = ({ position, scale, color, name, ...props }) => {
@@ -52,16 +106,8 @@ function HumanBody() {
         ref={groupRef}
         object={gltf.scene}
         onClick={handleClick}
-        onPointerOver={(e) => {
-          e.stopPropagation()
-          setHoveredPart(e.object.name)
-          document.body.style.cursor = 'pointer'
-        }}
-        onPointerOut={(e) => {
-          e.stopPropagation()
-          setHoveredPart(null)
-          document.body.style.cursor = 'default'
-        }}
+        onPointerOver={(e) => handleHover(e, true)}
+        onPointerOut={(e) => handleHover(e, false)}
         scale={1}
         position={[0, -1, 0]}
       />

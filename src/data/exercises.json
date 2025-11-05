@@ -1,0 +1,238 @@
+{
+  "Hrudník (Pectorals)": [
+    {
+      "name": "Bench Press",
+      "difficulty": "intermediate",
+      "equipment": "barbell",
+      "description": "Klasický cvik na hrudník s čin
+
+kou na lavici"
+    },
+    {
+      "name": "Push-ups",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Kliky - základný cvik s vlastnou váhou"
+    },
+    {
+      "name": "Dumbbell Fly",
+      "difficulty": "intermediate",
+      "equipment": "dumbbells",
+      "description": "Rozpaženia s jednoručkami na lavici"
+    },
+    {
+      "name": "Cable Crossover",
+      "difficulty": "intermediate",
+      "equipment": "cable",
+      "description": "Kríženie lán pre izoláciu hrudníka"
+    }
+  ],
+  "Biceps": [
+    {
+      "name": "Barbell Curl",
+      "difficulty": "beginner",
+      "equipment": "barbell",
+      "description": "Zdvíhanie činky na biceps"
+    },
+    {
+      "name": "Hammer Curl",
+      "difficulty": "beginner",
+      "equipment": "dumbbells",
+      "description": "Neutrálny úchop pre biceps a predlaktie"
+    },
+    {
+      "name": "Concentration Curl",
+      "difficulty": "intermediate",
+      "equipment": "dumbbell",
+      "description": "Izolácia bicepsu sede"
+    },
+    {
+      "name": "Chin-ups",
+      "difficulty": "intermediate",
+      "equipment": "pullup bar",
+      "description": "Zhyby s úchopom dlaňami k sebe"
+    }
+  ],
+  "Triceps": [
+    {
+      "name": "Tricep Dips",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Kliky na bradlách pre triceps"
+    },
+    {
+      "name": "Overhead Extension",
+      "difficulty": "beginner",
+      "equipment": "dumbbell",
+      "description": "Jednoruc
+
+ný predpažovanie za hlavou"
+    },
+    {
+      "name": "Tricep Pushdown",
+      "difficulty": "beginner",
+      "equipment": "cable",
+      "description": "Tlačenie lana nadol na triceps"
+    }
+  ],
+  "Ramená (Shoulders)": [
+    {
+      "name": "Overhead Press",
+      "difficulty": "intermediate",
+      "equipment": "barbell",
+      "description": "Tlak nad hlavu s činkou"
+    },
+    {
+      "name": "Lateral Raises",
+      "difficulty": "beginner",
+      "equipment": "dumbbells",
+      "description": "Únos ramien do strán"
+    },
+    {
+      "name": "Front Raises",
+      "difficulty": "beginner",
+      "equipment": "dumbbells",
+      "description": "Únos ramien dopredu"
+    },
+    {
+      "name": "Face Pulls",
+      "difficulty": "beginner",
+      "equipment": "cable",
+      "description": "Ťahanie lana k tvári pre zadné ramená"
+    }
+  ],
+  "Brucho (Abs)": [
+    {
+      "name": "Crunches",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Skrčky na brucho"
+    },
+    {
+      "name": "Plank",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Výdrž v stojke na predlaktiach"
+    },
+    {
+      "name": "Leg Raises",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Zdvíhanie nôh v ležení"
+    },
+    {
+      "name": "Russian Twists",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Rotácie trupu sede"
+    }
+  ],
+  "Chrbát (Back)": [
+    {
+      "name": "Pull-ups",
+      "difficulty": "intermediate",
+      "equipment": "pullup bar",
+      "description": "Zhyby s úchopom dlaňami od seba"
+    },
+    {
+      "name": "Barbell Row",
+      "difficulty": "intermediate",
+      "equipment": "barbell",
+      "description": "Predklon s činkou"
+    },
+    {
+      "name": "Lat Pulldown",
+      "difficulty": "beginner",
+      "equipment": "cable",
+      "description": "Sťahovanie závažia k hrudi"
+    },
+    {
+      "name": "Deadlift",
+      "difficulty": "advanced",
+      "equipment": "barbell",
+      "description": "Mŕtvy ťah - kompletný cvik na chrbát"
+    }
+  ],
+  "Stehná (Quads)": [
+    {
+      "name": "Squats",
+      "difficulty": "intermediate",
+      "equipment": "barbell",
+      "description": "Drepy s činkou - základ nohových cvikov"
+    },
+    {
+      "name": "Leg Press",
+      "difficulty": "beginner",
+      "equipment": "machine",
+      "description": "Tlačenie nohami na stroji"
+    },
+    {
+      "name": "Lunges",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Výpady vpred"
+    },
+    {
+      "name": "Leg Extensions",
+      "difficulty": "beginner",
+      "equipment": "machine",
+      "description": "Predpaží
+
+nie nôh na stroji"
+    }
+  ],
+  "Zadné stehenné svaly (Hamstrings)": [
+    {
+      "name": "Romanian Deadlift",
+      "difficulty": "intermediate",
+      "equipment": "barbell",
+      "description": "Rumunský mŕtvy ťah na zadné stehná"
+    },
+    {
+      "name": "Leg Curls",
+      "difficulty": "beginner",
+      "equipment": "machine",
+      "description": "Zakrútky nôh na stroji"
+    },
+    {
+      "name": "Nordic Curls",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Excentrické spúšťanie tela"
+    }
+  ],
+  "Lýtka (Calves)": [
+    {
+      "name": "Standing Calf Raises",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Výstupy na špičky v stoji"
+    },
+    {
+      "name": "Seated Calf Raises",
+      "difficulty": "beginner",
+      "equipment": "machine",
+      "description": "Výstupy na špičky v sede"
+    }
+  ],
+  "Zadok (Glutes)": [
+    {
+      "name": "Hip Thrusts",
+      "difficulty": "intermediate",
+      "equipment": "barbell",
+      "description": "Zdvíhanie bokov s činkou"
+    },
+    {
+      "name": "Glute Bridges",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Mostík na zadok"
+    },
+    {
+      "name": "Bulgarian Split Squats",
+      "difficulty": "intermediate",
+      "equipment": "dumbbells",
+      "description": "Bulharské drepy - jednostranný cvik"
+    }
+  ]
+}

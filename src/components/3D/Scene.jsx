@@ -1,10 +1,22 @@
+import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import HumanBody from './HumanBody'
+import MuscleInfoPopup from '../UI/MuscleInfoPopup'
 
 function Scene() {
+  const [selectedMuscle, setSelectedMuscle] = useState(null)
+
+  const handleMuscleClick = (muscleName) => {
+    setSelectedMuscle(muscleName)
+  }
+
+  const handleClosePopup = () => {
+    setSelectedMuscle(null)
+  }
+
   return (
-    <div className="w-full h-screen bg-gradient-to-b from-blue-100 to-white">
+    <div className="w-full h-screen bg-gradient-to-b from-blue-100 to-white relative">
       <Canvas
         camera={{ position: [0, 1, 5], fov: 50 }}
         shadows
@@ -19,7 +31,7 @@ function Scene() {
         <pointLight position={[-10, -10, -5]} intensity={0.3} />
 
         {/* 3D Model */}
-        <HumanBody />
+        <HumanBody onMuscleClick={handleMuscleClick} />
 
         {/* Controls */}
         <OrbitControls
@@ -32,10 +44,18 @@ function Scene() {
       </Canvas>
 
       {/* UI Overlay */}
-      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-4">
+      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-4 z-10">
         <h1 className="text-2xl font-bold text-gray-800">FitFlow</h1>
-        <p className="text-sm text-gray-600">Klikni na sval pre info</p>
+        <p className="text-sm text-gray-600">Klikni na sval pre cviky</p>
       </div>
+
+      {/* Muscle Info Popup */}
+      {selectedMuscle && (
+        <MuscleInfoPopup
+          muscleName={selectedMuscle}
+          onClose={handleClosePopup}
+        />
+      )}
     </div>
   )
 }
