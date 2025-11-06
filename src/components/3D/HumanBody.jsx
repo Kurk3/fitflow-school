@@ -135,8 +135,8 @@ function HumanBody({ onMuscleClick }) {
         onClick={handleClick}
         onPointerOver={(e) => handleHover(e, true)}
         onPointerOut={(e) => handleHover(e, false)}
-        scale={1}
-        position={[0, -1, 0]}
+        scale={0.01}
+        position={[0, -0.8, 0]}
       />
     )
   }

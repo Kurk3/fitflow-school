@@ -18,7 +18,7 @@ function Scene() {
   return (
     <div className="w-full h-screen bg-gradient-to-b from-blue-100 to-white relative">
       <Canvas
-        camera={{ position: [0, 1, 5], fov: 50 }}
+        camera={{ position: [0, 0, 3], fov: 50 }}
         shadows
       >
         {/* Lighting */}
@@ -35,11 +35,12 @@ function Scene() {
 
         {/* Controls */}
         <OrbitControls
+          target={[0, 0, 0]}
           enablePan={true}
           enableZoom={true}
           enableRotate={true}
-          minDistance={2}
-          maxDistance={10}
+          minDistance={1}
+          maxDistance={8}
         />
       </Canvas>
 
