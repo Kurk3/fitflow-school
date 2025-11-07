@@ -7,10 +7,46 @@
       "description": "Klasický cvik na hrudník s činkou na lavici"
     },
     {
+      "name": "Incline Bench Press",
+      "difficulty": "intermediate",
+      "equipment": "barbell",
+      "description": "Tlak na šikmej lavici pre horný hrudník"
+    },
+    {
+      "name": "Decline Bench Press",
+      "difficulty": "intermediate",
+      "equipment": "barbell",
+      "description": "Tlak na zápornej lavici pre dolný hrudník"
+    },
+    {
+      "name": "Dumbbell Bench Press",
+      "difficulty": "intermediate",
+      "equipment": "dumbbells",
+      "description": "Tlak s jednoručkami na rovnej lavici"
+    },
+    {
+      "name": "Incline Dumbbell Press",
+      "difficulty": "intermediate",
+      "equipment": "dumbbells",
+      "description": "Tlak s jednoručkami na šikmej lavici"
+    },
+    {
       "name": "Push-ups",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Kliky - základný cvik s vlastnou váhou"
+    },
+    {
+      "name": "Decline Push-ups",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Kliky s nohami vyššie pre horný hrudník"
+    },
+    {
+      "name": "Diamond Push-ups",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Kliky s úzkym postavením rúk"
     },
     {
       "name": "Dumbbell Fly",
@@ -19,10 +55,52 @@
       "description": "Rozpaženia s jednoručkami na lavici"
     },
     {
+      "name": "Incline Dumbbell Fly",
+      "difficulty": "intermediate",
+      "equipment": "dumbbells",
+      "description": "Rozpaženia na šikmej lavici"
+    },
+    {
       "name": "Cable Crossover",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Kríženie lán pre izoláciu hrudníka"
+    },
+    {
+      "name": "Low Cable Crossover",
+      "difficulty": "intermediate",
+      "equipment": "cable",
+      "description": "Kríženie lán zdola pre horný hrudník"
+    },
+    {
+      "name": "High Cable Crossover",
+      "difficulty": "intermediate",
+      "equipment": "cable",
+      "description": "Kríženie lán zhora pre dolný hrudník"
+    },
+    {
+      "name": "Chest Dips",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Kliky na bradlách s predklonom pre hrudník"
+    },
+    {
+      "name": "Machine Chest Press",
+      "difficulty": "beginner",
+      "equipment": "machine",
+      "description": "Tlak na hrudník na stroji"
+    },
+    {
+      "name": "Pec Deck",
+      "difficulty": "beginner",
+      "equipment": "machine",
+      "description": "Butterfly na stroji pre izoláciu hrudníka"
+    },
+    {
+      "name": "Smith Machine Bench Press",
+      "difficulty": "beginner",
+      "equipment": "machine",
+      "description": "Tlak na Smith stroji pre stabilitu"
     }
   ],
   "Biceps": [
