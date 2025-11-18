@@ -13,6 +13,8 @@
     "@react-three/drei": "^10.7.6",
     "@react-three/fiber": "^9.4.0",
     "@tailwindcss/vite": "^4.1.17",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
     "lucide-react": "^0.552.0",
     "react": "^19.1.1",
     "react-body-highlighter": "^2.0.5",

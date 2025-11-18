@@ -195,7 +195,7 @@ export const WorkoutProvider = ({ children }) => {
 
   const exportToCSV = () => {
     let csv = 'Cvičenie,Sval,Mód,Úroveň,Sady,Opakovania,Váha,Jednotka,Vybavenie\n'
-    
+
     workoutExercises.forEach(ex => {
       csv += `"${ex.name}","${ex.muscleName}","${ex.mode}","${ex.difficulty}",${ex.sets},${ex.reps},"${ex.weight} ${ex.unit}","${ex.equipment}"\n`
     })
@@ -208,6 +208,19 @@ export const WorkoutProvider = ({ children }) => {
     a.click()
     URL.revokeObjectURL(url)
     updateStreak()
+  }
+
+  // Generate calendar data from saved workouts
+  // Returns object with dates as keys and workout counts as values
+  const getWorkoutCalendarData = () => {
+    const calendarData = {}
+
+    savedWorkouts.forEach(workout => {
+      const dateString = new Date(workout.savedAt).toISOString().split('T')[0]
+      calendarData[dateString] = (calendarData[dateString] || 0) + 1
+    })
+
+    return calendarData
   }
 
   return (
@@ -226,6 +239,7 @@ export const WorkoutProvider = ({ children }) => {
       savedWorkouts,
       exportToJSON,
       exportToCSV,
+      getWorkoutCalendarData,
       streak,
       setStreak,
       lastWorkoutDate,

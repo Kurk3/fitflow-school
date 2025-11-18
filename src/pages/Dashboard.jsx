@@ -2,11 +2,13 @@ import { useState } from 'react'
 import HumanModel3D from '../components/3D/HumanModel3D'
 import ExercisePanel from '../components/UI/ExercisePanel'
 import WorkoutPanel from '../components/UI/WorkoutPanel'
+import ProfilePanel from '../components/UI/ProfilePanel'
 import { useWorkout } from '../context/WorkoutContext'
 
 function Dashboard() {
   const [selectedMuscle, setSelectedMuscle] = useState(null)
   const [activeMode, setActiveMode] = useState('bodybuilding')
+  const [showProfile, setShowProfile] = useState(false)
   const { streak } = useWorkout()
 
   const handleMuscleClick = (muscleName) => {
@@ -24,8 +26,25 @@ function Dashboard() {
 
   return (
     <div className="w-full h-screen flex bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100">
+      {/* Profile Modal Popup */}
+      {showProfile && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300"
+            onClick={() => setShowProfile(false)}
+          />
+
+          {/* Modal Content */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="w-full max-w-5xl h-[90vh] bg-gray-900 rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 scale-100">
+              <ProfilePanel onClose={() => setShowProfile(false)} />
+            </div>
+          </div>
+        </>
+      )}
+
       {/* Sidebar */}
-      {/* ...existing code... */}
       <aside className="w-full md:w-[600px] bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white flex flex-col p-0 md:p-12 gap-12 border-r border-white/10 z-20">
         {/* Logo + Streak Row */}
         <div className="flex items-center justify-between gap-3 px-6 py-6 md:px-0 md:py-0">
@@ -40,11 +59,15 @@ function Dashboard() {
               <p className="text-gray-400 text-xs tracking-widest">TRAINING GUIDE</p>
             </div>
           </div>
-          {/* Streak Display moved here */}
-          <div className="flex items-center gap-2">
+          {/* Streak Display - Clickable */}
+          <button
+            onClick={() => setShowProfile(true)}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500/20 to-amber-500/20 hover:from-orange-500/30 hover:to-amber-500/30 border border-orange-400/30 hover:border-orange-400/50 transition-all duration-200 hover:scale-105 cursor-pointer"
+            aria-label="Otvoriť profil a štatistiky"
+          >
             <span className="text-2xl">🔥</span>
             <span className="text-lg font-semibold text-amber-300">{Number.isFinite(streak) && streak > 0 ? streak : 1} {Number.isFinite(streak) && streak === 1 ? 'Day' : 'Days'} Streak</span>
-          </div>
+          </button>
         </div>
 
         {/* Mode Switcher */}

@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useWorkout } from '../../context/WorkoutContext'
 import ExerciseForm from './ExerciseForm'
+import ExportDropdown from './ExportDropdown'
+import { exportToICalendar, exportToCSV as exportCalendarToCSV, exportToPNG, exportToPDF } from '../../utils/exportCalendar'
 
 function WorkoutPanel() {
   const {
@@ -16,13 +18,15 @@ function WorkoutPanel() {
     savedWorkouts,
     loadWorkout,
     deleteWorkout,
-    updateSavedWorkout
+    updateSavedWorkout,
+    getWorkoutCalendarData
   } = useWorkout()
   const [editingId, setEditingId] = useState(null)
   const [showExport, setShowExport] = useState(false)
   const [saveSuccess, setSaveSuccess] = useState(false)
   const [tab, setTab] = useState('current')
   const [currentWorkoutId, setCurrentWorkoutId] = useState(null)
+  const calendarRef = useRef(null)
 
   const handleSaveExercise = (id, formData) => {
     updateExercise(id, formData)
@@ -59,6 +63,27 @@ function WorkoutPanel() {
   const handleClearWorkout = () => {
     clearWorkout()
     setCurrentWorkoutId(null)
+  }
+
+  const handleCalendarExport = async (format) => {
+    const workoutData = getWorkoutCalendarData()
+
+    switch (format) {
+      case 'icalendar':
+        exportToICalendar(workoutData)
+        break
+      case 'csv':
+        exportCalendarToCSV(workoutData)
+        break
+      case 'png':
+        await exportToPNG(calendarRef)
+        break
+      case 'pdf':
+        exportToPDF(workoutData)
+        break
+      default:
+        console.error('Unknown export format:', format)
+    }
   }
 
   const getDifficultyColor = (difficulty) => {
@@ -213,46 +238,52 @@ function WorkoutPanel() {
           {/* Footer - Actions */}
           {workoutExercises.length > 0 && (
             <div className="border-t border-white/10 p-4 space-y-2">
-              <div className="flex gap-2">
-                <button
-                  onClick={handleSaveWorkout}
-                  className={`flex-1 font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 ${
-                    saveSuccess ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-blue-600 hover:bg-blue-700'
-                  } text-white`}
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={saveSuccess ? "M5 13l4 4L19 7" : "M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"} />
-                  </svg>
-                  {saveSuccess ? 'Uložené!' : (currentWorkoutId ? 'Aktualizovať' : 'Uložiť')}
-                </button>
-                <button
-                  onClick={() => setShowExport(!showExport)}
-                  className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                  Exportovať
-                </button>
+              {/* Save Button */}
+              <button
+                onClick={handleSaveWorkout}
+                className={`w-full font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 ${
+                  saveSuccess ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-blue-600 hover:bg-blue-700'
+                } text-white`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={saveSuccess ? "M5 13l4 4L19 7" : "M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"} />
+                </svg>
+                {saveSuccess ? 'Uložené!' : (currentWorkoutId ? 'Aktualizovať' : 'Uložiť')}
+              </button>
+
+              {/* Export Section */}
+              <div className="bg-white/5 rounded-lg p-3 space-y-2">
+                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Exportovať</div>
+
+                {/* Current Workout Export */}
+                <div>
+                  <div className="text-xs text-gray-500 mb-1">Aktuálny tréning</div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={exportToJSON}
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium py-2 px-3 rounded transition-colors"
+                    >
+                      JSON
+                    </button>
+                    <button
+                      onClick={exportToCSV}
+                      className="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium py-2 px-3 rounded transition-colors"
+                    >
+                      CSV
+                    </button>
+                  </div>
+                </div>
+
+                {/* Calendar Export */}
+                {savedWorkouts.length > 0 && (
+                  <div>
+                    <div className="text-xs text-gray-500 mb-1">Kalendár & História</div>
+                    <ExportDropdown onExport={handleCalendarExport} />
+                  </div>
+                )}
               </div>
 
-              {showExport && (
-                <div className="flex gap-2">
-                  <button
-                    onClick={exportToJSON}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-3 rounded transition-colors"
-                  >
-                    JSON
-                  </button>
-                  <button
-                    onClick={exportToCSV}
-                    className="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2 px-3 rounded transition-colors"
-                  >
-                    CSV
-                  </button>
-                </div>
-              )}
-
+              {/* Clear Button */}
               <button
                 onClick={handleClearWorkout}
                 className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm"
