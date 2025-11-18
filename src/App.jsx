@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import GoalsWizard from './pages/GoalsWizard'
+import { WorkoutProvider } from './context/WorkoutContext'
 import './index.css'
 
 // Protected Route Component
@@ -29,26 +30,28 @@ function WizardRoute({ children }) {
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/goals"
-          element={
-            <WizardRoute>
-              <GoalsWizard />
-            </WizardRoute>
-          }
-        />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/" element={<Navigate to="/login" replace />} />
-      </Routes>
+      <WorkoutProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/goals"
+            element={
+              <WizardRoute>
+                <GoalsWizard />
+              </WizardRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </WorkoutProvider>
     </BrowserRouter>
   )
 }

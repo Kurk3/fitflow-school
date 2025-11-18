@@ -4,103 +4,92 @@
       "name": "Bench Press",
       "difficulty": "intermediate",
       "equipment": "barbell",
-      "description": "Klasický cvik na hrudník s činkou na lavici"
+      "description": "Klasický cvik na hrudník s činkou na lavici",
+      "modes": ["bodybuilding"]
     },
     {
       "name": "Incline Bench Press",
       "difficulty": "intermediate",
       "equipment": "barbell",
-      "description": "Tlak na šikmej lavici pre horný hrudník"
-    },
-    {
-      "name": "Decline Bench Press",
-      "difficulty": "intermediate",
-      "equipment": "barbell",
-      "description": "Tlak na zápornej lavici pre dolný hrudník"
-    },
-    {
-      "name": "Dumbbell Bench Press",
-      "difficulty": "intermediate",
-      "equipment": "dumbbells",
-      "description": "Tlak s jednoručkami na rovnej lavici"
-    },
-    {
-      "name": "Incline Dumbbell Press",
-      "difficulty": "intermediate",
-      "equipment": "dumbbells",
-      "description": "Tlak s jednoručkami na šikmej lavici"
+      "description": "Tlak na šikmej lavici pre horný hrudník",
+      "modes": ["bodybuilding"]
     },
     {
       "name": "Push-ups",
       "difficulty": "beginner",
       "equipment": "bodyweight",
-      "description": "Kliky - základný cvik s vlastnou váhou"
-    },
-    {
-      "name": "Decline Push-ups",
-      "difficulty": "intermediate",
-      "equipment": "bodyweight",
-      "description": "Kliky s nohami vyššie pre horný hrudník"
+      "description": "Kliky - základný cvik s vlastnou váhou",
+      "modes": ["bodybuilding", "calisthenics"]
     },
     {
       "name": "Diamond Push-ups",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
-      "description": "Kliky s úzkym postavením rúk"
+      "description": "Kliky s úzkym postavením rúk pre stred hrudníka a triceps",
+      "modes": ["bodybuilding", "calisthenics"]
     },
     {
       "name": "Dumbbell Fly",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
-      "description": "Rozpaženia s jednoručkami na lavici"
+      "description": "Rozpaženia s jednoručkami na lavici",
+      "modes": ["bodybuilding"]
     },
     {
-      "name": "Incline Dumbbell Fly",
-      "difficulty": "intermediate",
-      "equipment": "dumbbells",
-      "description": "Rozpaženia na šikmej lavici"
+      "name": "Archer Push-ups",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Kliky s prenášaním váhy na jednu stranu, druhá ruka je vystretá",
+      "modes": ["calisthenics"]
     },
     {
-      "name": "Cable Crossover",
-      "difficulty": "intermediate",
-      "equipment": "cable",
-      "description": "Kríženie lán pre izoláciu hrudníka"
+      "name": "Wide Push-ups",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Kliky so širokým úchopom pre väčšie zapojenie prsných svalov",
+      "modes": ["calisthenics"]
     },
     {
-      "name": "Low Cable Crossover",
-      "difficulty": "intermediate",
-      "equipment": "cable",
-      "description": "Kríženie lán zdola pre horný hrudník"
-    },
-    {
-      "name": "High Cable Crossover",
-      "difficulty": "intermediate",
-      "equipment": "cable",
-      "description": "Kríženie lán zhora pre dolný hrudník"
-    },
-    {
-      "name": "Chest Dips",
+      "name": "Decline Push-ups",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
-      "description": "Kliky na bradlách s predklonom pre hrudník"
+      "description": "Kliky s nohami vyloženými vyššie na lavičke alebo stole",
+      "modes": ["calisthenics"]
     },
     {
-      "name": "Machine Chest Press",
-      "difficulty": "beginner",
-      "equipment": "machine",
-      "description": "Tlak na hrudník na stroji"
+      "name": "Pseudo Planche Push-ups",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Kliky s telom naklopeným dopredu a váhou prenesenou viac na ruky",
+      "modes": ["calisthenics"]
     },
     {
-      "name": "Pec Deck",
-      "difficulty": "beginner",
-      "equipment": "machine",
-      "description": "Butterfly na stroji pre izoláciu hrudníka"
+      "name": "Pilates Push Up",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Plynulý prechod zo stoja do planku, kľuk a návrat späť",
+      "modes": ["pilates"]
     },
     {
-      "name": "Smith Machine Bench Press",
+      "name": "Chest Expansion",
       "difficulty": "beginner",
-      "equipment": "machine",
-      "description": "Tlak na Smith stroji pre stabilitu"
+      "equipment": "mat",
+      "description": "Otváranie hrudníka v kľaku alebo stoji pre lepšie držanie tela",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Pilates Swimming",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Plavecký pohyb rukami a nohami v ľahu na bruchu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Rolling Like a Ball",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Valcovanie sa vzadu a dopredu v zbalenom položení",
+      "modes": ["pilates"]
     }
   ],
   "Biceps": [
@@ -108,25 +97,71 @@
       "name": "Barbell Curl",
       "difficulty": "beginner",
       "equipment": "barbell",
-      "description": "Zdvíhanie činky na biceps"
+      "description": "Zdvíhanie činky na biceps v stoji",
+      "modes": ["bodybuilding"]
     },
     {
       "name": "Hammer Curl",
       "difficulty": "beginner",
       "equipment": "dumbbells",
-      "description": "Neutrálny úchop pre biceps a predlaktie"
-    },
-    {
-      "name": "Concentration Curl",
-      "difficulty": "intermediate",
-      "equipment": "dumbbell",
-      "description": "Izolácia bicepsu sede"
+      "description": "Neutrálny úchop pre biceps a predlaktie",
+      "modes": ["bodybuilding"]
     },
     {
       "name": "Chin-ups",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
-      "description": "Zhyby s úchopom dlaňami k sebe"
+      "description": "Zhyby podhmatom (dlaňami k sebe), dominantný biceps",
+      "modes": ["bodybuilding", "calisthenics"]
+    },
+    {
+      "name": "Headbangers",
+      "difficulty": "advanced",
+      "equipment": "pullup bar",
+      "description": "Zhyb a následné odtláčanie tela od hrazdy a späť",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Resistance Band Curls",
+      "difficulty": "beginner",
+      "equipment": "resistance band",
+      "description": "Zdvíhanie s gumenou páskou na biceps",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Archer Chin-ups",
+      "difficulty": "advanced",
+      "equipment": "pullup bar",
+      "description": "Zhyby s pohybom ku jednej ruke, druhá je viac vystretá",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Pelvic Curl",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Mostík s dôrazom na zapojenie rúk pri stabilizácii",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Pilates Boxing",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Boxovanie v stoji s dôrazom na kontrolu pohybu rúk",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Arm Pulses",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Malé kmitavé pohyby paží v ľahu na boku pre posilnenie bicepsu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Pilates Tricep Dips",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Cvičenie s ohybom a vystieraním paží v sedu s dôrazom na kontrolu",
+      "modes": ["pilates"]
     }
   ],
   "Triceps": [
@@ -134,19 +169,64 @@
       "name": "Tricep Dips",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
-      "description": "Kliky na bradlách pre triceps"
+      "description": "Kliky na bradlách pre triceps",
+      "modes": ["bodybuilding", "calisthenics"]
     },
     {
       "name": "Overhead Extension",
       "difficulty": "beginner",
       "equipment": "dumbbell",
-      "description": "Jednoručný predpažovanie za hlavou"
+      "description": "Jednoručné vystieranie ruky za hlavou",
+      "modes": ["bodybuilding"]
     },
     {
-      "name": "Tricep Pushdown",
+      "name": "Bench Dips",
       "difficulty": "beginner",
-      "equipment": "cable",
-      "description": "Tlačenie lana nadol na triceps"
+      "equipment": "bodyweight",
+      "description": "Kliky o lavičku s nohami na zemi",
+      "modes": ["bodybuilding", "calisthenics"]
+    },
+    {
+      "name": "Sphinx Push-ups",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Z planku na lakťoch sa vytláčate do planku na dlaniach",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Ring Dips",
+      "difficulty": "advanced",
+      "equipment": "gymnastics rings",
+      "description": "Kliky na krúžkoch s vyšším stresom na stabilitu",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Diamond Push-ups Progression",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Pokročilejšia verzia diamantových kľukov s väčším zameraním na triceps",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Tricep Press",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "V sede tlačenie dlaní dozadu pre aktiváciu tricepsu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Tricep Dips on Mat",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Kliky v stoji s dlaňami o podložku za chrbtom",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Back Arm Pulses",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Malé kmitavé pohyby paží vzadu v ľahu na bruchu",
+      "modes": ["pilates"]
     }
   ],
   "Ramená (Shoulders)": [
@@ -154,25 +234,71 @@
       "name": "Overhead Press",
       "difficulty": "intermediate",
       "equipment": "barbell",
-      "description": "Tlak nad hlavu s činkou"
+      "description": "Tlak nad hlavu s veľkou činkou",
+      "modes": ["bodybuilding"]
     },
     {
       "name": "Lateral Raises",
       "difficulty": "beginner",
       "equipment": "dumbbells",
-      "description": "Únos ramien do strán"
+      "description": "Upažovanie s jednoručkami",
+      "modes": ["bodybuilding"]
     },
     {
-      "name": "Front Raises",
-      "difficulty": "beginner",
-      "equipment": "dumbbells",
-      "description": "Únos ramien dopredu"
+      "name": "Pike Push-ups",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Kľuky v pozícii striešky (hlavou dole) na ramená",
+      "modes": ["calisthenics"]
     },
     {
-      "name": "Face Pulls",
+      "name": "Handstand Push-ups",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Kľuky v stojke pri stene",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Arm Circles",
       "difficulty": "beginner",
-      "equipment": "cable",
-      "description": "Ťahanie lana k tvári pre zadné ramená"
+      "equipment": "bodyweight",
+      "description": "Krúženie paží pre mobilitu a výdrž ramien",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "The Scarecrow",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Rotácia ramien v pravom uhle pre stabilitu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Shoulder Shrugs",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Zdvíhanie ramien smerom k ušiam v stoji",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Pseudo Planche Lean",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Predklonenie telom dopredu s oprením o ruky",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Shoulder Bridge with Pulses",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Mostík s vibráciami ramien na podložke",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Overhead Arm Reaches",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Natiahnutie paží nad hlavu v ľahu na chrbte",
+      "modes": ["pilates"]
     }
   ],
   "Brucho (Abs)": [
@@ -180,25 +306,85 @@
       "name": "Crunches",
       "difficulty": "beginner",
       "equipment": "bodyweight",
-      "description": "Skrčky na brucho"
+      "description": "Skracovačky na brucho",
+      "modes": ["bodybuilding"]
     },
     {
       "name": "Plank",
       "difficulty": "beginner",
       "equipment": "bodyweight",
-      "description": "Výdrž v stojke na predlaktiach"
+      "description": "Výdrž v podporu na predlaktiach",
+      "modes": ["bodybuilding", "calisthenics", "pilates"]
     },
     {
-      "name": "Leg Raises",
+      "name": "Hanging Leg Raises",
       "difficulty": "intermediate",
-      "equipment": "bodyweight",
-      "description": "Zdvíhanie nôh v ležení"
+      "equipment": "pullup bar",
+      "description": "Zdvíhanie nôh vo vise na hrazde",
+      "modes": ["bodybuilding", "calisthenics"]
     },
     {
-      "name": "Russian Twists",
+      "name": "L-Sit",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Výdrž v sede s nohami vo vzduchu na bradlách alebo zemi",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Dragon Flag",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Výdrž telom vo vzduchu v ľahu s oprením o hlavu",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Hollow Body Hold",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
-      "description": "Rotácie trupu sede"
+      "description": "Výdrž v pozícii dutého tela (celé telo v linke)",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "The Hundred",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Kmitanie rukami v ľahu s nohami vo vzduchu, dýchanie",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Criss-Cross",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Pomalé bicyklovanie s vytáčaním trupu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Teaser",
+      "difficulty": "advanced",
+      "equipment": "mat",
+      "description": "Komplexný cvik - dvíhanie trupu a nôh do tvaru V",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Single Leg Circle",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Krúženie jednou nohou v ľahu na chrbte",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Rolling Back",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Valcovanie sa po chrbtici s rukmi skrížením",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Double Leg Stretch",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Striedavé ohýbanie a otváranie nôh v ľahu",
+      "modes": ["pilates"]
     }
   ],
   "Chrbát (Back)": [
@@ -206,25 +392,78 @@
       "name": "Pull-ups",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
-      "description": "Zhyby s úchopom dlaňami od seba"
-    },
-    {
-      "name": "Barbell Row",
-      "difficulty": "intermediate",
-      "equipment": "barbell",
-      "description": "Predklon s činkou"
-    },
-    {
-      "name": "Lat Pulldown",
-      "difficulty": "beginner",
-      "equipment": "cable",
-      "description": "Sťahovanie závažia k hrudi"
+      "description": "Zhyby nadhmatom na šírku ramien",
+      "modes": ["bodybuilding", "calisthenics"]
     },
     {
       "name": "Deadlift",
       "difficulty": "advanced",
       "equipment": "barbell",
-      "description": "Mŕtvy ťah - kompletný cvik na chrbát"
+      "description": "Mŕtvy ťah - kráľ cvikov na chrbát",
+      "modes": ["bodybuilding"]
+    },
+    {
+      "name": "Australian Pull-ups",
+      "difficulty": "beginner",
+      "equipment": "pullup bar",
+      "description": "Horizontálne príťahy k nízkej hrazde",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Muscle-up",
+      "difficulty": "advanced",
+      "equipment": "pullup bar",
+      "description": "Výmyk - vytiahnutie sa až nad hrazdu",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Front Lever",
+      "difficulty": "advanced",
+      "equipment": "pullup bar",
+      "description": "Výdrž telom vo vzduchu kolmo pod hrazdu",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Archer Pull-ups",
+      "difficulty": "advanced",
+      "equipment": "pullup bar",
+      "description": "Zhyby s pohybom ku jednej ruke, druhá je viac vystretá",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Swimming",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Kmitanie rukami a nohami v ľahu na bruchu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Swan Dive",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Záklony chrbta v ľahu na bruchu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Back Extension",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Zdvíhanie hornej polovice tela v ľahu na bruchu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Spine Stretch Forward",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Natiahnutie chrbta v sede s predklonom",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Saw",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Pílenie chrbta s rotáciou trupu v sede",
+      "modes": ["pilates"]
     }
   ],
   "Stehná (Quads)": [
@@ -232,25 +471,71 @@
       "name": "Squats",
       "difficulty": "intermediate",
       "equipment": "barbell",
-      "description": "Drepy s činkou - základ nohových cvikov"
+      "description": "Drepy s činkou na chrbte",
+      "modes": ["bodybuilding"]
     },
     {
       "name": "Leg Press",
       "difficulty": "beginner",
       "equipment": "machine",
-      "description": "Tlačenie nohami na stroji"
+      "description": "Tlačenie nohami na stroji v sede",
+      "modes": ["bodybuilding"]
     },
     {
-      "name": "Lunges",
-      "difficulty": "beginner",
+      "name": "Pistol Squats",
+      "difficulty": "advanced",
       "equipment": "bodyweight",
-      "description": "Výpady vpred"
+      "description": "Drep na jednej nohe",
+      "modes": ["calisthenics"]
     },
     {
-      "name": "Leg Extensions",
+      "name": "Jump Squats",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Drepy s výskokom pre výbušnosť",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Sissy Squats",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Drepy s telom naklopeným vzad na jednej nohe",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Wall Sit",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Výdrž v sede s chrbtom opretým o stenu",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Side Leg Kicks",
       "difficulty": "beginner",
-      "equipment": "machine",
-      "description": "Predpažovanie nôh na stroji"
+      "equipment": "mat",
+      "description": "Unožovanie v ľahu na boku",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Double Leg Kick",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Zakopávanie oboch nôh v ľahu na bruchu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Inner Thigh Lifts",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Zdvíhanie vnútorného stehenného svalu v ľahu na boku",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Front Leg Raises",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Zdvíhanie nôh dopredu v ľahu na chrbte",
+      "modes": ["pilates"]
     }
   ],
   "Zadné stehenné svaly (Hamstrings)": [
@@ -258,33 +543,108 @@
       "name": "Romanian Deadlift",
       "difficulty": "intermediate",
       "equipment": "barbell",
-      "description": "Rumunský mŕtvy ťah na zadné stehná"
-    },
-    {
-      "name": "Leg Curls",
-      "difficulty": "beginner",
-      "equipment": "machine",
-      "description": "Zakrútky nôh na stroji"
+      "description": "Rumunský mŕtvy ťah s vystretými nohami",
+      "modes": ["bodybuilding"]
     },
     {
       "name": "Nordic Curls",
       "difficulty": "advanced",
       "equipment": "bodyweight",
-      "description": "Excentrické spúšťanie tela"
+      "description": "Spúšťanie tela kolenami fixovanými o zem",
+      "modes": ["calisthenics", "bodybuilding"]
+    },
+    {
+      "name": "Glute Ham Raise",
+      "difficulty": "advanced",
+      "equipment": "machine",
+      "description": "Zdvíhanie trupu pomocou hamstringov",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Single Leg Deadlift",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Mŕtvy ťah na jednej nohe",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Good Mornings",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Skloňovanie trupu vzad s nohami vypretými",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Shoulder Bridge",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Mostík na ramenách so zdvíhaním jednej nohy",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Bridge with Leg Lifts",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Mostík s striedavým zdvíhaním nôh",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Hamstring Curls on Mat",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Zdvíhanie nôh v ľahu na bruchu s ohybom v kolene",
+      "modes": ["pilates"]
     }
   ],
   "Lýtka (Calves)": [
     {
       "name": "Standing Calf Raises",
       "difficulty": "beginner",
-      "equipment": "bodyweight",
-      "description": "Výstupy na špičky v stoji"
+      "equipment": "machine",
+      "description": "Výpony na stroji v stoji",
+      "modes": ["bodybuilding"]
     },
     {
-      "name": "Seated Calf Raises",
+      "name": "Single Leg Calf Raise",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Výpony na jednej nohe na schodíku",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Relevé",
       "difficulty": "beginner",
-      "equipment": "machine",
-      "description": "Výstupy na špičky v sede"
+      "equipment": "bodyweight",
+      "description": "Výpony v baletnej pozícii",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Jump Rope",
+      "difficulty": "intermediate",
+      "equipment": "rope",
+      "description": "Skákanie s gumeným lanom",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Calf Raises on Stairs",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Výpony na schodíku bez pomoci",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Relevé March",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Chôdza na prstoch s vysokými výponmi",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Calf Stretches",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Natiahnutie lýtok v sedu alebo stoji",
+      "modes": ["pilates"]
     }
   ],
   "Zadok (Glutes)": [
@@ -292,19 +652,78 @@
       "name": "Hip Thrusts",
       "difficulty": "intermediate",
       "equipment": "barbell",
-      "description": "Zdvíhanie bokov s činkou"
-    },
-    {
-      "name": "Glute Bridges",
-      "difficulty": "beginner",
-      "equipment": "bodyweight",
-      "description": "Mostík na zadok"
+      "description": "Zdvíhanie panvy s činkou opretou o boky",
+      "modes": ["bodybuilding"]
     },
     {
       "name": "Bulgarian Split Squats",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
-      "description": "Bulharské drepy - jednostranný cvik"
+      "description": "Drepy s jednou nohou vyloženou vzadu",
+      "modes": ["bodybuilding", "calisthenics"]
+    },
+    {
+      "name": "Glute Bridges",
+      "difficulty": "beginner",
+      "equipment": "bodyweight",
+      "description": "Dvíhanie panvy v ľahu na chrbte",
+      "modes": ["calisthenics", "pilates"]
+    },
+    {
+      "name": "Single Leg Glute Bridge",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Dvíhanie panvy na jednej nohe",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Jump Lunges",
+      "difficulty": "advanced",
+      "equipment": "bodyweight",
+      "description": "Výpady s výskokom",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Step-ups",
+      "difficulty": "intermediate",
+      "equipment": "bodyweight",
+      "description": "Krok na vysoku plochu",
+      "modes": ["calisthenics"]
+    },
+    {
+      "name": "Clam Shells",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Otváranie kolien v ľahu na boku pre bočný zadok",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Heel Beats",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Búchanie pätami o seba v ľahu na bruchu",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Glute Lifts",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Zdvíhanie nôh v ľahu na bruchu s ohybom",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Side Kick Circles",
+      "difficulty": "intermediate",
+      "equipment": "mat",
+      "description": "Krúženie nohami v ľahu na boku",
+      "modes": ["pilates"]
+    },
+    {
+      "name": "Fire Hydrants",
+      "difficulty": "beginner",
+      "equipment": "mat",
+      "description": "Zdvíhanie nohy v stoji na štyroch",
+      "modes": ["pilates"]
     }
   ]
 }

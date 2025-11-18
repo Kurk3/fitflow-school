@@ -1,24 +1,31 @@
+import { useState } from 'react'
 import exercisesData from '../../data/exercises.json'
+import { useWorkout } from '../../context/WorkoutContext'
 
-function ExercisePanel({ muscleName, onClose }) {
-  // Získaj cviky pre daný sval
-  const exercises = muscleName ? exercisesData[muscleName] || [] : []
+// Prijímame prop 'mode'
+function ExercisePanel({ muscleName, mode, onClose }) {
+  const { addExercise } = useWorkout()
+  const [addedExerciseId, setAddedExerciseId] = useState(null)
+  // 1. Získame všetky cviky pre sval
+  const allExercises = muscleName ? exercisesData[muscleName] || [] : []
 
-  // Difficulty badge colors
+  // 2. FILTROVANIE: Vyberieme len tie, ktoré majú v poli 'modes' náš aktuálny mód
+  // Poznámka: Ak v JSON ešte nemáš pole 'modes', tento filter by vrátil prázdne pole. 
+  // Pre spätnú kompatibilitu pridáme "|| !exercise.modes" aby to ukazovalo všetko, ak dáta chýbajú.
+  const exercises = allExercises.filter(exercise => {
+    if (!exercise.modes) return true; // Ak dáta nemajú definované módy, zobraz všetko (fallback)
+    return exercise.modes.includes(mode);
+  });
+
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
-      case 'beginner':
-        return 'bg-green-100 text-green-800'
-      case 'intermediate':
-        return 'bg-yellow-100 text-yellow-800'
-      case 'advanced':
-        return 'bg-red-100 text-red-800'
-      default:
-        return 'bg-gray-100 text-gray-800'
+      case 'beginner': return 'bg-emerald-100 text-emerald-800 border-emerald-200'
+      case 'intermediate': return 'bg-amber-100 text-amber-800 border-amber-200'
+      case 'advanced': return 'bg-rose-100 text-rose-800 border-rose-200'
+      default: return 'bg-gray-100 text-gray-800'
     }
   }
 
-  // Equipment labels
   const getEquipmentLabel = (equipment) => {
     const labels = {
       bodyweight: 'Vlastná váha',
@@ -28,6 +35,8 @@ function ExercisePanel({ muscleName, onClose }) {
       cable: 'Kladka',
       machine: 'Stroj',
       'pullup bar': 'Hrazda',
+      mat: 'Podložka', // Pre Pilates
+      ball: 'Fitlopta' // Pre Pilates
     }
     return labels[equipment] || equipment
   }
@@ -41,88 +50,120 @@ function ExercisePanel({ muscleName, onClose }) {
     return labels[difficulty] || difficulty
   }
 
-  // Placeholder keď nič nie je vybrané
-  if (!muscleName) {
-    return null
+  // UI Helper pre názov módu
+  const getModeTitle = () => {
+    switch(mode) {
+        case 'bodybuilding': return 'Bodybuilding';
+        case 'calisthenics': return 'Kalistenika';
+        case 'pilates': return 'Pilates';
+        default: return mode;
+    }
   }
 
+  if (!muscleName) return null
+
   return (
-    <div className="h-full bg-white shadow-2xl overflow-y-auto">
-      {/* Header with close button */}
-      <div className="sticky top-0 bg-gradient-to-r from-gray-700 to-gray-600 text-white p-6 shadow-lg z-10">
-        <div className="flex items-center justify-between mb-2">
-          <h2 className="text-2xl font-bold">{muscleName}</h2>
+    <div className="h-full bg-white flex flex-col">
+      {/* Header */}
+      <div className="bg-white border-b border-gray-200 p-6 pt-8">
+        <div className="flex items-start justify-between mb-4">
+          <div>
+            <span className="text-xs font-bold tracking-wider text-gray-500 uppercase mb-1 block">
+              {getModeTitle()}
+            </span>
+            <h2 className="text-3xl font-bold text-gray-900">{muscleName}</h2>
+          </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
             aria-label="Zavrieť"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
-        <p className="text-gray-100 text-sm">
-          {exercises.length} {exercises.length === 1 ? 'cvik' : 'cvikov'}
-        </p>
+        
+        <div className="flex items-center gap-2 text-sm text-gray-600">
+          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 text-xs font-medium">
+            {exercises.length}
+          </span>
+          <span>dostupných cvikov</span>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="p-6">
+      {/* Content - Scrollable */}
+      <div className="flex-1 overflow-y-auto p-6 bg-gray-50/50">
         {exercises.length === 0 ? (
-          <div className="text-center py-12 text-gray-500">
-            <p className="text-lg font-medium">Žiadne cviky nenájdené</p>
-            <p className="text-sm mt-2">Pre tento sval ešte nemáme cviky v databáze.</p>
+          <div className="h-full flex flex-col items-center justify-center text-gray-500 space-y-4">
+            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div className="text-center">
+              <p className="text-lg font-medium text-gray-900">Žiadne cviky nenájdené</p>
+              <p className="text-sm mt-1 text-gray-500 max-w-[250px]">
+                Pre sval "{muscleName}" v móde "{getModeTitle()}" zatiaľ nemáme dáta.
+              </p>
+            </div>
           </div>
         ) : (
           <div className="space-y-4">
             {exercises.map((exercise, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-5 hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-gray-400"
+                className="group bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:border-gray-300 relative overflow-hidden"
               >
-                {/* Exercise name */}
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
-                  {exercise.name}
-                </h3>
+                {/* Decorative element */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110" />
 
-                {/* Description */}
-                <p className="text-gray-600 text-sm mb-3 leading-relaxed">
-                  {exercise.description}
-                </p>
+                <div className="relative">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-bold text-lg text-gray-900 pr-8">
+                      {exercise.name}
+                    </h3>
+                  </div>
 
-                {/* Badges */}
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {/* Difficulty badge */}
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(
-                      exercise.difficulty
-                    )}`}
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                    {exercise.description}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <span className={`px-2.5 py-0.5 rounded-md text-xs font-medium border ${getDifficultyColor(exercise.difficulty)}`}>
+                      {getDifficultyLabel(exercise.difficulty)}
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
+                      {getEquipmentLabel(exercise.equipment)}
+                    </span>
+                  </div>
+
+                  <button 
+                    onClick={() => {
+                      addExercise(exercise, mode)
+                      setAddedExerciseId(exercise.name)
+                      setTimeout(() => setAddedExerciseId(null), 2000)
+                    }}
+                    className={`w-full flex items-center justify-center gap-2 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition-all duration-200 ${
+                      addedExerciseId === exercise.name 
+                        ? 'bg-emerald-600 hover:bg-emerald-700' 
+                        : 'bg-blue-600 hover:bg-blue-700'
+                    }`}
                   >
-                    {getDifficultyLabel(exercise.difficulty)}
-                  </span>
-
-                  {/* Equipment badge */}
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-200 text-gray-800">
-                    {getEquipmentLabel(exercise.equipment)}
-                  </span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={
+                        addedExerciseId === exercise.name 
+                          ? "M5 13l4 4L19 7" 
+                          : "M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      } />
+                    </svg>
+                    {addedExerciseId === exercise.name ? 'Pridané! ✓' : 'Pridať do tréningu'}
+                  </button>
                 </div>
-
-                {/* Add to workout button */}
-                <button className="w-full bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-800 hover:to-gray-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg">
-                  Pridať do workoutu
-                </button>
               </div>
             ))}
           </div>
         )}
-      </div>
-
-      {/* Footer tip */}
-      <div className="p-6 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-200">
-        <p className="text-sm text-gray-600 text-center">
-          <strong>Tip:</strong> Klikni na iný sval pre viac cvikov
-        </p>
       </div>
     </div>
   )
