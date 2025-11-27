@@ -59,7 +59,7 @@ function ExportDropdown({ onExport }) {
       {/* Export Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded-lg transition-colors text-gray-200"
+        className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-white hover:bg-gray-50 border border-gray-300 rounded-lg transition-colors text-gray-700"
       >
         <Download className="w-4 h-4" />
         <span className="text-sm font-medium">Export</span>
@@ -68,23 +68,23 @@ function ExportDropdown({ onExport }) {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute left-0 right-0 mt-2 bg-gray-800 border border-gray-700 rounded-lg shadow-2xl z-50 overflow-hidden">
+        <div className="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-elevated z-50 overflow-hidden">
           {exportOptions.map((option, index) => {
             const Icon = option.icon
             return (
               <button
                 key={option.id}
                 onClick={() => handleExport(option.id)}
-                className={`w-full flex items-start gap-3 px-4 py-3 hover:bg-gray-700 transition-colors text-left ${
-                  index !== exportOptions.length - 1 ? 'border-b border-gray-700' : ''
+                className={`w-full flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-left ${
+                  index !== exportOptions.length - 1 ? 'border-b border-gray-200' : ''
                 }`}
               >
                 <div className="mt-0.5 flex-shrink-0">
-                  <Icon className="w-5 h-5 text-blue-400" />
+                  <Icon className="w-5 h-5 text-gray-600" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-medium text-gray-200 text-sm">{option.title}</div>
-                  <div className="text-xs text-gray-400 mt-0.5">{option.description}</div>
+                  <div className="font-medium text-gray-900 text-sm">{option.title}</div>
+                  <div className="text-xs text-gray-500 mt-0.5">{option.description}</div>
                 </div>
               </button>
             )

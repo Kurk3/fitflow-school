@@ -29,25 +29,25 @@ function ProfilePanel({ onClose }) {
   }
 
   return (
-    <div className="h-full bg-gray-900 shadow-2xl overflow-hidden flex flex-col">
+    <div className="h-full bg-white shadow-elevated overflow-hidden flex flex-col">
       {/* Header */}
-      <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-6 shadow-lg">
+      <div className="bg-white border-b border-gray-200 p-6">
         <div className="flex items-start justify-between mb-4">
           {/* User info */}
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
-              💪
+            <div className="w-16 h-16 bg-primary-900 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              FIT
             </div>
             <div>
-              <h2 className="text-2xl font-bold">Tvoj Pokrok</h2>
-              <p className="text-gray-200 text-sm">Člen od September 2024</p>
+              <h2 className="text-2xl font-bold text-gray-900">Tvoj Pokrok</h2>
+              <p className="text-gray-600 text-sm">Člen od September 2024</p>
             </div>
           </div>
 
           {/* Close button */}
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-600"
             aria-label="Zavrieť"
           >
             <X className="w-6 h-6" />
@@ -55,7 +55,7 @@ function ProfilePanel({ onClose }) {
         </div>
 
         {/* Level and XP */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+        <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
           <XPBar
             currentXP={mockUserProgress.currentXP}
             maxXP={mockUserProgress.xpToNextLevel}
@@ -65,7 +65,7 @@ function ProfilePanel({ onClose }) {
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex border-b border-gray-700 bg-gray-800 px-4 overflow-x-auto">
+      <div className="flex border-b border-gray-200 bg-white px-4 overflow-x-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon
           return (
@@ -74,8 +74,8 @@ function ProfilePanel({ onClose }) {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-3 font-medium text-sm transition-colors whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'text-blue-400 border-b-2 border-blue-500 bg-gray-900'
-                  : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700'
+                  ? 'text-gray-900 border-b-2 border-gray-900'
+                  : 'text-gray-500 hover:text-gray-700'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -86,7 +86,7 @@ function ProfilePanel({ onClose }) {
       </div>
 
       {/* Tab Content */}
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className="flex-1 overflow-y-auto p-6 bg-gray-50">
         {/* OVERVIEW TAB */}
         {activeTab === 'overview' && (
           <div className="space-y-6">
@@ -101,42 +101,42 @@ function ProfilePanel({ onClose }) {
 
             {/* Quick Stats Grid */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gradient-to-br from-blue-900/40 to-blue-800/40 p-4 rounded-xl border border-blue-600/30">
+              <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
                 <div className="flex items-center gap-2 mb-2">
-                  <Dumbbell className="w-5 h-5 text-blue-400" />
-                  <div className="text-sm text-gray-400">Workouty</div>
+                  <Dumbbell className="w-5 h-5 text-gray-600" />
+                  <div className="text-sm text-gray-600">Workouty</div>
                 </div>
-                <div className="text-3xl font-bold text-blue-300">
+                <div className="text-3xl font-bold text-gray-900">
                   {mockUserProgress.totalWorkouts}
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-orange-900/40 to-orange-800/40 p-4 rounded-xl border border-orange-600/30">
+              <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
                 <div className="flex items-center gap-2 mb-2">
-                  <Flame className="w-5 h-5 text-orange-400" />
-                  <div className="text-sm text-gray-400">Streak</div>
+                  <Flame className="w-5 h-5 text-gray-600" />
+                  <div className="text-sm text-gray-600">Streak</div>
                 </div>
-                <div className="text-3xl font-bold text-orange-300">
-                  {mockUserProgress.currentStreak} 🔥
+                <div className="text-3xl font-bold text-gray-900">
+                  {mockUserProgress.currentStreak}
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/40 p-4 rounded-xl border border-purple-600/30">
+              <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
                 <div className="flex items-center gap-2 mb-2">
-                  <Trophy className="w-5 h-5 text-purple-400" />
-                  <div className="text-sm text-gray-400">Achievementy</div>
+                  <Trophy className="w-5 h-5 text-gray-600" />
+                  <div className="text-sm text-gray-600">Achievementy</div>
                 </div>
-                <div className="text-3xl font-bold text-purple-300">
+                <div className="text-3xl font-bold text-gray-900">
                   {mockUserProgress.unlockedAchievements}/{mockUserProgress.totalAchievements}
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-green-900/40 to-green-800/40 p-4 rounded-xl border border-green-600/30">
+              <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
                 <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="w-5 h-5 text-green-400" />
-                  <div className="text-sm text-gray-400">Naj Streak</div>
+                  <TrendingUp className="w-5 h-5 text-gray-600" />
+                  <div className="text-sm text-gray-600">Naj Streak</div>
                 </div>
-                <div className="text-3xl font-bold text-green-300">
+                <div className="text-3xl font-bold text-gray-900">
                   {mockUserProgress.longestStreak}
                 </div>
               </div>
@@ -144,8 +144,8 @@ function ProfilePanel({ onClose }) {
 
             {/* Recent Achievements */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-200 mb-3 flex items-center gap-2">
-                <Trophy className="w-5 h-5 text-yellow-400" />
+              <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                <Trophy className="w-5 h-5 text-gray-600" />
                 Posledné Achievementy
               </h3>
               <div className="grid grid-cols-2 gap-3">
@@ -159,28 +159,28 @@ function ProfilePanel({ onClose }) {
             </div>
 
             {/* Progress Insights */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-700 p-4 rounded-xl border border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-200 mb-3 flex items-center gap-2">
-                <Target className="w-5 h-5 text-blue-400" />
+            <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                <Target className="w-5 h-5 text-gray-600" />
                 Tvoje Ciele
               </h3>
               <div className="space-y-3">
                 <div>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-300">Beast Mode (50 workoutov)</span>
-                    <span className="font-semibold text-gray-200">87%</span>
+                    <span className="text-gray-700">Beast Mode (50 workoutov)</span>
+                    <span className="font-semibold text-gray-900">87%</span>
                   </div>
-                  <div className="h-2 bg-gray-600 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-[87%]" />
+                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary-900 w-[87%]" />
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-300">Mesačný Bojovník (30 dní streak)</span>
-                    <span className="font-semibold text-gray-200">50%</span>
+                    <span className="text-gray-700">Mesačný Bojovník (30 dní streak)</span>
+                    <span className="font-semibold text-gray-900">50%</span>
                   </div>
-                  <div className="h-2 bg-gray-600 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-orange-500 to-orange-600 w-[50%]" />
+                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary-900 w-[50%]" />
                   </div>
                 </div>
               </div>
@@ -192,16 +192,16 @@ function ProfilePanel({ onClose }) {
         {activeTab === 'achievements' && (
           <div className="space-y-6">
             {/* Progress bar */}
-            <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/40 p-4 rounded-xl border border-purple-600/30">
+            <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
               <div className="flex justify-between items-center mb-2">
-                <h3 className="font-semibold text-gray-200">Celkový Pokrok</h3>
-                <span className="text-2xl font-bold text-purple-300">
+                <h3 className="font-semibold text-gray-900">Celkový Pokrok</h3>
+                <span className="text-2xl font-bold text-gray-900">
                   {mockUserProgress.unlockedAchievements}/{mockUserProgress.totalAchievements}
                 </span>
               </div>
-              <div className="h-3 bg-gray-700 rounded-full overflow-hidden">
+              <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-purple-500 to-purple-600"
+                  className="h-full bg-primary-900"
                   style={{
                     width: `${(mockUserProgress.unlockedAchievements / mockUserProgress.totalAchievements) * 100}%`,
                   }}
@@ -212,17 +212,17 @@ function ProfilePanel({ onClose }) {
             {/* Achievements by category */}
             {Object.entries(achievementsByCategory).map(([category, achievements]) => {
               const categoryTitles = {
-                workouts: '🏋️ Workout Milestones',
-                streaks: '🔥 Streak Achievementy',
-                variety: '🌈 Rozmanitosť',
-                strength: '💪 Sila & Objem',
-                special: '⭐ Špeciálne',
-                progression: '📈 Progresívny Tréning',
+                workouts: 'Workout Milestones',
+                streaks: 'Streak Achievementy',
+                variety: 'Rozmanitosť',
+                strength: 'Sila & Objem',
+                special: 'Špeciálne',
+                progression: 'Progresívny Tréning',
               }
 
               return (
                 <div key={category}>
-                  <h3 className="text-lg font-semibold text-gray-200 mb-3">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
                     {categoryTitles[category]}
                   </h3>
                   <div className="grid grid-cols-2 gap-3 mb-6">
@@ -248,35 +248,35 @@ function ProfilePanel({ onClose }) {
           <div className="space-y-6">
             {/* Key Metrics */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gradient-to-br from-blue-900/40 to-blue-800/40 p-4 rounded-xl border border-blue-600/30">
-                <div className="text-sm text-gray-400 mb-1">Celkový Objem</div>
-                <div className="text-3xl font-bold text-blue-300">
+              <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
+                <div className="text-sm text-gray-600 mb-1">Celkový Objem</div>
+                <div className="text-3xl font-bold text-gray-900">
                   {mockStats.totalVolume.toLocaleString()} kg
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-green-900/40 to-green-800/40 p-4 rounded-xl border border-green-600/30">
-                <div className="text-sm text-gray-400 mb-1">Priemerný Workout</div>
-                <div className="text-3xl font-bold text-green-300">
+              <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
+                <div className="text-sm text-gray-600 mb-1">Priemerný Workout</div>
+                <div className="text-3xl font-bold text-gray-900">
                   {mockStats.averageDuration} min
                 </div>
               </div>
             </div>
 
             {/* Most Trained Muscle */}
-            <div className="bg-gray-800 border border-gray-700 rounded-xl p-4">
-              <h3 className="font-semibold text-gray-200 mb-3">Najtrénovanejší Sval</h3>
+            <div className="bg-white border border-gray-300 rounded-xl p-4 shadow-soft">
+              <h3 className="font-semibold text-gray-900 mb-3">Najtrénovanejší Sval</h3>
               <div className="flex items-center justify-between">
-                <span className="text-lg text-gray-300">{mockStats.mostTrainedMuscle.name}</span>
-                <span className="text-2xl font-bold text-blue-400">
+                <span className="text-lg text-gray-700">{mockStats.mostTrainedMuscle.name}</span>
+                <span className="text-2xl font-bold text-gray-900">
                   {mockStats.mostTrainedMuscle.count}x
                 </span>
               </div>
             </div>
 
             {/* Muscle Distribution */}
-            <div className="bg-gray-800 border border-gray-700 rounded-xl p-4">
-              <h3 className="font-semibold text-gray-200 mb-3">Rozloženie Tréningov</h3>
+            <div className="bg-white border border-gray-300 rounded-xl p-4 shadow-soft">
+              <h3 className="font-semibold text-gray-900 mb-3">Rozloženie Tréningov</h3>
               <div className="space-y-2">
                 {Object.entries(mockStats.muscleDistribution)
                   .sort(([, a], [, b]) => b - a)
@@ -286,12 +286,12 @@ function ProfilePanel({ onClose }) {
                     return (
                       <div key={muscle}>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-300">{muscle}</span>
-                          <span className="font-semibold text-gray-200">{count}x</span>
+                          <span className="text-gray-700">{muscle}</span>
+                          <span className="font-semibold text-gray-900">{count}x</span>
                         </div>
-                        <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-blue-400 to-blue-600"
+                            className="h-full bg-primary-900"
                             style={{ width: `${percentage}%` }}
                           />
                         </div>
@@ -302,46 +302,46 @@ function ProfilePanel({ onClose }) {
             </div>
 
             {/* Favorite Exercise */}
-            <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/40 p-4 rounded-xl border border-purple-600/30">
-              <div className="text-sm text-gray-400 mb-1">Obľúbený Cvik</div>
-              <div className="text-xl font-bold text-purple-300">
+            <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
+              <div className="text-sm text-gray-600 mb-1">Obľúbený Cvik</div>
+              <div className="text-xl font-bold text-gray-900">
                 {mockStats.favoriteExercise.name}
               </div>
-              <div className="text-sm text-gray-400 mt-1">
+              <div className="text-sm text-gray-600 mt-1">
                 Vykonaný {mockStats.favoriteExercise.count}x
               </div>
             </div>
 
             {/* Best Day */}
-            <div className="bg-gradient-to-br from-orange-900/40 to-orange-800/40 p-4 rounded-xl border border-orange-600/30">
-              <div className="text-sm text-gray-400 mb-1">Najlepší Deň</div>
-              <div className="text-xl font-bold text-orange-300">
+            <div className="bg-white p-4 rounded-xl border border-gray-300 shadow-soft">
+              <div className="text-sm text-gray-600 mb-1">Najlepší Deň</div>
+              <div className="text-xl font-bold text-gray-900">
                 {mockStats.bestDayOfWeek.day}
               </div>
-              <div className="text-sm text-gray-400 mt-1">
+              <div className="text-sm text-gray-600 mt-1">
                 {mockStats.bestDayOfWeek.count} workoutov
               </div>
             </div>
 
             {/* Mode Distribution */}
-            <div className="bg-gray-800 border border-gray-700 rounded-xl p-4">
-              <h3 className="font-semibold text-gray-200 mb-3">Tréningové Módy</h3>
+            <div className="bg-white border border-gray-300 rounded-xl p-4 shadow-soft">
+              <h3 className="font-semibold text-gray-900 mb-3">Tréningové Módy</h3>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">💪 Bodybuilding</span>
-                  <span className="font-semibold text-gray-200">
+                  <span className="text-gray-700">Bodybuilding</span>
+                  <span className="font-semibold text-gray-900">
                     {mockStats.modeDistribution.bodybuilding}x
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">🏃 Calisthenics</span>
-                  <span className="font-semibold text-gray-200">
+                  <span className="text-gray-700">Calisthenics</span>
+                  <span className="font-semibold text-gray-900">
                     {mockStats.modeDistribution.calisthenics}x
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">🧘 Pilates</span>
-                  <span className="font-semibold text-gray-200">
+                  <span className="text-gray-700">Pilates</span>
+                  <span className="font-semibold text-gray-900">
                     {mockStats.modeDistribution.pilates}x
                   </span>
                 </div>

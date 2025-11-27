@@ -55,11 +55,11 @@ function GoalsWizard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-slate-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-2xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-700 to-gray-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl font-bold text-primary-900 mb-2">
             FitFlow
           </h1>
           <p className="text-gray-600">Nastavme tvoje fitness ciele</p>
@@ -68,25 +68,25 @@ function GoalsWizard() {
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">Krok {step} z 4</span>
-            <span className="text-sm font-medium text-gray-700">{step * 25}%</span>
+            <span className="text-sm font-medium text-gray-900">Krok {step} z 4</span>
+            <span className="text-sm font-medium text-gray-900">{step * 25}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
-              className="bg-gradient-to-r from-gray-700 to-gray-600 h-2 rounded-full transition-all duration-300"
+              className="bg-primary-900 h-2 rounded-full transition-all duration-300"
               style={{ width: `${step * 25}%` }}
             ></div>
           </div>
         </div>
 
         {/* Wizard Card */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
+        <div className="bg-white rounded-elegant shadow-soft p-8 border border-gray-200">
 
           {/* Step 1: Primary Goal */}
           {step === 1 && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Aký je tvoj hlavný cieľ?</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Aký je tvoj hlavný cieľ?</h2>
                 <p className="text-gray-600">Vyber si, čo chceš dosiahnuť</p>
               </div>
 
@@ -101,14 +101,14 @@ function GoalsWizard() {
                   <button
                     key={option.value}
                     onClick={() => setGoals({ ...goals, primaryGoal: option.value })}
-                    className={`w-full p-4 rounded-xl border-2 transition-all text-left flex items-center gap-4 ${
+                    className={`w-full p-4 rounded-lg border-2 transition-all text-left flex items-center gap-4 ${
                       goals.primaryGoal === option.value
-                        ? 'border-gray-500 bg-gray-50'
-                        : 'border-gray-200 hover:border-gray-400'
+                        ? 'border-primary-900 bg-primary-50 shadow-subtle'
+                        : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
                     <span className="text-3xl">{option.icon}</span>
-                    <span className="text-lg font-semibold text-gray-800">{option.label}</span>
+                    <span className="text-lg font-semibold text-gray-900">{option.label}</span>
                   </button>
                 ))}
               </div>
@@ -119,7 +119,7 @@ function GoalsWizard() {
           {step === 2 && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Aká je tvoja úroveň skúseností?</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Aká je tvoja úroveň skúseností?</h2>
                 <p className="text-gray-600">Pomôže nám prispôsobiť cviky pre teba</p>
               </div>
 
@@ -132,13 +132,13 @@ function GoalsWizard() {
                   <button
                     key={option.value}
                     onClick={() => setGoals({ ...goals, experienceLevel: option.value })}
-                    className={`w-full p-4 rounded-xl border-2 transition-all text-left ${
+                    className={`w-full p-4 rounded-lg border-2 transition-all text-left ${
                       goals.experienceLevel === option.value
-                        ? 'border-gray-500 bg-gray-50'
-                        : 'border-gray-200 hover:border-gray-400'
+                        ? 'border-primary-900 bg-primary-50 shadow-subtle'
+                        : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
-                    <div className="font-semibold text-lg text-gray-800">{option.label}</div>
+                    <div className="font-semibold text-lg text-gray-900">{option.label}</div>
                     <div className="text-sm text-gray-600">{option.desc}</div>
                   </button>
                 ))}
@@ -150,7 +150,7 @@ function GoalsWizard() {
           {step === 3 && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Ako často plánuješ cvičiť?</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Ako často plánuješ cvičiť?</h2>
                 <p className="text-gray-600">Realisticky odhadni svoju dostupnosť</p>
               </div>
 
@@ -163,13 +163,13 @@ function GoalsWizard() {
                   <button
                     key={option.value}
                     onClick={() => setGoals({ ...goals, workoutFrequency: option.value })}
-                    className={`w-full p-4 rounded-xl border-2 transition-all text-left ${
+                    className={`w-full p-4 rounded-lg border-2 transition-all text-left ${
                       goals.workoutFrequency === option.value
-                        ? 'border-gray-500 bg-gray-50'
-                        : 'border-gray-200 hover:border-gray-400'
+                        ? 'border-primary-900 bg-primary-50 shadow-subtle'
+                        : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
-                    <div className="font-semibold text-lg text-gray-800">{option.label}</div>
+                    <div className="font-semibold text-lg text-gray-900">{option.label}</div>
                     <div className="text-sm text-gray-600">{option.desc}</div>
                   </button>
                 ))}
@@ -181,7 +181,7 @@ function GoalsWizard() {
           {step === 4 && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Ktoré svalové skupiny chceš rozvíjať?</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Ktoré svalové skupiny chceš rozvíjať?</h2>
                 <p className="text-gray-600">Môžeš vybrať viacero</p>
               </div>
 
@@ -197,13 +197,13 @@ function GoalsWizard() {
                   <button
                     key={option.value}
                     onClick={() => toggleFocusArea(option.value)}
-                    className={`p-4 rounded-xl border-2 transition-all ${
+                    className={`p-4 rounded-lg border-2 transition-all ${
                       goals.focusAreas.includes(option.value)
-                        ? 'border-gray-500 bg-gray-50'
-                        : 'border-gray-200 hover:border-gray-400'
+                        ? 'border-primary-900 bg-primary-50 shadow-subtle'
+                        : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
-                    <div className="font-semibold text-gray-800">{option.label}</div>
+                    <div className="font-semibold text-gray-900">{option.label}</div>
                   </button>
                 ))}
               </div>
@@ -215,7 +215,7 @@ function GoalsWizard() {
             {step > 1 && (
               <button
                 onClick={handleBack}
-                className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-gray-400 transition-all"
+                className="px-6 py-2.5 border-2 border-gray-200 text-gray-700 rounded-lg font-semibold hover:border-gray-300 hover:bg-gray-50 transition-all shadow-subtle"
               >
                 Späť
               </button>
@@ -223,7 +223,7 @@ function GoalsWizard() {
 
             <button
               onClick={handleSkip}
-              className="px-6 py-3 text-gray-600 hover:text-gray-800 font-medium transition-all"
+              className="px-6 py-2.5 text-gray-600 hover:text-gray-900 font-medium transition-all"
             >
               Preskočiť
             </button>
@@ -231,10 +231,10 @@ function GoalsWizard() {
             <button
               onClick={handleNext}
               disabled={!isStepValid()}
-              className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all ${
+              className={`flex-1 py-2.5 px-6 rounded-lg font-semibold transition-all ${
                 isStepValid()
-                  ? 'bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-800 hover:to-gray-700 text-white shadow-md hover:shadow-lg'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  ? 'bg-primary-900 hover:bg-primary-800 text-white shadow-subtle hover:shadow-soft'
+                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
               }`}
             >
               {step === 4 ? 'Dokončiť' : 'Ďalej'}

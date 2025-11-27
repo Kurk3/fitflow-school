@@ -11,11 +11,11 @@ function MuscleInfoPopup({ muscleName, onClose }) {
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case 'beginner':
-        return 'bg-green-100 text-green-800'
+        return 'bg-gray-100 text-gray-700'
       case 'intermediate':
-        return 'bg-yellow-100 text-yellow-800'
+        return 'bg-gray-200 text-gray-800'
       case 'advanced':
-        return 'bg-red-100 text-red-800'
+        return 'bg-gray-300 text-gray-900'
       default:
         return 'bg-gray-100 text-gray-800'
     }
@@ -53,19 +53,19 @@ function MuscleInfoPopup({ muscleName, onClose }) {
       />
 
       {/* Popup panel */}
-      <div className="fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-2xl z-50 overflow-y-auto animate-slide-in">
+      <div className="fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-elevated z-50 overflow-y-auto animate-slide-in">
         {/* Header */}
-        <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-blue-500 text-white p-6 shadow-lg">
+        <div className="sticky top-0 bg-white border-b border-gray-200 p-6">
           <div className="flex justify-between items-start">
             <div>
-              <h2 className="text-2xl font-bold mb-1">{muscleName}</h2>
-              <p className="text-blue-100 text-sm">
+              <h2 className="text-2xl font-bold text-gray-900 mb-1">{muscleName}</h2>
+              <p className="text-gray-600 text-sm">
                 {exercises.length} {exercises.length === 1 ? 'cvik' : 'cvikov'}
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-600"
               aria-label="Zavrieť"
             >
               <X size={24} />
@@ -85,7 +85,7 @@ function MuscleInfoPopup({ muscleName, onClose }) {
               {exercises.map((exercise, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow border border-gray-200"
+                  className="bg-white rounded-xl p-5 shadow-soft hover:shadow-elevated transition-all border border-gray-300"
                 >
                   {/* Exercise name */}
                   <h3 className="font-semibold text-lg text-gray-900 mb-2">
@@ -109,13 +109,13 @@ function MuscleInfoPopup({ muscleName, onClose }) {
                     </span>
 
                     {/* Equipment badge */}
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
                       {getEquipmentLabel(exercise.equipment)}
                     </span>
                   </div>
 
                   {/* Add to workout button */}
-                  <button className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                  <button className="mt-4 w-full bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-soft">
                     Pridať do workoutu
                   </button>
                 </div>
@@ -125,9 +125,9 @@ function MuscleInfoPopup({ muscleName, onClose }) {
         </div>
 
         {/* Footer tip */}
-        <div className="p-6 bg-gray-100 border-t border-gray-200">
+        <div className="p-6 bg-gray-50 border-t border-gray-200">
           <p className="text-sm text-gray-600 text-center">
-            💡 <strong>Tip:</strong> Klikni na iný sval pre viac cvikov
+            <strong>Tip:</strong> Klikni na iný sval pre viac cvikov
           </p>
         </div>
       </div>

@@ -2,8 +2,8 @@ import { useState } from 'react'
 import exercisesData from '../../data/exercises.json'
 import { useWorkout } from '../../context/WorkoutContext'
 
-// Prijímame prop 'mode'
-function ExercisePanel({ muscleName, mode, onClose }) {
+// Prijímame prop 'mode' a 'onExerciseClick'
+function ExercisePanel({ muscleName, mode, onClose, onExerciseClick }) {
   const { addExercise } = useWorkout()
   const [addedExerciseId, setAddedExerciseId] = useState(null)
   // 1. Získame všetky cviky pre sval
@@ -19,9 +19,9 @@ function ExercisePanel({ muscleName, mode, onClose }) {
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
-      case 'beginner': return 'bg-emerald-100 text-emerald-800 border-emerald-200'
-      case 'intermediate': return 'bg-amber-100 text-amber-800 border-amber-200'
-      case 'advanced': return 'bg-rose-100 text-rose-800 border-rose-200'
+      case 'beginner': return 'bg-gray-100 text-gray-700 border-gray-200'
+      case 'intermediate': return 'bg-gray-100 text-gray-800 border-gray-200'
+      case 'advanced': return 'bg-gray-200 text-gray-900 border-gray-300'
       default: return 'bg-gray-100 text-gray-800'
     }
   }
@@ -113,11 +113,9 @@ function ExercisePanel({ muscleName, mode, onClose }) {
             {exercises.map((exercise, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:border-gray-300 relative overflow-hidden"
+                className="group bg-white rounded-xl p-5 shadow-soft hover:shadow-elevated transition-all duration-200 border border-gray-300 cursor-pointer"
+                onClick={() => onExerciseClick && onExerciseClick(exercise)}
               >
-                {/* Decorative element */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110" />
-
                 <div className="relative">
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="font-bold text-lg text-gray-900 pr-8">
@@ -138,26 +136,27 @@ function ExercisePanel({ muscleName, mode, onClose }) {
                     </span>
                   </div>
 
-                  <button 
-                    onClick={() => {
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
                       addExercise(exercise, mode)
                       setAddedExerciseId(exercise.name)
                       setTimeout(() => setAddedExerciseId(null), 2000)
                     }}
-                    className={`w-full flex items-center justify-center gap-2 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition-all duration-200 ${
-                      addedExerciseId === exercise.name 
-                        ? 'bg-emerald-600 hover:bg-emerald-700' 
-                        : 'bg-blue-600 hover:bg-blue-700'
+                    className={`w-full flex items-center justify-center gap-2 text-white text-sm font-bold py-3 px-4 rounded-lg transition-all duration-200 shadow-soft hover:shadow-elevated ${
+                      addedExerciseId === exercise.name
+                        ? 'bg-gray-900'
+                        : 'bg-gray-900 hover:bg-gray-800'
                     }`}
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={
-                        addedExerciseId === exercise.name 
-                          ? "M5 13l4 4L19 7" 
+                        addedExerciseId === exercise.name
+                          ? "M5 13l4 4L19 7"
                           : "M12 6v6m0 0v6m0-6h6m-6 0H6"
                       } />
                     </svg>
-                    {addedExerciseId === exercise.name ? 'Pridané! ✓' : 'Pridať do tréningu'}
+                    {addedExerciseId === exercise.name ? 'Pridané!' : 'Pridať do tréningu'}
                   </button>
                 </div>
               </div>

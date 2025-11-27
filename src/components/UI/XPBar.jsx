@@ -16,36 +16,30 @@ function XPBar({ currentXP, maxXP, level, showLabel = true }) {
     <div className="space-y-2">
       {showLabel && (
         <div className="flex justify-between items-center text-sm">
-          <span className="font-semibold text-gray-200">Level {level}</span>
-          <span className="text-gray-300 font-mono">
+          <span className="font-semibold text-gray-900">Level {level}</span>
+          <span className="text-gray-600 font-mono">
             {currentXP.toLocaleString()} / {maxXP.toLocaleString()} XP
           </span>
         </div>
       )}
 
-      <div className="relative h-3 bg-gray-700 rounded-full overflow-hidden shadow-inner">
+      <div className="relative h-3 bg-gray-200 rounded-full overflow-hidden">
         {/* Animated progress bar */}
         <div
-          className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 rounded-full transition-all duration-1000 ease-out shadow-lg"
+          className="absolute top-0 left-0 h-full bg-primary-900 rounded-full transition-all duration-1000 ease-out"
           style={{ width: `${animatedWidth}%` }}
         >
           {/* Shimmer effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
         </div>
-
-        {/* Glow effect on the edge */}
-        <div
-          className="absolute top-0 left-0 h-full w-2 bg-white/50 blur-sm transition-all duration-1000 ease-out"
-          style={{ left: `${Math.max(animatedWidth - 1, 0)}%` }}
-        />
       </div>
 
       {showLabel && (
-        <div className="text-xs text-center text-gray-400">
+        <div className="text-xs text-center text-gray-600">
           {maxXP - currentXP > 0 ? (
             <span>{(maxXP - currentXP).toLocaleString()} XP do ďalšieho levelu</span>
           ) : (
-            <span className="text-green-400 font-semibold">Pripravený na level up! 🎉</span>
+            <span className="text-gray-900 font-semibold">Pripravený na level up!</span>
           )}
         </div>
       )}

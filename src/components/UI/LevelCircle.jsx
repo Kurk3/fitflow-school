@@ -60,40 +60,29 @@ function LevelCircle({ level, currentXP, maxXP, size = 'large' }) {
             cx="50%"
             cy="50%"
             r={config.radius}
-            stroke="url(#gradient)"
+            stroke="currentColor"
             strokeWidth={config.strokeWidth}
             fill="none"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
             strokeLinecap="round"
-            className="transition-all duration-1000 ease-out"
+            className="text-primary-900 transition-all duration-1000 ease-out"
           />
-          {/* Gradient definition */}
-          <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#3b82f6" />
-              <stop offset="50%" stopColor="#6366f1" />
-              <stop offset="100%" stopColor="#8b5cf6" />
-            </linearGradient>
-          </defs>
         </svg>
 
         {/* Level number in center */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className={`font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ${config.text}`}>
+          <div className={`font-bold text-primary-900 ${config.text}`}>
             {level}
           </div>
           <div className={`text-gray-500 font-semibold uppercase tracking-wide ${config.label}`}>
             Level
           </div>
         </div>
-
-        {/* Glow effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-xl -z-10" />
       </div>
 
       {/* Progress percentage */}
-      <div className="text-xs text-gray-500 font-mono">
+      <div className="text-xs text-gray-600 font-mono">
         {Math.round(progress)}% do Level {level + 1}
       </div>
     </div>
