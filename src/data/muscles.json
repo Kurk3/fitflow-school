@@ -1,0 +1,455 @@
+{
+  "Hrudník (Pectorals)": {
+    "description": "Hrudné svaly sú veľké svaly na prednej strane hrudníka, ktoré tvoria základ silnej hornej časti tela. Skladajú sa z veľkého prsného svalu (pectoralis major) - mohutného vejárovitého svalu, a malého prsného svalu (pectoralis minor) - menšieho trojuholníkového svalu pod ním.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Horná časť (klavikulárna)",
+          "description": "Začína na kľúčnej kosti, zodpovedá za zdvíhanie paží"
+        },
+        {
+          "name": "Stredná časť (sternálna)",
+          "description": "Najväčšia časť, začína na hrudnej kosti"
+        },
+        {
+          "name": "Dolná časť (abdominálna)",
+          "description": "Spodné vlákna, pomáha pri pohybe paží nadol"
+        }
+      ],
+      "origin": "Kľúčna kosť, hrudná kosť, rebrá 1-6",
+      "insertion": "Veľký hrbol ramennej kosti"
+    },
+    "functions": [
+      "Priťahovanie paží k telu (addukcia) - hlavná funkcia pri tlakových pohyboch",
+      "Rotácia ramena dovnútra - pomáha pri hádzaní a úderoch",
+      "Pohyb paží dopredu (flexia) - zdvíhanie predmetov pred telo",
+      "Pohyb paží cez stred tela - crossover pohyby",
+      "Stabilizácia ramenného kĺbu pri zaťažení",
+      "Pomoc pri hlbokom nádychu rozťahovaním hrudníka"
+    ],
+    "tips": [
+      "Pri bench presse dbaj na plný rozsah pohybu - spúšťaj činku až k hrudníku",
+      "Zahrej sa minimálne 2 rozcvičovacími sériami pred ťažkými váhami",
+      "Cvič aj horný aj dolný hrudník rovnomerne pre symetrický rozvoj",
+      "Používaj rôzne uhly lavičky (rovná, šikmá, klesajúca) pre kompletnú stimuláciu",
+      "Nezabúdaj na strečing po tréningu - skrátené prsné svaly ťahajú ramená dopredu",
+      "Mind-muscle connection - sústreď sa na sťahovanie hrudníka, nie len tlačenie váhy"
+    ],
+    "commonInjuries": "Natrhnutie prsného svalu (často pri veľkých váhach bez rozcvičky), zápaly šliach v mieste úponu, syndróm rotátorovej manžety pri nesprávnej technike",
+    "prevention": "Dôkladná rozcvička, postupné zvyšovanie váh, správna technika, rovnomerný tréning antagonistov (chrbát)",
+    "relatedMuscles": ["Ramená (Shoulders)", "Triceps", "Brucho (Abs)"],
+    "bestExercises": ["Bench Press", "Incline Dumbbell Press", "Cable Crossover", "Dips"],
+    "trainingFrequency": "2x týždenne s minimálne 48-72 hodinami odpočinku medzi tréningami"
+  },
+  "Biceps": {
+    "description": "Dvojhlavý sval ramena (biceps brachii) je ikonický sval na prednej strane nadlaktia. Skladá sa z dlhej hlavy (caput longum) na vonkajšej strane a krátkej hlavy (caput breve) na vnútornej strane. Je hlavným flexorom lakťa a supinátorom predlaktia.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Dlhá hlava (Long head)",
+          "description": "Vonkajšia časť bicepsu, tvorí 'peak' pri flexii"
+        },
+        {
+          "name": "Krátka hlava (Short head)",
+          "description": "Vnútorná časť, prispieva k šírke bicepsu"
+        },
+        {
+          "name": "Brachialis",
+          "description": "Hlboký sval pod bicepsom, pridáva celkovú hrúbku paže"
+        }
+      ],
+      "origin": "Lopatka (dlhá hlava - nadpažie, krátka hlava - zobákovitý výbežok)",
+      "insertion": "Tuberositas radii (drsnatina vretennej kosti)"
+    },
+    "functions": [
+      "Ohýbanie lakťa (flexia) - hlavná funkcia bicepsu",
+      "Otáčanie predlaktia dlaňou nahor (supinácia) - biceps je najsilnejší supinátor",
+      "Pomoc pri zdvíhaní ramena (flexia ramena) - dlhá hlava prechádza cez ramenný kĺb",
+      "Stabilizácia ramenného kĺbu pri nosení predmetov",
+      "Spomaľovanie vystierania lakťa (excentrická kontrola)"
+    ],
+    "tips": [
+      "Izoluj biceps - nelokaj celým telom, drž lakte pevne pri bokoch",
+      "Používaj plný rozsah pohybu - úplné natiahnutie aj stiahnutie",
+      "Skúšaj rôzne úchopy: úzky zdôrazňuje dlhú hlavu, široký krátku hlavu",
+      "Netlač na maximálne váhy - biceps je malý sval náchylný na zranenia",
+      "Supinácia zápästia pri zdvihu zvyšuje aktiváciu bicepsu",
+      "Pomalá excentrická fáza (spúšťanie) stimuluje rast",
+      "Cvič biceps po chrbte, keď je už predohriatý z ťahových cvikov"
+    ],
+    "commonInjuries": "Tendinitída bicepsu (zápal šľachy), natrhnutie distálnej šľachy pri lakti, SLAP lézia (poškodenie v ramene)",
+    "prevention": "Vyhnúť sa nadmernému švihu, postupne zvyšovať váhy, dostatočný odpočinok medzi tréningami",
+    "relatedMuscles": ["Predlaktie (Forearms)", "Ramená (Shoulders)", "Chrbát (Back)"],
+    "bestExercises": ["Barbell Curl", "Dumbbell Curl", "Hammer Curl", "Preacher Curl"],
+    "trainingFrequency": "2-3x týždenne, biceps sa rýchlo zotavuje vďaka menšej veľkosti"
+  },
+  "Triceps": {
+    "description": "Trojhlavý sval ramena (triceps brachii) je najväčší sval paže, tvoriaci približne 2/3 jej objemu. Nachádza sa na zadnej strane nadlaktia a má tri hlavy - dlhú, strednú (mediálnu) a bočnú (laterálnu). Je jediným extensorom lakťa.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Dlhá hlava (Long head)",
+          "description": "Jediná hlava prechádzajúca cez ramenný kĺb, tvorí vnútornú časť tricepsu"
+        },
+        {
+          "name": "Bočná hlava (Lateral head)",
+          "description": "Vonkajšia časť tricepsu, tvorí charakteristický tvar 'podkovy'"
+        },
+        {
+          "name": "Stredná hlava (Medial head)",
+          "description": "Hlboká hlava, pracuje pri všetkých pohyboch lakťa"
+        }
+      ],
+      "origin": "Lopatka (dlhá hlava), ramenná kosť (bočná a stredná hlava)",
+      "insertion": "Olecranon (výbežok lakťovej kosti)"
+    },
+    "functions": [
+      "Vystieranie lakťa (extenzia) - jediný sval s touto funkciou",
+      "Stabilizácia lakťového kĺbu pri jemných pohyboch",
+      "Pomoc pri tlakových pohyboch (bench press, overhead press)",
+      "Priťahovanie paže k telu (addukcia) - dlhá hlava",
+      "Extenzia ramena - ťahanie paže dozadu (dlhá hlava)"
+    ],
+    "tips": [
+      "Cvič všetky tri hlavy pre symetrický rozvoj - rôzne cviky aktivujú rôzne hlavy",
+      "Drž lakte pri tele pri izolačných cvikoch ako pushdown",
+      "Triceps dobre reaguje na vyšší objem - 12-20 sérií týždenne",
+      "Používaj rôzne úchopy a uhly pre kompletnú stimuláciu",
+      "Overhead cviky zdôrazňujú dlhú hlavu (naťahuje sa cez ramenný kĺb)",
+      "Pushdowny s lanom a rotáciou na konci maximalizujú kontrakciu",
+      "Dips sú komplex cvik pre celý triceps"
+    ],
+    "commonInjuries": "Tendinitída tricepsu, preťaženie lakťa (tenisový lakeť), natrhnutie svalu pri explozívnych pohyboch",
+    "prevention": "Kontrolovaný pohyb, vyhnúť sa nadmernému lockovaniu lakťa, dostatočná rozcvička",
+    "relatedMuscles": ["Hrudník (Pectorals)", "Ramená (Shoulders)"],
+    "bestExercises": ["Close-Grip Bench Press", "Tricep Dips", "Skull Crushers", "Tricep Pushdown"],
+    "trainingFrequency": "2x týždenne priamo, plus práca pri tlakových cvikoch"
+  },
+  "Ramená (Shoulders)": {
+    "description": "Deltový sval (deltoideus) je mohutný trojuholníkový sval pokrývajúci ramenný kĺb. Skladá sa z troch funkčne odlišných častí - prednej (anterior), strednej (lateral) a zadnej (posterior). Dáva ramenám charakteristický guľatý tvar a je zodpovedný za väčšinu pohybov ramena.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Predná časť (Anterior deltoid)",
+          "description": "Zdvíha rameno dopredu, pomáha pri tlakových pohyboch"
+        },
+        {
+          "name": "Stredná časť (Lateral deltoid)",
+          "description": "Zdvíha rameno do strany, tvorí šírku ramien"
+        },
+        {
+          "name": "Zadná časť (Posterior deltoid)",
+          "description": "Ťahá rameno dozadu, často zanedbávaná"
+        }
+      ],
+      "origin": "Kľúčna kosť (predná), nadpažie lopatky (stredná), hrebeň lopatky (zadná)",
+      "insertion": "Deltová drsnatina ramennej kosti"
+    },
+    "functions": [
+      "Zdvíhanie paží do strán (abdukcia) - hlavná funkcia stredného deltoidu",
+      "Zdvíhanie paží dopredu (flexia) - predný deltoid",
+      "Ťahanie paží dozadu (extenzia) - zadný deltoid",
+      "Rotácia ramena dovnútra a von",
+      "Stabilizácia ramenného kĺbu pri všetkých pohyboch paží",
+      "Pomoc pri nosení ťažkých predmetov po bokoch"
+    ],
+    "tips": [
+      "Trénuj všetky tri časti deltového svalu rovnomerne pre zdravie a estetiku",
+      "Používaj kontrolovaný pohyb bez švihu - rameno je náchylné na zranenia",
+      "Začni s ľahšími váhami pre správnu techniku",
+      "Ramenný kĺb je najnestabilnejší kĺb tela - buď opatrný",
+      "Pri lateral raises nekončí s činkami nad úrovňou ramien",
+      "Zadný deltoid často zaostáva - pridaj face pulls a reverse flyes",
+      "Rozcvička s rotátorovými cvikmi pred tréningom ramien"
+    ],
+    "commonInjuries": "Impingement syndróm (utláčanie šliach), zápaly rotátorovej manžety, subluxácia (čiastočné vykĺbenie), bursitída",
+    "prevention": "Posilňovanie rotátorovej manžety, vyvážený tréning všetkých častí, správna technika, vyhnúť sa preťaženiu",
+    "relatedMuscles": ["Hrudník (Pectorals)", "Triceps", "Chrbát (Back)"],
+    "bestExercises": ["Overhead Press", "Lateral Raise", "Face Pull", "Arnold Press"],
+    "trainingFrequency": "2x týždenne, ramená pracujú aj pri väčšine tlakových a ťahových cvikov"
+  },
+  "Brucho (Abs)": {
+    "description": "Brušné svaly tvoria prednú a bočnú stenu brucha. Zahŕňajú priamy brušný sval (rectus abdominis) - známe 'kocky', vonkajšie a vnútorné šikmé svaly (obliques) po stranách, a priečny brušný sval (transversus abdominis) - najhlbšiu vrstvu tvoriaca korzetový efekt.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Priamy brušný sval (Rectus abdominis)",
+          "description": "Tvorí 'sixpack', prebieha od hrudníka k panve"
+        },
+        {
+          "name": "Vonkajšie šikmé svaly (External obliques)",
+          "description": "Po stranách, zodpovedné za rotáciu a bočné úklony"
+        },
+        {
+          "name": "Vnútorné šikmé svaly (Internal obliques)",
+          "description": "Pod vonkajšími, pracujú v opačnom smere"
+        },
+        {
+          "name": "Priečny brušný sval (Transversus)",
+          "description": "Najhlbšia vrstva, stabilizuje trup ako korzet"
+        }
+      ],
+      "origin": "Rebrá, hrudná kosť, panvová kosť",
+      "insertion": "Panvová kosť, biela línia (linea alba)"
+    },
+    "functions": [
+      "Ohýbanie trupu dopredu (flexia) - klasické crunche",
+      "Rotácia trupu do strán (šikmé svaly)",
+      "Bočný úklon trupu (laterálna flexia)",
+      "Stabilizácia chrbtice a panvy pri všetkých pohyboch",
+      "Podpora dýchania - výdych a kašeľ",
+      "Zvyšovanie vnútrobrušného tlaku - ochrana chrbtice pri zdvíhaní",
+      "Udržiavanie správneho držania tela"
+    ],
+    "tips": [
+      "Core cvič na začiatku pre aktiváciu alebo na konci tréningu",
+      "Nezabúdaj na šikmé svaly a spodnú časť - nie len crunche",
+      "Kvalita prevyšuje kvantitu opakovaní - sústreď sa na kontrakciu",
+      "Dýchaj správne - výdych pri kontrakcii, nádych pri uvoľnení",
+      "Plank a jeho variácie sú výborné pre celkový core",
+      "Abs sa tvoria v kuchyni - bez nízkého percenta tuku ich neuvidíš",
+      "Trénuj core s váhou pre silu, bez váhy pre vytrvalosť"
+    ],
+    "commonInjuries": "Svalové natiahnutie, diastáza (rozostúpenie priameho svalu - časté po tehotenstve), hernie",
+    "prevention": "Správna technika, postupné zvyšovanie náročnosti, vyhnúť sa nadmernému zaťaženiu",
+    "relatedMuscles": ["Dolný chrbát (Lower Back)", "Stehná (Quads)", "Zadok (Glutes)"],
+    "bestExercises": ["Plank", "Hanging Leg Raise", "Cable Crunch", "Russian Twist"],
+    "trainingFrequency": "3-4x týždenne, brušné svaly sa rýchlo zotavujú"
+  },
+  "Chrbát (Back)": {
+    "description": "Chrbát tvorí komplexná skupina svalov pokrývajúca celú zadnú stranu trupu. Najvýznamnejší je najširší sval chrbta (latissimus dorsi) dávajúci V-tvar, trapéz na hornej časti, rombické svaly medzi lopatkami, a vzpriamovače chrbtice pozdĺž chrbtice.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Latissimus dorsi (Lats)",
+          "description": "Najväčší sval chrbta, tvorí charakteristický V-tvar"
+        },
+        {
+          "name": "Trapéz (Trapezius)",
+          "description": "Lichobežníkový sval od krku po stred chrbta"
+        },
+        {
+          "name": "Rombické svaly (Rhomboids)",
+          "description": "Medzi lopatkami, sťahujú lopatky k sebe"
+        },
+        {
+          "name": "Vzpriamovače chrbtice (Erector spinae)",
+          "description": "Pozdĺž chrbtice, udržujú vzpriamené držanie"
+        },
+        {
+          "name": "Teres major a minor",
+          "description": "Malé svaly pomáhajúce pri rotácii a ťahu"
+        }
+      ],
+      "origin": "Panva, rebrá, lopatka, chrbtové stavce",
+      "insertion": "Ramenná kosť, lopatka, rebrá"
+    },
+    "functions": [
+      "Ťahanie paží nadol a dozadu - zhyby, sťahy",
+      "Priťahovanie paží k telu (addukcia) - veslovanie",
+      "Rotácia ramena dovnútra",
+      "Sťahovanie lopatiek k sebe (retrakcia)",
+      "Udržiavanie vzpriameného držania tela",
+      "Stabilizácia chrbtice pri všetkých pohyboch",
+      "Pomoc pri dýchaní - rozťahovanie hrudníka"
+    ],
+    "tips": [
+      "Sústreď sa na stiahnutie lopatiek pred začatím ťahu",
+      "Používaj plný rozsah - naťahuj aj sťahuj svaly kompletne",
+      "Meň úchopy pre aktiváciu rôznych častí: široký, úzky, neutrálny",
+      "Udržuj chrbát rovný počas celého pohybu, vyhni sa zaokrúhleniu",
+      "Mind-muscle connection - ťahaj lakťami, nie rukami",
+      "Deadlift je komplexný cvik pre celý chrbát",
+      "Balansuj tlakové a ťahové cviky pre zdravé držanie tela"
+    ],
+    "commonInjuries": "Svalové kŕče, natiahnutie svalu, výhrez platničky pri zlej technike, bolesti dolného chrbta",
+    "prevention": "Správna technika pri deadlifte, posilňovanie core, rovnomerný tréning",
+    "relatedMuscles": ["Biceps", "Ramená (Shoulders)", "Brucho (Abs)"],
+    "bestExercises": ["Pull-Up", "Barbell Row", "Lat Pulldown", "Deadlift"],
+    "trainingFrequency": "2x týždenne, chrbát je veľká svalová skupina vyžadujúca dostatočný odpočinok"
+  },
+  "Stehná (Quads)": {
+    "description": "Štvorhlavý sval stehna (quadriceps femoris) je najsilnejší a najobjemnejší sval ľudského tela. Nachádza sa na prednej strane stehna a skladá sa zo štyroch hláv, ktoré spolu vystierajú koleno. Je kľúčový pre chôdzu, beh, skákanie a vstávanie.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Priamy sval stehna (Rectus femoris)",
+          "description": "Jediná hlava prechádzajúca cez bedrový kĺb, viditeľný uprostred stehna"
+        },
+        {
+          "name": "Vonkajší široký sval (Vastus lateralis)",
+          "description": "Najväčšia hlava na vonkajšej strane stehna"
+        },
+        {
+          "name": "Vnútorný široký sval (Vastus medialis)",
+          "description": "Známy ako 'slza' nad kolenom, stabilizuje jabĺčko"
+        },
+        {
+          "name": "Stredný široký sval (Vastus intermedius)",
+          "description": "Hlboká hlava pod rectus femoris"
+        }
+      ],
+      "origin": "Panvová kosť (rectus), stehenná kosť (vasti)",
+      "insertion": "Jabĺčko (patella) a cez patelárnu šľachu na holenná kosť"
+    },
+    "functions": [
+      "Vystieranie kolena (extenzia) - hlavná funkcia, vstávanie, kopanie",
+      "Ohýbanie bedrového kĺbu (rectus femoris) - zdvíhanie stehna",
+      "Stabilizácia kolena pri stoji a chôdzi",
+      "Absorbovanie nárazov pri skokoch a behu",
+      "Brzdenie pri zostupe zo schodov (excentrická práca)",
+      "Udržiavanie vzpriamenej polohy tela"
+    ],
+    "tips": [
+      "Drepy sú základ - nauč sa správnu techniku s vlastnou váhou",
+      "Kolená tlač v smere špičiek, nie dovnútra",
+      "Cvič aj jednonožné varianty pre symetriu a stabilitu",
+      "Nezabúdaj na zadné stehno - pomer quad:hamstring by mal byť vyvážený",
+      "Plná hĺbka drepu aktivuje viac svalových vlákien",
+      "Leg press je bezpečná alternatíva pri problémoch s chrbtom",
+      "Excentric fáza (spúšťanie) je dôležitá pre silu a hypertrofiu"
+    ],
+    "commonInjuries": "Svalové natiahnutie, patelofemorálny syndróm (bolesť pod jabĺčkom), tendinitída patelárnej šľachy ('jumper's knee')",
+    "prevention": "Správna technika, postupné zvyšovanie záťaže, strečing, posilňovanie VMO (vnútorná hlava)",
+    "relatedMuscles": ["Zadné stehenné svaly (Hamstrings)", "Zadok (Glutes)", "Lýtka (Calves)"],
+    "bestExercises": ["Squat", "Leg Press", "Lunges", "Leg Extension"],
+    "trainingFrequency": "2x týždenne, nohy potrebujú 48-72 hodín na zotavenie"
+  },
+  "Zadné stehenné svaly (Hamstrings)": {
+    "description": "Hamstringy sú skupina troch svalov na zadnej strane stehna: dvojhlavý sval stehna (biceps femoris), poloblanitý sval (semimembranosus) a pološľachovitý sval (semitendinosus). Sú antagonistami quadricepsov a často sú zanedbávané v tréningu, čo vedie k zraneniam.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Biceps femoris (dlhá hlava)",
+          "description": "Vonkajšia časť hamstringov, prechádza cez bedrový aj kolenný kĺb"
+        },
+        {
+          "name": "Biceps femoris (krátka hlava)",
+          "description": "Len cez kolenný kĺb, pomáha pri flexii kolena"
+        },
+        {
+          "name": "Semimembranosus",
+          "description": "Vnútorná časť, najhlbší z hamstringov"
+        },
+        {
+          "name": "Semitendinosus",
+          "description": "Vnútorná časť, jeho šľacha sa používa pri rekonštrukciách väzov"
+        }
+      ],
+      "origin": "Sedací hrbol (ischial tuberosity) - 'kosť na ktorej sedíš'",
+      "insertion": "Holenná kosť (tibia) a ihlica (fibula)"
+    },
+    "functions": [
+      "Ohýbanie kolena (flexia) - priťahovanie päty k zadku",
+      "Vystieranie bedra (extenzia) - ťahanie nohy dozadu",
+      "Rotácia kolena pri pokrčenej nohe (vnútorná a vonkajšia)",
+      "Stabilizácia kolena, najmä pri prednom skríženom väze (ACL)",
+      "Brzdenie pri behu - excentrická práca pri dopade",
+      "Pomoc gluteu pri vstávaní a výstupe do schodov"
+    ],
+    "tips": [
+      "Trénuj hamstringy rovnako intenzívne ako quadriceps",
+      "Rumunský mŕtvy ťah je kľúčový cvik pre natiahnutie a silu",
+      "Strečing je dôležitý - hamstringy bývajú skrátené od sedenia",
+      "Silné hamstringy predchádzajú zraneniam kolena (ACL)",
+      "Cviky s pokrčenými kolenami (leg curl) aj s vystretými (RDL)",
+      "Nordic hamstring curl je najúčinnejší pre prevenciu zranení",
+      "Excentric tréning je kľúčový pre šprint a prevenciu natiahnutí"
+    ],
+    "commonInjuries": "Natiahnutie svalu (veľmi časté u športovcov), natrhnutie vlákien, tendinopatia v mieste úponu na sedacom hrboľe",
+    "prevention": "Pravidelný strečing, excentric tréning, vyvážený pomer quad:hamstring, dostatočná rozcvička",
+    "relatedMuscles": ["Stehná (Quads)", "Zadok (Glutes)", "Lýtka (Calves)"],
+    "bestExercises": ["Romanian Deadlift", "Lying Leg Curl", "Nordic Hamstring Curl", "Good Morning"],
+    "trainingFrequency": "2x týždenne, hamstringy sa zotavujú pomalšie ako quads"
+  },
+  "Zadok (Glutes)": {
+    "description": "Gluteálne svaly sú tri svaly tvoriace zadok: veľký sedací sval (gluteus maximus) - najväčší sval ľudského tela, stredný sedací sval (gluteus medius) a malý sedací sval (gluteus minimus). Sú kľúčové pre vzpriamený postoj, chôdzu a silu dolných končatín.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Gluteus maximus",
+          "description": "Najväčší a najpovrchnejší, zodpovedný za tvar zadku a silu extenzie bedra"
+        },
+        {
+          "name": "Gluteus medius",
+          "description": "Pod gluteus maximus, stabilizuje panvu pri stoji na jednej nohe"
+        },
+        {
+          "name": "Gluteus minimus",
+          "description": "Najhlbší, pomáha pri abdukcii a rotácii bedra"
+        }
+      ],
+      "origin": "Panvová kosť (ilium), krížová kosť (sacrum)",
+      "insertion": "Stehenná kosť (femur) - veľký trochanter a gluteálna drsnatina"
+    },
+    "functions": [
+      "Vystieranie bedra (extenzia) - vstávanie, výstup do schodov, šprint",
+      "Odťahovanie nohy do strany (abdukcia) - stabilizácia pri chôdzi",
+      "Rotácia bedra navonok (vonkajšia rotácia)",
+      "Stabilizácia panvy a trupu pri všetkých pohyboch",
+      "Udržiavanie vzpriameného postoja - sme jediní primáti s takými gluteami",
+      "Absorbovanie síl pri dopade a brzdení"
+    ],
+    "tips": [
+      "Hip thrusty sú najefektívnejší cvik pre gluteus maximus",
+      "Aktivuj gluteus pred tréningom nôh - 'glute activation' cviky",
+      "Cvič aj abdukciu pre stredný a malý gluteus - banded walks",
+      "Silné glutey predchádzajú bolestiam chrbta a kolena",
+      "Mind-muscle connection - stiahni glutey na vrchole pohybu",
+      "Variuj stance pri drepoch - široký postoj viac aktivuje glutey",
+      "Single-leg cviky odhaľujú a napravujú asymetrie"
+    ],
+    "commonInjuries": "Syndróm mŕtveho zadku (gluteal amnesia - glutey 'zabudnú' pracovať), piriformis syndróm (tlak na sedací nerv), tendinopatia",
+    "prevention": "Pravidelná aktivácia, vyhýbanie sa dlhému sedeniu, strečing hip flexorov",
+    "relatedMuscles": ["Zadné stehenné svaly (Hamstrings)", "Stehná (Quads)", "Brucho (Abs)"],
+    "bestExercises": ["Hip Thrust", "Squat", "Romanian Deadlift", "Bulgarian Split Squat"],
+    "trainingFrequency": "2-3x týždenne, glutey zvládnu vyšší frekvenciu"
+  },
+  "Lýtka (Calves)": {
+    "description": "Lýtkové svaly sa skladajú z dvoch hlavných svalov: dvojhlavého lýtkového svalu (gastrocnemius) tvoriaceho viditeľný tvar lýtka, a šikmého svalu lýtka (soleus) ležiaceho pod ním. Spolu tvoria triceps surae a sú zodpovedné za pohyb členka.",
+    "anatomy": {
+      "parts": [
+        {
+          "name": "Gastrocnemius (mediálna hlava)",
+          "description": "Vnútorná viditeľná časť lýtka, väčšia z dvoch hláv"
+        },
+        {
+          "name": "Gastrocnemius (laterálna hlava)",
+          "description": "Vonkajšia časť, menšia hlava"
+        },
+        {
+          "name": "Soleus",
+          "description": "Plochý sval pod gastrocnemiom, pracuje pri pokrčenom kolene"
+        },
+        {
+          "name": "Achillova šľacha",
+          "description": "Najsilnejšia šľacha tela spájajúca lýtko s pätou"
+        }
+      ],
+      "origin": "Stehenná kosť (gastrocnemius), holenná a ihlicová kosť (soleus)",
+      "insertion": "Pätová kosť cez Achillovu šľachu"
+    },
+    "functions": [
+      "Zdvíhanie na špičky (plantárna flexia) - chôdza, beh, skoky",
+      "Stabilizácia členka pri stoji a pohybe",
+      "Odraz pri chôdzi a behu - propulzia",
+      "Návrat krvi k srdcu (svalová pumpa) - druhé srdce",
+      "Absorpcia nárazov pri dopade",
+      "Pomoc pri flexii kolena (gastrocnemius prechádza cez koleno)"
+    ],
+    "tips": [
+      "Cvič s vystretými kolenami (gastrocnemius) aj pokrčenými (soleus)",
+      "Lýtka vyžadujú vysoký objem a frekvenciu - sú zvyknuté na záťaž",
+      "Používaj plný rozsah pohybu - od maximálneho natiahnutia po kontrakciu",
+      "Drž kontrakciu na vrchole pohybu 1-2 sekundy",
+      "Genetika hrá veľkú rolu - niektorí majú vysoké úpony šliach",
+      "Standing calf raise pre gastrocnemius, seated pre soleus",
+      "Donkey calf raise je jeden z najefektívnejších cvikov"
+    ],
+    "commonInjuries": "Kŕče (často z dehydratácie), natiahnutie svalu, pretrhnutie Achillovej šľachy (vážne zranenie)",
+    "prevention": "Dostatočná hydratácia, strečing, postupné zvyšovanie záťaže, zahriatie pred šprintom",
+    "relatedMuscles": ["Stehná (Quads)", "Zadné stehenné svaly (Hamstrings)"],
+    "bestExercises": ["Standing Calf Raise", "Seated Calf Raise", "Donkey Calf Raise", "Jump Rope"],
+    "trainingFrequency": "3-4x týždenne, lýtka sa rýchlo zotavujú"
+  }
+}

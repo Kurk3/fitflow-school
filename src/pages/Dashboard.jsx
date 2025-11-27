@@ -1,135 +1,228 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import HumanModel3D from '../components/3D/HumanModel3D'
 import ExercisePanel from '../components/UI/ExercisePanel'
 import WorkoutPanel from '../components/UI/WorkoutPanel'
 import ProfilePanel from '../components/UI/ProfilePanel'
+import GymPanel from '../components/UI/GymPanel'
 import ExerciseDetailModal from '../components/UI/ExerciseDetailModal'
+import OnboardingWizard from '../components/UI/OnboardingWizard'
 import { useWorkout } from '../context/WorkoutContext'
 
 function Dashboard() {
   const [selectedMuscle, setSelectedMuscle] = useState(null)
   const [activeMode, setActiveMode] = useState('bodybuilding')
   const [showProfile, setShowProfile] = useState(false)
+  const [showWorkout, setShowWorkout] = useState(false)
+  const [showGym, setShowGym] = useState(false)
   const [selectedExercise, setSelectedExercise] = useState(null)
-  const { streak, addExercise } = useWorkout()
+  const [showOnboarding, setShowOnboarding] = useState(false)
+  const { workoutExercises, addExercise } = useWorkout()
+
+  // Check if onboarding was completed
+  useEffect(() => {
+    const onboardingComplete = localStorage.getItem('fitflow_onboarding_complete')
+    if (!onboardingComplete) {
+      setShowOnboarding(true)
+    }
+  }, [])
 
   const handleMuscleClick = (muscleName) => {
     setSelectedMuscle(muscleName)
   }
 
-  // Funkcia na štýlovanie tlačidiel
-  const getTabStyle = (mode) => {
-    const isActive = activeMode === mode
-    const baseStyle = "relative px-6 py-2 rounded-lg font-semibold text-sm transition-all duration-300 "
-    const activeStyle = "bg-white text-gray-900 shadow-soft border-2 border-gray-900"
-    const inactiveStyle = "text-gray-500 hover:text-gray-900 bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300"
-    return baseStyle + (isActive ? activeStyle : inactiveStyle)
+  const getModeLabel = (mode) => {
+    switch (mode) {
+      case 'bodybuilding': return 'Bodybuilding'
+      case 'calisthenics': return 'Calisthenics'
+      case 'pilates': return 'Pilates'
+      default: return mode
+    }
   }
 
   return (
-    <div className="w-full h-screen flex bg-gray-50">
-      {/* Profile Modal Popup */}
-      {showProfile && (
+    <div className="w-full h-screen bg-neutral-50 relative overflow-hidden">
+      {/* Floating Header */}
+      <header className="absolute top-0 left-0 right-0 z-30 p-4 md:p-6">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-3 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-xl shadow-soft border border-neutral-200">
+            <div className="p-2 bg-neutral-900 rounded-lg">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
+              </svg>
+            </div>
+            <div className="hidden sm:block">
+              <h1 className="text-lg font-bold text-neutral-900">FitFlow</h1>
+            </div>
+          </div>
+
+          {/* Mode Switcher - Center */}
+          <div className="flex gap-1 bg-white/90 backdrop-blur-sm p-1.5 rounded-xl shadow-soft border border-neutral-200">
+            {['bodybuilding', 'calisthenics', 'pilates'].map((mode) => (
+              <button
+                key={mode}
+                onClick={() => setActiveMode(mode)}
+                className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 ${
+                  activeMode === mode
+                    ? 'bg-neutral-900 text-white shadow-soft'
+                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
+                }`}
+              >
+                <span className="hidden sm:inline">{getModeLabel(mode)}</span>
+                <span className="sm:hidden">{mode.slice(0, 4).toUpperCase()}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Right Actions */}
+          <div className="flex items-center gap-2">
+            {/* Gym Button - Black */}
+            <button
+              onClick={() => setShowGym(true)}
+              className="p-3 bg-neutral-900 rounded-xl shadow-soft hover:bg-neutral-800 transition-all duration-200"
+              aria-label="Gym"
+            >
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
+              </svg>
+            </button>
+
+            {/* Achievements Button */}
+            <button
+              onClick={() => setShowProfile(true)}
+              className="p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+              aria-label="Achievements"
+            >
+              <svg className="w-5 h-5 text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            </button>
+
+            {/* Workout Button with Badge */}
+            <button
+              onClick={() => setShowWorkout(true)}
+              className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+              aria-label="Workout"
+            >
+              <svg className="w-5 h-5 text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              {workoutExercises.length > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  {workoutExercises.length}
+                </span>
+              )}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* 3D Model - Full Screen */}
+      <div className="w-full h-full">
+        <HumanModel3D
+          onMuscleClick={handleMuscleClick}
+          selectedMuscle={selectedMuscle}
+        />
+      </div>
+
+      {/* Help Button - Left Bottom */}
+      {!selectedMuscle && (
+        <div className="absolute left-4 md:left-6 bottom-8 z-20">
+          <button
+            onClick={() => setShowOnboarding(true)}
+            className="flex items-center gap-2 bg-neutral-900 text-white px-4 py-2.5 rounded-xl shadow-soft hover:bg-neutral-800 transition-all duration-200"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span className="text-sm font-medium">Nevieš ako začať?</span>
+          </button>
+        </div>
+      )}
+
+      {/* Bottom Instructions - Center */}
+      {!selectedMuscle && (
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+          <div className="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-xl shadow-soft border border-neutral-200">
+            <p className="text-sm font-medium text-neutral-600">
+              Klikni na sval <span className="mx-1">•</span>
+              Rotuj ťahaním <span className="mx-1">•</span>
+              Zoom kolieskom
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Exercise Panel - Slide from Right */}
+      {selectedMuscle && (
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300"
-            onClick={() => setShowProfile(false)}
+            className="fixed inset-0 bg-black/30 z-40 md:hidden"
+            onClick={() => setSelectedMuscle(null)}
           />
 
-          {/* Modal Content */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div className="w-full max-w-5xl h-[90vh] bg-white rounded-elegant shadow-elevated overflow-hidden transform transition-all duration-300 scale-100">
-              <ProfilePanel onClose={() => setShowProfile(false)} />
-            </div>
+          {/* Panel */}
+          <div className="fixed top-0 right-0 h-full w-full sm:w-[480px] bg-white shadow-elevated z-50 animate-slide-in-right">
+            <ExercisePanel
+              muscleName={selectedMuscle}
+              mode={activeMode}
+              onClose={() => setSelectedMuscle(null)}
+              onExerciseClick={(exercise) => setSelectedExercise(exercise)}
+            />
           </div>
         </>
       )}
 
-      {/* Sidebar */}
-      <aside className="w-full md:w-[600px] bg-white flex flex-col p-0 md:p-12 gap-12 border-r border-gray-200 z-20">
-        {/* Logo + Streak Row */}
-        <div className="flex items-center justify-between gap-3 px-6 py-6 md:px-0 md:py-0">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary-900 rounded-lg shadow-subtle">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
-              </svg>
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-primary-900">FitFlow</h1>
-              <p className="text-gray-500 text-xs tracking-widest">TRAINING GUIDE</p>
-            </div>
+      {/* Workout Panel - Modal */}
+      {showWorkout && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            onClick={() => setShowWorkout(false)}
+          />
+
+          {/* Modal */}
+          <div className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-lg md:h-[80vh] bg-white rounded-2xl shadow-elevated z-50 overflow-hidden">
+            <WorkoutPanel onClose={() => setShowWorkout(false)} />
           </div>
-          {/* Achievements Button */}
-          <button
-            onClick={() => setShowProfile(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 transition-all duration-200 cursor-pointer shadow-subtle"
-            aria-label="Otvoriť achievementy a štatistiky"
-          >
-            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-            </svg>
-            <span className="text-sm font-semibold text-gray-900">Achievements</span>
-          </button>
-        </div>
+        </>
+      )}
 
-        {/* Mode Switcher */}
-        <div className="flex flex-row gap-3 bg-gray-50 p-3 rounded-lg border border-gray-200 mx-6 md:mx-0 w-full justify-center">
-          {['bodybuilding', 'calisthenics', 'pilates'].map((mode) => (
-            <button
-              key={mode}
-              onClick={() => setActiveMode(mode)}
-              className={getTabStyle(mode) + ' flex-1 py-3 px-4 flex justify-center items-center'}
-              style={{ minWidth: 0 }}
-            >
-              {mode.charAt(0).toUpperCase() + mode.slice(1)}
-            </button>
-          ))}
-        </div>
+      {/* Profile Panel - Modal */}
+      {showProfile && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            onClick={() => setShowProfile(false)}
+          />
 
-        {/* Workout Panel */}
-        <div className="flex-1 min-h-0 overflow-y-auto">
-          <WorkoutPanel />
-        </div>
-      </aside>
-
-      {/* Main Content Area */}
-      <main className="flex-1 flex flex-col overflow-hidden relative">
-        <div className="flex-1 flex overflow-hidden relative">
-          {/* 3D Model */}
-          <div className={`h-full bg-white flex items-center justify-center transition-all duration-300 ease-in-out ${
-            selectedMuscle ? 'w-full md:w-3/5' : 'w-full'
-          }`}>
-            <HumanModel3D
-              onMuscleClick={handleMuscleClick}
-              selectedMuscle={selectedMuscle}
-            />
-            {!selectedMuscle && (
-              <div className="absolute bottom-10 text-center pointer-events-none opacity-50">
-                <p className="text-lg font-medium text-gray-600">Aktívny režim: <span className="capitalize text-primary-900 font-semibold">{activeMode}</span></p>
-                <p className="text-sm text-gray-500">Klikni na sval pre zobrazenie cvikov</p>
-              </div>
-            )}
+          {/* Modal */}
+          <div className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:h-[85vh] bg-white rounded-2xl shadow-elevated z-50 overflow-hidden">
+            <ProfilePanel onClose={() => setShowProfile(false)} />
           </div>
+        </>
+      )}
 
-          {/* Exercise Panel */}
-          <div className={`absolute md:relative right-0 h-full w-full md:w-2/5 transform transition-transform duration-300 ease-in-out shadow-2xl z-10 ${
-            selectedMuscle ? 'translate-x-0' : 'translate-x-full md:translate-x-0 md:hidden'
-          }`}>
-            {selectedMuscle && (
-              <ExercisePanel
-                muscleName={selectedMuscle}
-                mode={activeMode}
-                onClose={() => setSelectedMuscle(null)}
-                onExerciseClick={(exercise) => setSelectedExercise(exercise)}
-              />
-            )}
+      {/* Gym Panel - Fullscreen Modal */}
+      {showGym && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            onClick={() => setShowGym(false)}
+          />
+
+          {/* Modal - Almost Fullscreen */}
+          <div className="fixed inset-2 md:inset-4 bg-white rounded-2xl shadow-elevated z-50 overflow-hidden">
+            <GymPanel onClose={() => setShowGym(false)} />
           </div>
-        </div>
-      </main>
+        </>
+      )}
 
-      {/* Exercise Detail Modal - Full Screen */}
+      {/* Exercise Detail Modal */}
       {selectedExercise && (
         <ExerciseDetailModal
           exercise={selectedExercise}
@@ -137,6 +230,14 @@ function Dashboard() {
           onAddToWorkout={(exercise) => {
             addExercise(exercise, activeMode)
           }}
+        />
+      )}
+
+      {/* Onboarding Wizard */}
+      {showOnboarding && (
+        <OnboardingWizard
+          onComplete={() => setShowOnboarding(false)}
+          onSkip={() => setShowOnboarding(false)}
         />
       )}
     </div>
