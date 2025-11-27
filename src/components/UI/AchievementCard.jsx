@@ -1,9 +1,57 @@
-import { Lock } from 'lucide-react'
+import {
+  Lock,
+  Dumbbell,
+  Flame,
+  Zap,
+  Crown,
+  Trophy,
+  Star,
+  Gem,
+  Target,
+  Scale,
+  Compass,
+  BookOpen,
+  User,
+  Swords,
+  Sunrise,
+  Moon,
+  PartyPopper,
+  GraduationCap,
+  TrendingUp,
+  Award
+} from 'lucide-react'
+
+// Mapovanie názvov ikon na komponenty
+const iconMap = {
+  Dumbbell,
+  Biceps: Dumbbell, // Lucide nemá Biceps, použijeme Dumbbell
+  Flame,
+  Zap,
+  Crown,
+  Trophy,
+  Star,
+  Gem,
+  Target,
+  Scale,
+  Compass,
+  BookOpen,
+  User,
+  Swords,
+  Sunrise,
+  Moon,
+  PartyPopper,
+  GraduationCap,
+  TrendingUp,
+  Award,
+}
 
 function AchievementCard({ achievement }) {
   const { title, description, icon, unlocked, progress, target, rarity } = achievement
 
   const progressPercentage = Math.round((progress / target) * 100)
+
+  // Získaj komponent ikony podľa názvu
+  const IconComponent = iconMap[icon] || Dumbbell
 
   return (
     <div
@@ -23,11 +71,13 @@ function AchievementCard({ achievement }) {
       {/* Icon */}
       <div className="flex items-center justify-center mb-3">
         <div
-          className={`text-5xl transform transition-transform ${
-            unlocked ? 'scale-100' : 'scale-90 grayscale'
+          className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${
+            unlocked
+              ? 'bg-neutral-900 text-white'
+              : 'bg-neutral-300 text-neutral-500'
           }`}
         >
-          {icon}
+          <IconComponent className="w-7 h-7" />
         </div>
       </div>
 
