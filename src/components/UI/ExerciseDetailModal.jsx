@@ -69,6 +69,17 @@ function ExerciseDetailModal({ exercise, onClose, onAddToWorkout }) {
 
           {/* Content */}
           <div className="p-6 overflow-y-auto max-h-[calc(85vh-180px)]">
+            {/* Animation GIF */}
+            {exercise.animation && (
+              <div className="mb-5 rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
+                <img
+                  src={exercise.animation}
+                  alt={`${exercise.name} animácia`}
+                  className="w-full h-auto"
+                />
+              </div>
+            )}
+
             {/* Description */}
             <p className="text-gray-700 text-base leading-relaxed mb-5">
               {exercise.description}

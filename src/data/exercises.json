@@ -987,6 +987,7 @@
       "equipment": "dumbbells",
       "description": "Upažovanie s jednoručkami",
       "modes": ["bodybuilding"],
+      "animation": "/lateral_raises.gif",
       "tips": [
         "Mierne pokrč lakte",
         "Zdvíhaj do úrovne ramien",
@@ -1981,6 +1982,7 @@
       "equipment": "barbell",
       "description": "Drepy s činkou na chrbte",
       "modes": ["bodybuilding"],
+      "animation": "/squats.gif",
       "tips": [
         "Činku polož na trapézy, nie na krk",
         "Kolená smerujú rovnako ako špičky",
