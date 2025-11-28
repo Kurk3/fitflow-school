@@ -140,18 +140,24 @@ export const WorkoutProvider = ({ children }) => {
 
   const saveWorkout = () => {
     if (workoutExercises.length === 0) return
-    
+
     const newWorkout = {
       id: Date.now(),
       name: workoutName,
       exercises: workoutExercises,
       savedAt: new Date().toISOString()
     }
-    
+
     const updatedSaved = [...savedWorkouts, newWorkout]
     setSavedWorkouts(updatedSaved)
     localStorage.setItem('fitflow_saved_workouts', JSON.stringify(updatedSaved))
     updateStreak()
+
+    // Vyčisti aktuálny tréning pre nový
+    setWorkoutExercises([])
+    setWorkoutName('Môj Tréning')
+    localStorage.removeItem('fitflow_workout')
+
     return newWorkout.id
   }
 

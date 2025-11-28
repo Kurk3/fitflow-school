@@ -1,8 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Landing from './pages/Landing'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import GoalsWizard from './pages/GoalsWizard'
 import { WorkoutProvider } from './context/WorkoutContext'
+import { ToastProvider } from './context/ToastContext'
+import Toast from './components/UI/Toast'
 import './index.css'
 
 // Protected Route Component
@@ -30,28 +34,33 @@ function WizardRoute({ children }) {
 function App() {
   return (
     <BrowserRouter>
-      <WorkoutProvider>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/goals"
-            element={
-              <WizardRoute>
-                <GoalsWizard />
-              </WizardRoute>
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </WorkoutProvider>
+      <ToastProvider>
+        <WorkoutProvider>
+          <Toast />
+          <Routes>
+            <Route path="/landing" element={<Landing />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route
+              path="/goals"
+              element={
+                <WizardRoute>
+                  <GoalsWizard />
+                </WizardRoute>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </WorkoutProvider>
+      </ToastProvider>
     </BrowserRouter>
   )
 }

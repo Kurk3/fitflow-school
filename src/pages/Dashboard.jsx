@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import HumanModel3D from '../components/3D/HumanModel3D'
 import ExercisePanel from '../components/UI/ExercisePanel'
 import WorkoutPanel from '../components/UI/WorkoutPanel'
@@ -7,8 +8,11 @@ import GymPanel from '../components/UI/GymPanel'
 import ExerciseDetailModal from '../components/UI/ExerciseDetailModal'
 import OnboardingWizard from '../components/UI/OnboardingWizard'
 import { useWorkout } from '../context/WorkoutContext'
+import { useToast } from '../context/ToastContext'
+import { ClipboardList, X, Trash2 } from 'lucide-react'
 
 function Dashboard() {
+  const navigate = useNavigate()
   const [selectedMuscle, setSelectedMuscle] = useState(null)
   const [activeMode, setActiveMode] = useState('bodybuilding')
   const [showProfile, setShowProfile] = useState(false)
@@ -16,7 +20,21 @@ function Dashboard() {
   const [showGym, setShowGym] = useState(false)
   const [selectedExercise, setSelectedExercise] = useState(null)
   const [showOnboarding, setShowOnboarding] = useState(false)
-  const { workoutExercises, addExercise } = useWorkout()
+  const [showQuickWorkout, setShowQuickWorkout] = useState(false)
+  const quickWorkoutRef = useRef(null)
+  const { workoutExercises, addExercise, removeExercise, saveWorkout, workoutName, setWorkoutName } = useWorkout()
+  const { showToast } = useToast()
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (quickWorkoutRef.current && !quickWorkoutRef.current.contains(event.target)) {
+        setShowQuickWorkout(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   // Check if onboarding was completed
   useEffect(() => {
@@ -43,16 +61,114 @@ function Dashboard() {
     <div className="w-full h-screen bg-neutral-50 relative overflow-hidden">
       {/* Floating Header */}
       <header className="absolute top-0 left-0 right-0 z-30 p-4 md:p-6">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-3 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-xl shadow-soft border border-neutral-200">
-            <div className="p-2 bg-neutral-900 rounded-lg">
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
-              </svg>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-bold text-neutral-900">FitFlow</h1>
+        <div className="flex items-start justify-between">
+          {/* Logo + Quick Workout Button */}
+          <div className="flex flex-col gap-2">
+            {/* Logo */}
+            <button
+              onClick={() => navigate('/landing')}
+              className="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+            >
+              <div className="p-1.5 bg-neutral-900 rounded-lg">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
+                </svg>
+              </div>
+              <div className="hidden sm:block">
+                <h1 className="text-sm font-bold text-neutral-900">FitFlow</h1>
+              </div>
+            </button>
+
+            {/* Quick Workout Button with Dropdown */}
+            <div className="relative" ref={quickWorkoutRef}>
+              <button
+                onClick={() => setShowQuickWorkout(!showQuickWorkout)}
+                className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+                aria-label="Aktuálny tréning"
+              >
+                <ClipboardList className="w-5 h-5 text-neutral-700" />
+                {workoutExercises.length > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    {workoutExercises.length}
+                  </span>
+                )}
+              </button>
+
+              {/* Dropdown */}
+              {showQuickWorkout && (
+                <div className="absolute top-full left-0 mt-2 w-96 bg-white rounded-xl shadow-elevated border border-neutral-200 overflow-hidden z-50">
+                  {/* Header */}
+                  <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
+                    <input
+                      type="text"
+                      value={workoutName}
+                      onChange={(e) => setWorkoutName(e.target.value)}
+                      className="font-bold text-lg text-neutral-900 bg-transparent border-none outline-none focus:bg-neutral-50 focus:px-2 focus:py-1 focus:-mx-2 focus:-my-1 rounded-lg transition-all w-full mr-2"
+                      placeholder="Názov tréningu"
+                    />
+                    <button
+                      onClick={() => setShowQuickWorkout(false)}
+                      className="p-1 hover:bg-neutral-100 rounded-lg transition-colors flex-shrink-0"
+                    >
+                      <X className="w-4 h-4 text-neutral-400" />
+                    </button>
+                  </div>
+
+                  {/* Exercise List */}
+                  <div className="max-h-80 overflow-y-auto">
+                    {workoutExercises.length === 0 ? (
+                      <div className="px-4 py-6 text-center">
+                        <p className="text-sm text-neutral-400">Žiadne cviky</p>
+                        <p className="text-xs text-neutral-300 mt-1">Klikni na sval a pridaj cviky</p>
+                      </div>
+                    ) : (
+                      <div className="p-3 space-y-2">
+                        {workoutExercises.map((exercise, index) => (
+                          <div
+                            key={exercise.id}
+                            className="flex items-center justify-between px-4 py-3 bg-neutral-50 rounded-xl group"
+                          >
+                            <div className="flex items-center gap-4">
+                              <span className="w-8 h-8 bg-neutral-200 rounded-full text-sm font-semibold flex items-center justify-center text-neutral-600">
+                                {index + 1}
+                              </span>
+                              <div>
+                                <p className="text-base font-medium text-neutral-900">{exercise.name}</p>
+                                <p className="text-sm text-neutral-400">{exercise.sets}×{exercise.reps}</p>
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => {
+                              removeExercise(exercise.id)
+                              showToast('Cvik odstránený', 'info')
+                            }}
+                              className="p-2 opacity-0 group-hover:opacity-100 hover:bg-neutral-200 rounded-lg transition-all"
+                            >
+                              <Trash2 className="w-4 h-4 text-neutral-400" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Footer */}
+                  {workoutExercises.length > 0 && (
+                    <div className="px-4 py-4 border-t border-neutral-100">
+                      <button
+                        onClick={() => {
+                          saveWorkout()
+                          showToast('Tréning uložený', 'success')
+                          setShowQuickWorkout(false)
+                        }}
+                        className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-semibold py-3 px-4 rounded-xl transition-colors"
+                      >
+                        Uložiť tréning
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
@@ -229,6 +345,7 @@ function Dashboard() {
           onClose={() => setSelectedExercise(null)}
           onAddToWorkout={(exercise) => {
             addExercise(exercise, activeMode)
+            showToast('Cvik pridaný do tréningu', 'success')
           }}
         />
       )}
