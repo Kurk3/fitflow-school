@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { User, Ruler, Activity, Target, Dumbbell, Calendar, Heart } from 'lucide-react'
 
 function GoalsWizard() {
   const navigate = useNavigate()
   const [step, setStep] = useState(1)
-  const totalSteps = 7
+  const totalSteps = 8
 
   // Personal profile data
   const [profile, setProfile] = useState({
@@ -24,6 +23,7 @@ function GoalsWizard() {
     primaryGoal: '',
     experienceLevel: '',
     workoutFrequency: '',
+    trainingStyle: '',
     focusAreas: []
   })
 
@@ -50,7 +50,7 @@ function GoalsWizard() {
       // Save goals
       localStorage.setItem('userGoals', JSON.stringify(goals))
       localStorage.setItem('onboardingCompleted', 'true')
-      navigate('/dashboard')
+      navigate('/my-plan')
     }
   }
 
@@ -65,15 +65,6 @@ function GoalsWizard() {
     navigate('/dashboard')
   }
 
-  const toggleFocusArea = (area) => {
-    setGoals(prev => ({
-      ...prev,
-      focusAreas: prev.focusAreas.includes(area)
-        ? prev.focusAreas.filter(a => a !== area)
-        : [...prev.focusAreas, area]
-    }))
-  }
-
   const isStepValid = () => {
     switch(step) {
       case 1: return profile.gender !== ''
@@ -83,6 +74,7 @@ function GoalsWizard() {
       case 5: return goals.primaryGoal !== ''
       case 6: return goals.experienceLevel !== ''
       case 7: return goals.workoutFrequency !== ''
+      case 8: return goals.trainingStyle !== ''
       default: return false
     }
   }
@@ -144,9 +136,9 @@ function GoalsWizard() {
 
               <div className="grid grid-cols-3 gap-4">
                 {[
-                  { value: 'male', label: 'Muž', icon: '👨' },
-                  { value: 'female', label: 'Žena', icon: '👩' },
-                  { value: 'other', label: 'Iné', icon: '🧑' }
+                  { value: 'male', label: 'Muž' },
+                  { value: 'female', label: 'Žena' },
+                  { value: 'other', label: 'Iné' }
                 ].map(option => (
                   <button
                     key={option.value}
@@ -157,7 +149,6 @@ function GoalsWizard() {
                         : 'border-neutral-200 hover:border-neutral-300'
                     }`}
                   >
-                    <span className="text-4xl block mb-2">{option.icon}</span>
                     <span className="font-semibold text-neutral-900">{option.label}</span>
                   </button>
                 ))}
@@ -296,25 +287,22 @@ function GoalsWizard() {
 
               <div className="space-y-3">
                 {[
-                  { value: 'sedentary', label: 'Sedavý', desc: 'Kancelárska práca, minimum pohybu', icon: '🪑' },
-                  { value: 'lightly-active', label: 'Mierne aktívny', desc: 'Občasná chôdza, ľahká aktivita', icon: '🚶' },
-                  { value: 'active', label: 'Aktívny', desc: 'Pravidelný pohyb, aktívna práca', icon: '🏃' },
-                  { value: 'very-active', label: 'Veľmi aktívny', desc: 'Fyzicky náročná práca alebo šport denne', icon: '⚡' }
+                  { value: 'sedentary', label: 'Sedavý', desc: 'Kancelárska práca, minimum pohybu' },
+                  { value: 'lightly-active', label: 'Mierne aktívny', desc: 'Občasná chôdza, ľahká aktivita' },
+                  { value: 'active', label: 'Aktívny', desc: 'Pravidelný pohyb, aktívna práca' },
+                  { value: 'very-active', label: 'Veľmi aktívny', desc: 'Fyzicky náročná práca alebo šport denne' }
                 ].map(option => (
                   <button
                     key={option.value}
                     onClick={() => setProfile({ ...profile, activityLevel: option.value })}
-                    className={`w-full p-4 rounded-xl border-2 transition-all text-left flex items-center gap-4 ${
+                    className={`w-full p-4 rounded-xl border-2 transition-all text-left ${
                       profile.activityLevel === option.value
                         ? 'border-neutral-900 bg-neutral-50 shadow-soft'
                         : 'border-neutral-200 hover:border-neutral-300'
                     }`}
                   >
-                    <span className="text-3xl">{option.icon}</span>
-                    <div>
-                      <div className="font-semibold text-neutral-900">{option.label}</div>
-                      <div className="text-sm text-neutral-500">{option.desc}</div>
-                    </div>
+                    <div className="font-semibold text-neutral-900">{option.label}</div>
+                    <div className="text-sm text-neutral-500">{option.desc}</div>
                   </button>
                 ))}
               </div>
@@ -331,22 +319,21 @@ function GoalsWizard() {
 
               <div className="space-y-3">
                 {[
-                  { value: 'lose-weight', label: 'Schudnúť', icon: '⚖️' },
-                  { value: 'build-muscle', label: 'Nabrať svaly', icon: '💪' },
-                  { value: 'get-fit', label: 'Zlepšiť kondíciu', icon: '🏃' },
-                  { value: 'stay-healthy', label: 'Udržať zdravie', icon: '❤️' },
-                  { value: 'strength', label: 'Zvýšiť silu', icon: '🏋️' }
+                  { value: 'lose-weight', label: 'Schudnúť' },
+                  { value: 'build-muscle', label: 'Nabrať svaly' },
+                  { value: 'get-fit', label: 'Zlepšiť kondíciu' },
+                  { value: 'stay-healthy', label: 'Udržať zdravie' },
+                  { value: 'strength', label: 'Zvýšiť silu' }
                 ].map(option => (
                   <button
                     key={option.value}
                     onClick={() => setGoals({ ...goals, primaryGoal: option.value })}
-                    className={`w-full p-4 rounded-xl border-2 transition-all text-left flex items-center gap-4 ${
+                    className={`w-full p-4 rounded-xl border-2 transition-all text-left ${
                       goals.primaryGoal === option.value
                         ? 'border-neutral-900 bg-neutral-50 shadow-soft'
                         : 'border-neutral-200 hover:border-neutral-300'
                     }`}
                   >
-                    <span className="text-3xl">{option.icon}</span>
                     <span className="text-lg font-semibold text-neutral-900">{option.label}</span>
                   </button>
                 ))}
@@ -409,6 +396,49 @@ function GoalsWizard() {
                     }`}
                   >
                     <div className="font-semibold text-lg text-neutral-900">{option.label}</div>
+                    <div className="text-sm text-neutral-500">{option.desc}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Step 8: Training Style */}
+          {step === 8 && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold text-neutral-900 mb-2">Aký štýl tréningu preferuješ?</h2>
+                <p className="text-neutral-500">Vyber si typ cvičenia, ktorý ti najviac vyhovuje</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  {
+                    value: 'bodybuilding',
+                    label: 'Bodybuilding',
+                    desc: 'Budovanie svalovej hmoty s činkami a strojmi'
+                  },
+                  {
+                    value: 'calisthenics',
+                    label: 'Calisthenics',
+                    desc: 'Cvičenie s vlastnou váhou tela'
+                  },
+                  {
+                    value: 'pilates',
+                    label: 'Pilates',
+                    desc: 'Core, flexibilita a kontrola pohybu'
+                  }
+                ].map(option => (
+                  <button
+                    key={option.value}
+                    onClick={() => setGoals({ ...goals, trainingStyle: option.value })}
+                    className={`p-6 rounded-xl border-2 transition-all text-center ${
+                      goals.trainingStyle === option.value
+                        ? 'border-neutral-900 bg-neutral-50 shadow-soft'
+                        : 'border-neutral-200 hover:border-neutral-300'
+                    }`}
+                  >
+                    <div className="font-semibold text-lg text-neutral-900 mb-2">{option.label}</div>
                     <div className="text-sm text-neutral-500">{option.desc}</div>
                   </button>
                 ))}

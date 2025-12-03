@@ -50,11 +50,11 @@ function ExerciseDetailModal({ exercise, onClose, onAddToWorkout }) {
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="bg-white rounded-xl shadow-elevated border border-gray-300 w-full max-w-lg max-h-[85vh] overflow-hidden pointer-events-auto animate-fade-in"
+          className="bg-white rounded-xl shadow-elevated border border-gray-300 w-full max-w-lg max-h-[90vh] flex flex-col pointer-events-auto animate-fade-in"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-start justify-between p-6 border-b border-gray-200">
+          <div className="flex items-start justify-between p-6 border-b border-gray-200 flex-shrink-0">
             <h2 className="text-xl font-bold text-gray-900 pr-8">
               {exercise.name}
             </h2>
@@ -67,57 +67,71 @@ function ExerciseDetailModal({ exercise, onClose, onAddToWorkout }) {
             </button>
           </div>
 
+
           {/* Content */}
-          <div className="p-6 overflow-y-auto max-h-[calc(85vh-180px)]">
-            {/* Animation GIF */}
-            {exercise.animation && (
-              <div className="mb-5 rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
-                <img
-                  src={exercise.animation}
-                  alt={`${exercise.name} animácia`}
-                  className="w-full h-auto"
-                />
-              </div>
-            )}
+          <div className="overflow-y-auto flex-1 min-h-0">
+            <div className="p-6 pb-0">
+                {/* Description */}
+                <p className="text-gray-700 text-base leading-relaxed mb-5">
+                {exercise.description}
+                </p>
 
-            {/* Description */}
-            <p className="text-gray-700 text-base leading-relaxed mb-5">
-              {exercise.description}
-            </p>
+                {/* Badges */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                <span className={`px-3 py-1.5 rounded-lg text-sm font-medium border ${getDifficultyColor(exercise.difficulty)}`}>
+                    {getDifficultyLabel(exercise.difficulty)}
+                </span>
+                <span className="px-3 py-1.5 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                    {getEquipmentLabel(exercise.equipment)}
+                </span>
+                </div>
 
-            {/* Badges */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className={`px-3 py-1.5 rounded-lg text-sm font-medium border ${getDifficultyColor(exercise.difficulty)}`}>
-                {getDifficultyLabel(exercise.difficulty)}
-              </span>
-              <span className="px-3 py-1.5 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 border border-gray-200">
-                {getEquipmentLabel(exercise.equipment)}
-              </span>
+                {/* Tips Section */}
+                {exercise.tips && exercise.tips.length > 0 && (
+                <div className="bg-gray-50 rounded-xl p-5 border border-gray-200 mb-6">
+                    <div className="flex items-center gap-2 mb-4">
+                    <Lightbulb className="w-5 h-5 text-gray-600" />
+                    <h3 className="font-semibold text-gray-900">Tipy na správnu formu</h3>
+                    </div>
+                    <ul className="space-y-3">
+                    {exercise.tips.map((tip, index) => (
+                        <li key={index} className="flex items-start gap-3 text-gray-700 text-sm">
+                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-200 text-gray-600 text-xs font-medium flex items-center justify-center mt-0.5">
+                            {index + 1}
+                        </span>
+                        <span>{tip}</span>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+                )}
             </div>
 
-            {/* Tips Section */}
-            {exercise.tips && exercise.tips.length > 0 && (
-              <div className="bg-gray-50 rounded-xl p-5 border border-gray-200">
-                <div className="flex items-center gap-2 mb-4">
-                  <Lightbulb className="w-5 h-5 text-gray-600" />
-                  <h3 className="font-semibold text-gray-900">Tipy na správnu formu</h3>
+            {/* Animation GIF - Redesigned Section */}
+            {exercise.animation && (
+                <div className="w-full bg-gray-50 border-t border-gray-100 mt-2 py-6 flex flex-col items-center">
+                    {/* Badge */}
+                    <div className="mb-4">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white text-gray-600 border border-gray-200 shadow-sm uppercase tracking-wide">
+                            Ukážka cviku
+                        </span>
+                    </div>
+
+                    {/* Image - Bigger & Blended */}
+                    <div className="w-full flex justify-center px-4">
+                        <img
+                            src={exercise.animation}
+                            alt={`${exercise.name} animácia`}
+                            className="h-64 sm:h-72 w-auto object-contain mix-blend-multiply opacity-95"
+                            style={{ filter: 'contrast(1.05)' }}
+                        />
+                    </div>
                 </div>
-                <ul className="space-y-3">
-                  {exercise.tips.map((tip, index) => (
-                    <li key={index} className="flex items-start gap-3 text-gray-700 text-sm">
-                      <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-200 text-gray-600 text-xs font-medium flex items-center justify-center mt-0.5">
-                        {index + 1}
-                      </span>
-                      <span>{tip}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             )}
           </div>
 
           {/* Footer */}
-          <div className="p-6 border-t border-gray-200 bg-gray-50">
+          <div className="p-6 border-t border-gray-200 bg-white flex-shrink-0">
             <button
               onClick={() => {
                 onAddToWorkout(exercise)

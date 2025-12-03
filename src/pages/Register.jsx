@@ -32,6 +32,10 @@ function Register() {
       createdAt: new Date().toISOString()
     }))
 
+    // Vymazanie onboarding flagu pre nového užívateľa
+    localStorage.removeItem('onboardingCompleted')
+    localStorage.removeItem('userGoals')
+
     // Presmerovanie na wizard
     navigate('/goals')
   }

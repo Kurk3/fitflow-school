@@ -9,7 +9,9 @@ import ExerciseDetailModal from '../components/UI/ExerciseDetailModal'
 import OnboardingWizard from '../components/UI/OnboardingWizard'
 import { useWorkout } from '../context/WorkoutContext'
 import { useToast } from '../context/ToastContext'
-import { ClipboardList, X, Trash2 } from 'lucide-react'
+import { useNotifications } from '../context/NotificationContext'
+import NotificationPanel from '../components/UI/NotificationPanel'
+import { ClipboardList, X, Trash2, Bell } from 'lucide-react'
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -21,15 +23,21 @@ function Dashboard() {
   const [selectedExercise, setSelectedExercise] = useState(null)
   const [showOnboarding, setShowOnboarding] = useState(false)
   const [showQuickWorkout, setShowQuickWorkout] = useState(false)
+  const [showNotifications, setShowNotifications] = useState(false)
   const quickWorkoutRef = useRef(null)
+  const notificationRef = useRef(null)
   const { workoutExercises, addExercise, removeExercise, saveWorkout, workoutName, setWorkoutName } = useWorkout()
   const { showToast } = useToast()
+  const { notifications } = useNotifications()
 
-  // Close dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (quickWorkoutRef.current && !quickWorkoutRef.current.contains(event.target)) {
         setShowQuickWorkout(false)
+      }
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setShowNotifications(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -192,6 +200,26 @@ function Dashboard() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
+            {/* Notification Bell */}
+            <div className="relative" ref={notificationRef}>
+              <button
+                onClick={() => setShowNotifications(!showNotifications)}
+                className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+                aria-label="Notifikácie"
+              >
+                <Bell className="w-5 h-5 text-neutral-700" />
+                {notifications.length > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    {notifications.length}
+                  </span>
+                )}
+              </button>
+
+              {showNotifications && (
+                <NotificationPanel onClose={() => setShowNotifications(false)} />
+              )}
+            </div>
+
             {/* Gym Button - Black */}
             <button
               onClick={() => setShowGym(true)}

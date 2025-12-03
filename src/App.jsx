@@ -4,8 +4,10 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import GoalsWizard from './pages/GoalsWizard'
+import MyPlan from './pages/MyPlan'
 import { WorkoutProvider } from './context/WorkoutContext'
 import { ToastProvider } from './context/ToastContext'
+import { NotificationProvider } from './context/NotificationContext'
 import Toast from './components/UI/Toast'
 import './index.css'
 
@@ -35,8 +37,9 @@ function App() {
   return (
     <BrowserRouter>
       <ToastProvider>
-        <WorkoutProvider>
-          <Toast />
+        <NotificationProvider>
+          <WorkoutProvider>
+            <Toast />
           <Routes>
             <Route path="/landing" element={<Landing />} />
             <Route path="/login" element={<Login />} />
@@ -50,6 +53,14 @@ function App() {
               }
             />
             <Route
+              path="/my-plan"
+              element={
+                <ProtectedRoute>
+                  <MyPlan />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/dashboard"
               element={
                 <ProtectedRoute>
@@ -60,6 +71,7 @@ function App() {
             <Route path="/" element={<Navigate to="/login" replace />} />
           </Routes>
         </WorkoutProvider>
+        </NotificationProvider>
       </ToastProvider>
     </BrowserRouter>
   )

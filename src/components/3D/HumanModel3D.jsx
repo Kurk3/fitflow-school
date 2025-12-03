@@ -185,13 +185,6 @@ function HumanModel3D({ onMuscleClick, selectedMuscle }) {
           minPolarAngle={Math.PI / 4}
         />
       </Canvas>
-
-      {/* Instructions */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg px-4 py-2">
-        <p className="text-xs text-gray-600 text-center">
-          Klikni na sval • Rotuj ťahaním • Zoom kolieskom
-        </p>
-      </div>
     </div>
   )
 }
