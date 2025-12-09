@@ -69,7 +69,7 @@ function ExerciseDetailModal({ exercise, onClose, onAddToWorkout }) {
 
 
           {/* Content */}
-          <div className="overflow-y-auto flex-1 min-h-0">{/* Adjusted for proper scrolling */}
+          <div className="overflow-y-auto flex-1 min-h-0">
             <div className="p-6 pb-0">
                 {/* Description */}
                 <p className="text-gray-700 text-base leading-relaxed mb-5">
@@ -130,7 +130,7 @@ function ExerciseDetailModal({ exercise, onClose, onAddToWorkout }) {
                             Ukážka cviku
                         </span>
                     </div>
-                    
+
                     {/* Image - Bigger & Blended */}
                     <div className="w-full flex justify-center px-4">
                         <img

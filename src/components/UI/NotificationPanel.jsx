@@ -1,70 +1,87 @@
+import { X, Trash2 } from 'lucide-react'
 import { useNotifications } from '../../context/NotificationContext'
 
-function timeAgo(iso) {
-  const diff = Date.now() - new Date(iso).getTime()
-  const m = Math.floor(diff / 60000)
-  if (m < 1) return 'teraz'
-  if (m < 60) return `${m} min`
-  const h = Math.floor(m / 60)
-  if (h < 24) return `${h} h`
-  const d = Math.floor(h / 24)
-  return `${d} d`
-}
+function NotificationPanel({ onClose }) {
+  const { notifications, removeNotification, clearAllNotifications } = useNotifications()
 
-export default function NotificationPanel({ onClose }) {
-  const { notifications, unreadCount, markAllAsRead, markAsRead, removeNotification, clearAll } = useNotifications()
+  const formatTime = (timestamp) => {
+    const date = new Date(timestamp)
+    const now = new Date()
+    const diffMs = now - date
+    const diffMins = Math.floor(diffMs / 60000)
+    const diffHours = Math.floor(diffMs / 3600000)
+    const diffDays = Math.floor(diffMs / 86400000)
+
+    if (diffMins < 1) return 'Práve teraz'
+    if (diffMins < 60) return `pred ${diffMins} min`
+    if (diffHours < 24) return `pred ${diffHours} hod`
+    if (diffDays === 1) return 'Včera'
+    return `pred ${diffDays} dňami`
+  }
 
   return (
-    <div className="absolute top-16 right-4 md:right-6 z-40 w-80 sm:w-96 bg-white/95 backdrop-blur-sm border border-neutral-200 rounded-xl shadow-elevated overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200 bg-white/70">
-        <div className="flex items-center gap-2">
-          <span className="inline-flex w-6 h-6 items-center justify-center rounded-lg bg-neutral-900 text-white text-xs font-bold">{unreadCount}</span>
-          <h3 className="text-sm font-semibold text-neutral-900">Notifikácie</h3>
-        </div>
-        <div className="flex items-center gap-2">
-          <button onClick={markAllAsRead} className="text-xs font-medium text-neutral-600 hover:text-neutral-900">Označiť ako prečítané</button>
-          <button onClick={onClose} className="p-1 rounded-lg hover:bg-neutral-100" aria-label="Zavrieť">
-            <svg className="w-4 h-4 text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+    <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-elevated border border-neutral-200 overflow-hidden z-50">
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-100">
+        <h3 className="font-bold text-neutral-900">Notifikácie</h3>
+        <div className="flex items-center gap-1">
+          {notifications.length > 0 && (
+            <button
+              onClick={clearAllNotifications}
+              className="p-1.5 hover:bg-neutral-100 rounded-lg transition-colors text-neutral-400 hover:text-neutral-600"
+              title="Vymazať všetky"
+            >
+              <Trash2 className="w-4 h-4" />
+            </button>
+          )}
+          <button
+            onClick={onClose}
+            className="p-1.5 hover:bg-neutral-100 rounded-lg transition-colors text-neutral-400"
+          >
+            <X className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      <div className="max-h-80 overflow-auto">
+      {/* Notification List */}
+      <div className="max-h-80 overflow-y-auto">
         {notifications.length === 0 ? (
-          <div className="px-4 py-10 text-center text-sm text-neutral-500">Žiadne notifikácie</div>
+          <div className="px-4 py-8 text-center">
+            <p className="text-sm text-neutral-400">Žiadne notifikácie</p>
+          </div>
         ) : (
-          <ul className="divide-y divide-neutral-200">
-            {notifications.map((n) => (
-              <li key={n.id} className="flex items-start gap-3 px-4 py-3 hover:bg-neutral-50">
-                <div className={`mt-0.5 w-2 h-2 rounded-full ${n.read ? 'bg-neutral-300' : 'bg-neutral-900'}`} />
-                <div className="flex-1 min-w-0">
-                  <p className={`text-sm ${n.read ? 'text-neutral-700' : 'text-neutral-900 font-semibold'}`}>{n.title}</p>
-                  <p className="text-xs text-neutral-600 mt-0.5 line-clamp-2">{n.message}</p>
-                  <div className="mt-1 text-[11px] text-neutral-500">{timeAgo(n.time)}</div>
-                </div>
-                <div className="flex items-center gap-1">
-                  {!n.read && (
-                    <button onClick={() => markAsRead(n.id)} className="text-[11px] px-2 py-1 rounded-md bg-neutral-100 text-neutral-700 hover:bg-neutral-200">Prečítať</button>
-                  )}
-                  <button onClick={() => removeNotification(n.id)} className="p-1 rounded-md hover:bg-neutral-100" aria-label="Odstrániť">
-                    <svg className="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m-7 0a2 2 0 012-2h3a2 2 0 012 2m-7 0h8" />
-                    </svg>
+          <div className="divide-y divide-neutral-100">
+            {notifications.map((notification) => (
+              <div
+                key={notification.id}
+                className="px-4 py-3 hover:bg-neutral-50 transition-colors group"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-sm text-neutral-900 truncate">
+                      {notification.title}
+                    </p>
+                    <p className="text-sm text-neutral-500 mt-0.5">
+                      {notification.message}
+                    </p>
+                    <p className="text-xs text-neutral-400 mt-1">
+                      {formatTime(notification.timestamp)}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => removeNotification(notification.id)}
+                    className="p-1 opacity-0 group-hover:opacity-100 hover:bg-neutral-200 rounded transition-all flex-shrink-0"
+                  >
+                    <X className="w-3 h-3 text-neutral-400" />
                   </button>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
       </div>
-
-      {notifications.length > 0 && (
-        <div className="px-4 py-2 border-t border-neutral-200 bg-white/70 flex items-center justify-end">
-          <button onClick={clearAll} className="text-xs font-medium text-neutral-600 hover:text-neutral-900">Vymazať všetko</button>
-        </div>
-      )}
     </div>
   )
 }
+
+export default NotificationPanel

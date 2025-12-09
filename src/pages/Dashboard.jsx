@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import HumanModel3D from '../components/3D/HumanModel3D'
 import ExercisePanel from '../components/UI/ExercisePanel'
 import WorkoutPanel from '../components/UI/WorkoutPanel'
@@ -7,10 +8,13 @@ import GymPanel from '../components/UI/GymPanel'
 import ExerciseDetailModal from '../components/UI/ExerciseDetailModal'
 import OnboardingWizard from '../components/UI/OnboardingWizard'
 import { useWorkout } from '../context/WorkoutContext'
-import NotificationPanel from '../components/UI/NotificationPanel'
+import { useToast } from '../context/ToastContext'
 import { useNotifications } from '../context/NotificationContext'
+import NotificationPanel from '../components/UI/NotificationPanel'
+import { ClipboardList, X, Trash2, Bell } from 'lucide-react'
 
 function Dashboard() {
+  const navigate = useNavigate()
   const [selectedMuscle, setSelectedMuscle] = useState(null)
   const [activeMode, setActiveMode] = useState('bodybuilding')
   const [showProfile, setShowProfile] = useState(false)
@@ -18,10 +22,27 @@ function Dashboard() {
   const [showGym, setShowGym] = useState(false)
   const [selectedExercise, setSelectedExercise] = useState(null)
   const [showOnboarding, setShowOnboarding] = useState(false)
-  const { workoutExercises, addExercise } = useWorkout()
-  const { unreadCount } = useNotifications()
+  const [showQuickWorkout, setShowQuickWorkout] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
-  const [selectedAction, setSelectedAction] = useState(null) // 'notifications' | 'gym' | 'profile' | 'workout' | null
+  const quickWorkoutRef = useRef(null)
+  const notificationRef = useRef(null)
+  const { workoutExercises, addExercise, removeExercise, saveWorkout, workoutName, setWorkoutName } = useWorkout()
+  const { showToast } = useToast()
+  const { notifications } = useNotifications()
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (quickWorkoutRef.current && !quickWorkoutRef.current.contains(event.target)) {
+        setShowQuickWorkout(false)
+      }
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setShowNotifications(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   // Check if onboarding was completed
   useEffect(() => {
@@ -48,16 +69,114 @@ function Dashboard() {
     <div className="w-full h-screen bg-neutral-50 relative overflow-hidden">
       {/* Floating Header */}
       <header className="absolute top-0 left-0 right-0 z-30 p-4 md:p-6">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-3 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-xl shadow-soft border border-neutral-200">
-            <div className="p-2 bg-neutral-900 rounded-lg">
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
-              </svg>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-bold text-neutral-900">FitFlow</h1>
+        <div className="flex items-start justify-between">
+          {/* Logo + Quick Workout Button */}
+          <div className="flex flex-col gap-2">
+            {/* Logo */}
+            <button
+              onClick={() => navigate('/landing')}
+              className="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+            >
+              <div className="p-1.5 bg-neutral-900 rounded-lg">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
+                </svg>
+              </div>
+              <div className="hidden sm:block">
+                <h1 className="text-sm font-bold text-neutral-900">FitFlow</h1>
+              </div>
+            </button>
+
+            {/* Quick Workout Button with Dropdown */}
+            <div className="relative" ref={quickWorkoutRef}>
+              <button
+                onClick={() => setShowQuickWorkout(!showQuickWorkout)}
+                className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+                aria-label="Aktuálny tréning"
+              >
+                <ClipboardList className="w-5 h-5 text-neutral-700" />
+                {workoutExercises.length > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    {workoutExercises.length}
+                  </span>
+                )}
+              </button>
+
+              {/* Dropdown */}
+              {showQuickWorkout && (
+                <div className="absolute top-full left-0 mt-2 w-96 bg-white rounded-xl shadow-elevated border border-neutral-200 overflow-hidden z-50">
+                  {/* Header */}
+                  <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
+                    <input
+                      type="text"
+                      value={workoutName}
+                      onChange={(e) => setWorkoutName(e.target.value)}
+                      className="font-bold text-lg text-neutral-900 bg-transparent border-none outline-none focus:bg-neutral-50 focus:px-2 focus:py-1 focus:-mx-2 focus:-my-1 rounded-lg transition-all w-full mr-2"
+                      placeholder="Názov tréningu"
+                    />
+                    <button
+                      onClick={() => setShowQuickWorkout(false)}
+                      className="p-1 hover:bg-neutral-100 rounded-lg transition-colors flex-shrink-0"
+                    >
+                      <X className="w-4 h-4 text-neutral-400" />
+                    </button>
+                  </div>
+
+                  {/* Exercise List */}
+                  <div className="max-h-80 overflow-y-auto">
+                    {workoutExercises.length === 0 ? (
+                      <div className="px-4 py-6 text-center">
+                        <p className="text-sm text-neutral-400">Žiadne cviky</p>
+                        <p className="text-xs text-neutral-300 mt-1">Klikni na sval a pridaj cviky</p>
+                      </div>
+                    ) : (
+                      <div className="p-3 space-y-2">
+                        {workoutExercises.map((exercise, index) => (
+                          <div
+                            key={exercise.id}
+                            className="flex items-center justify-between px-4 py-3 bg-neutral-50 rounded-xl group"
+                          >
+                            <div className="flex items-center gap-4">
+                              <span className="w-8 h-8 bg-neutral-200 rounded-full text-sm font-semibold flex items-center justify-center text-neutral-600">
+                                {index + 1}
+                              </span>
+                              <div>
+                                <p className="text-base font-medium text-neutral-900">{exercise.name}</p>
+                                <p className="text-sm text-neutral-400">{exercise.sets}×{exercise.reps}</p>
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => {
+                              removeExercise(exercise.id)
+                              showToast('Cvik odstránený', 'info')
+                            }}
+                              className="p-2 opacity-0 group-hover:opacity-100 hover:bg-neutral-200 rounded-lg transition-all"
+                            >
+                              <Trash2 className="w-4 h-4 text-neutral-400" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Footer */}
+                  {workoutExercises.length > 0 && (
+                    <div className="px-4 py-4 border-t border-neutral-100">
+                      <button
+                        onClick={() => {
+                          saveWorkout()
+                          showToast('Tréning uložený', 'success')
+                          setShowQuickWorkout(false)
+                        }}
+                        className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-semibold py-3 px-4 rounded-xl transition-colors"
+                      >
+                        Uložiť tréning
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
@@ -81,108 +200,55 @@ function Dashboard() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            {/* Notifications */}
-            <div className="relative">
+            {/* Notification Bell */}
+            <div className="relative" ref={notificationRef}>
               <button
-                onClick={() => {
-                  setShowNotifications((v) => {
-                    const next = !v
-                    setSelectedAction(next ? 'notifications' : null)
-                    return next
-                  })
-                  // Close other panels
-                  setShowGym(false)
-                  setShowProfile(false)
-                  setShowWorkout(false)
-                }}
-                className={`group relative p-3 rounded-xl shadow-soft transition-all duration-200 hover:scale-110 active:scale-95 ${
-                  selectedAction === 'notifications'
-                    ? 'bg-neutral-900 text-white hover:bg-neutral-800'
-                    : 'bg-white/90 backdrop-blur-sm border border-neutral-200 hover:bg-neutral-900 hover:text-white text-neutral-700'
-                }`}
+                onClick={() => setShowNotifications(!showNotifications)}
+                className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
                 aria-label="Notifikácie"
               >
-                <svg className={`w-5 h-5 transition-colors ${selectedAction === 'notifications' ? 'text-white' : 'text-neutral-700 group-hover:text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                </svg>
-                {unreadCount > 0 && (
+                <Bell className="w-5 h-5 text-neutral-700" />
+                {notifications.length > 0 && (
                   <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
-                    {unreadCount}
+                    {notifications.length}
                   </span>
                 )}
               </button>
+
               {showNotifications && (
-                <NotificationPanel onClose={() => { setShowNotifications(false); setSelectedAction(null) }} />
+                <NotificationPanel onClose={() => setShowNotifications(false)} />
               )}
             </div>
-            {/* Gym Button */}
+
+            {/* Gym Button - Black */}
             <button
-              onClick={() => {
-                setShowGym((v) => {
-                  const next = !v
-                  setSelectedAction(next ? 'gym' : null)
-                  return next
-                })
-                setShowNotifications(false)
-                setShowProfile(false)
-                setShowWorkout(false)
-              }}
-              className={`group p-3 rounded-xl shadow-soft transition-all duration-200 hover:scale-110 active:scale-95 ${
-                selectedAction === 'gym'
-                  ? 'bg-neutral-900 text-white hover:bg-neutral-800'
-                  : 'bg-white/90 backdrop-blur-sm border border-neutral-200 hover:bg-neutral-900 hover:text-white text-neutral-700'
-              }`}
+              onClick={() => setShowGym(true)}
+              className="p-3 bg-neutral-900 rounded-xl shadow-soft hover:bg-neutral-800 transition-all duration-200"
               aria-label="Gym"
             >
-              <svg className={`w-5 h-5 transition-colors ${selectedAction === 'gym' ? 'text-white' : 'text-neutral-700 group-hover:text-white'}`} fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
               </svg>
             </button>
 
             {/* Achievements Button */}
             <button
-              onClick={() => {
-                setShowProfile((v) => {
-                  const next = !v
-                  setSelectedAction(next ? 'profile' : null)
-                  return next
-                })
-                setShowNotifications(false)
-                setShowGym(false)
-                setShowWorkout(false)
-              }}
-              className={`group p-3 rounded-xl shadow-soft transition-all duration-200 hover:scale-110 active:scale-95 ${
-                selectedAction === 'profile'
-                  ? 'bg-neutral-900 text-white hover:bg-neutral-800'
-                  : 'bg-white/90 backdrop-blur-sm border border-neutral-200 hover:bg-neutral-900 hover:text-white text-neutral-700'
-              }`}
+              onClick={() => setShowProfile(true)}
+              className="p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
               aria-label="Achievements"
             >
-              <svg className={`w-5 h-5 transition-colors ${selectedAction === 'profile' ? 'text-white' : 'text-neutral-700 group-hover:text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>
             </button>
 
             {/* Workout Button with Badge */}
             <button
-              onClick={() => {
-                setShowWorkout((v) => {
-                  const next = !v
-                  setSelectedAction(next ? 'workout' : null)
-                  return next
-                })
-                setShowNotifications(false)
-                setShowGym(false)
-                setShowProfile(false)
-              }}
-              className={`group relative p-3 rounded-xl shadow-soft transition-all duration-200 hover:scale-110 active:scale-95 ${
-                selectedAction === 'workout'
-                  ? 'bg-neutral-900 text-white hover:bg-neutral-800'
-                  : 'bg-white/90 backdrop-blur-sm border border-neutral-200 hover:bg-neutral-900 hover:text-white text-neutral-700'
-              }`}
+              onClick={() => setShowWorkout(true)}
+              className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
               aria-label="Workout"
             >
-              <svg className={`w-5 h-5 transition-colors ${selectedAction === 'workout' ? 'text-white' : 'text-neutral-700 group-hover:text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
               {workoutExercises.length > 0 && (
@@ -258,12 +324,12 @@ function Dashboard() {
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-            onClick={() => { setShowWorkout(false); setSelectedAction(null) }}
+            onClick={() => setShowWorkout(false)}
           />
 
           {/* Modal */}
           <div className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-lg md:h-[80vh] bg-white rounded-2xl shadow-elevated z-50 overflow-hidden">
-            <WorkoutPanel onClose={() => { setShowWorkout(false); setSelectedAction(null) }} />
+            <WorkoutPanel onClose={() => setShowWorkout(false)} />
           </div>
         </>
       )}
@@ -274,12 +340,12 @@ function Dashboard() {
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-            onClick={() => { setShowProfile(false); setSelectedAction(null) }}
+            onClick={() => setShowProfile(false)}
           />
 
           {/* Modal */}
           <div className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:h-[85vh] bg-white rounded-2xl shadow-elevated z-50 overflow-hidden">
-            <ProfilePanel onClose={() => { setShowProfile(false); setSelectedAction(null) }} />
+            <ProfilePanel onClose={() => setShowProfile(false)} />
           </div>
         </>
       )}
@@ -290,12 +356,12 @@ function Dashboard() {
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-            onClick={() => { setShowGym(false); setSelectedAction(null) }}
+            onClick={() => setShowGym(false)}
           />
 
           {/* Modal - Almost Fullscreen */}
           <div className="fixed inset-2 md:inset-4 bg-white rounded-2xl shadow-elevated z-50 overflow-hidden">
-            <GymPanel onClose={() => { setShowGym(false); setSelectedAction(null) }} />
+            <GymPanel onClose={() => setShowGym(false)} />
           </div>
         </>
       )}
@@ -307,6 +373,7 @@ function Dashboard() {
           onClose={() => setSelectedExercise(null)}
           onAddToWorkout={(exercise) => {
             addExercise(exercise, activeMode)
+            showToast('Cvik pridaný do tréningu', 'success')
           }}
         />
       )}

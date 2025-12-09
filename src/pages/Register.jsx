@@ -1,24 +1,43 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-function Login() {
+function Register() {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [error, setError] = useState('')
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setError('')
 
-    // TODO: Implementuj skutočnú autentifikáciu
-    if (email && password) {
-      localStorage.setItem('isAuthenticated', 'true')
-
-      // Skontroluj či user už dokončil onboarding
-      const onboardingCompleted = localStorage.getItem('onboardingCompleted') === 'true'
-
-      // Presmeruj na wizard ak ešte nebol dokončený, inak na dashboard
-      navigate(onboardingCompleted ? '/dashboard' : '/goals')
+    // Validácia
+    if (password !== confirmPassword) {
+      setError('Heslá sa nezhodujú')
+      return
     }
+
+    if (password.length < 6) {
+      setError('Heslo musí mať aspoň 6 znakov')
+      return
+    }
+
+    // Uloženie užívateľa
+    localStorage.setItem('isAuthenticated', 'true')
+    localStorage.setItem('userProfile', JSON.stringify({
+      name,
+      email,
+      createdAt: new Date().toISOString()
+    }))
+
+    // Vymazanie onboarding flagu pre nového užívateľa
+    localStorage.removeItem('onboardingCompleted')
+    localStorage.removeItem('userGoals')
+
+    // Presmerovanie na wizard
+    navigate('/goals')
   }
 
   return (
@@ -34,14 +53,37 @@ function Login() {
           <h1 className="text-3xl font-bold text-neutral-900 mb-2">
             FitFlow
           </h1>
-          <p className="text-neutral-500">Tvoj osobný tréningový sprievodca</p>
+          <p className="text-neutral-500">Vytvor si účet a začni trénovať</p>
         </div>
 
-        {/* Login Card */}
+        {/* Register Card */}
         <div className="bg-white rounded-2xl shadow-soft p-8 border border-neutral-200">
-          <h2 className="text-xl font-bold text-neutral-900 mb-6">Prihlásenie</h2>
+          <h2 className="text-xl font-bold text-neutral-900 mb-6">Registrácia</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Error Message */}
+            {error && (
+              <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
+                {error}
+              </div>
+            )}
+
+            {/* Name Input */}
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-2">
+                Meno
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all outline-none bg-neutral-50 focus:bg-white"
+                placeholder="Tvoje meno"
+                required
+              />
+            </div>
+
             {/* Email Input */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -74,15 +116,20 @@ function Login() {
               />
             </div>
 
-            {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between text-sm">
-              <label className="flex items-center cursor-pointer">
-                <input type="checkbox" className="w-4 h-4 rounded border-neutral-300 text-neutral-900 focus:ring-neutral-900 mr-2" />
-                <span className="text-neutral-600">Zapamätať si ma</span>
+            {/* Confirm Password Input */}
+            <div>
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-neutral-700 mb-2">
+                Potvrdenie hesla
               </label>
-              <a href="#" className="text-neutral-900 hover:text-neutral-700 font-medium">
-                Zabudnuté heslo?
-              </a>
+              <input
+                id="confirmPassword"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all outline-none bg-neutral-50 focus:bg-white"
+                placeholder="••••••••"
+                required
+              />
             </div>
 
             {/* Submit Button */}
@@ -90,7 +137,7 @@ function Login() {
               type="submit"
               className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 shadow-subtle hover:shadow-soft"
             >
-              Prihlásiť sa
+              Vytvoriť účet
             </button>
           </form>
 
@@ -113,22 +160,22 @@ function Login() {
                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
                 <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
               </svg>
-              Prihlásiť cez Google
+              Registrovať cez Google
             </button>
           </div>
 
-          {/* Sign Up Link */}
+          {/* Login Link */}
           <p className="mt-6 text-center text-sm text-neutral-500">
-            Nemáš účet?{' '}
-            <Link to="/register" className="text-neutral-900 hover:text-neutral-700 font-semibold">
-              Registruj sa
+            Už máš účet?{' '}
+            <Link to="/login" className="text-neutral-900 hover:text-neutral-700 font-semibold">
+              Prihlásiť sa
             </Link>
           </p>
         </div>
 
         {/* Footer */}
         <p className="mt-8 text-center text-xs text-neutral-400">
-          Prihlásením súhlasíš s našimi{' '}
+          Registráciou súhlasíš s našimi{' '}
           <a href="#" className="underline hover:text-neutral-600">Podmienkami používania</a>
           {' '}a{' '}
           <a href="#" className="underline hover:text-neutral-600">Ochranou súkromia</a>
@@ -138,4 +185,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register
