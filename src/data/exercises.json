@@ -396,7 +396,7 @@
   "Biceps": [
     {
       "name": "Barbell Curl",
-      "animation": "/gifs/barbell-curl.gif",
+      "animation": "/gifs/bicepcurl.gif",
       "difficulty": "beginner",
       "equipment": "barbell",
       "description": "Zdvíhanie činky na biceps v stoji",
@@ -410,7 +410,7 @@
     },
     {
       "name": "EZ Bar Curl",
-      "animation": "/gifs/ez-bar-curl.gif",
+      "animation": "/gifs/ezcurl.gif",
       "difficulty": "beginner",
       "equipment": "barbell",
       "description": "Zdvíhanie EZ činky pre menšie zaťaženie zápästí",
@@ -1776,7 +1776,7 @@
     },
     {
       "name": "Lat Pulldown",
-      "animation": "/gifs/lat-pulldown.gif",
+      "animation": "/gifs/pulldown.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Ťahy hornej kladky k hrudníku",
@@ -2438,7 +2438,7 @@
   "Zadné stehenné svaly (Hamstrings)": [
     {
       "name": "Romanian Deadlift",
-      "animation": "/gifs/romanian-deadlift.gif",
+      "animation": "/gifs/rumunsky.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Rumunský mŕtvy ťah s vystretými nohami",
