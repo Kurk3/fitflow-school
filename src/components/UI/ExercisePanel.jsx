@@ -305,11 +305,25 @@ function ExercisePanel({ muscleName, mode, onClose, onExerciseClick }) {
 
                     <div className="flex items-center justify-between">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className={`px-2 py-0.5 rounded text-xs font-medium border ${getDifficultyColor(exercise.difficulty)}`}>
+                        <span className={`px-2 py-1 rounded text-sm font-medium border ${getDifficultyColor(exercise.difficulty)}`}>
                           {getDifficultyLabel(exercise.difficulty)}
                         </span>
-                        <span className="px-2 py-0.5 rounded text-xs font-medium bg-white text-gray-500 border border-gray-200">
-                          {getEquipmentLabel(exercise.equipment)}
+                        <span className="px-2 py-1 rounded text-sm font-medium bg-white text-gray-500 border border-gray-200 flex items-center gap-1">
+                          {exercise.equipment === 'barbell' || exercise.equipment === 'dumbbells' || exercise.equipment === 'dumbbell' ? (
+                            <img src="/icons/barbel.png" alt="Činka" className="w-4 h-4" title="Činka" />
+                          ) : exercise.equipment === 'pullup bar' || exercise.equipment === 'bodyweight' ? (
+                            <img src="/icons/bodyweight.png" alt="Vlastná váha" className="w-4 h-4" title="Vlastná váha" />
+                          ) : exercise.equipment === 'machine' ? (
+                            <img src="/icons/gym.png" alt="Stroj" className="w-4 h-4" title="Stroj" />
+                          ) : exercise.equipment === 'cable' ? (
+                            <img src="/icons/pulley.png" alt="Kladka" className="w-4 h-4" title="Kladka" />
+                          ) : exercise.equipment === 'mat' ? (
+                            <img src="/icons/mat.png" alt="Podložka" className="w-4 h-4" title="Podložka" />
+                          ) : exercise.equipment === 'gymnastics rings' ? (
+                            <img src="/icons/rings.png" alt="Kruhy" className="w-4 h-4" title="Kruhy" />
+                          ) : (
+                            getEquipmentLabel(exercise.equipment)
+                          )}
                         </span>
                       </div>
 

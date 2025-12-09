@@ -7,6 +7,8 @@ import GymPanel from '../components/UI/GymPanel'
 import ExerciseDetailModal from '../components/UI/ExerciseDetailModal'
 import OnboardingWizard from '../components/UI/OnboardingWizard'
 import { useWorkout } from '../context/WorkoutContext'
+import NotificationPanel from '../components/UI/NotificationPanel'
+import { useNotifications } from '../context/NotificationContext'
 
 function Dashboard() {
   const [selectedMuscle, setSelectedMuscle] = useState(null)
@@ -17,6 +19,9 @@ function Dashboard() {
   const [selectedExercise, setSelectedExercise] = useState(null)
   const [showOnboarding, setShowOnboarding] = useState(false)
   const { workoutExercises, addExercise } = useWorkout()
+  const { unreadCount } = useNotifications()
+  const [showNotifications, setShowNotifications] = useState(false)
+  const [selectedAction, setSelectedAction] = useState(null) // 'notifications' | 'gym' | 'profile' | 'workout' | null
 
   // Check if onboarding was completed
   useEffect(() => {
@@ -76,35 +81,108 @@ function Dashboard() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            {/* Gym Button - Black */}
+            {/* Notifications */}
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setShowNotifications((v) => {
+                    const next = !v
+                    setSelectedAction(next ? 'notifications' : null)
+                    return next
+                  })
+                  // Close other panels
+                  setShowGym(false)
+                  setShowProfile(false)
+                  setShowWorkout(false)
+                }}
+                className={`group relative p-3 rounded-xl shadow-soft transition-all duration-200 hover:scale-110 active:scale-95 ${
+                  selectedAction === 'notifications'
+                    ? 'bg-neutral-900 text-white hover:bg-neutral-800'
+                    : 'bg-white/90 backdrop-blur-sm border border-neutral-200 hover:bg-neutral-900 hover:text-white text-neutral-700'
+                }`}
+                aria-label="Notifikácie"
+              >
+                <svg className={`w-5 h-5 transition-colors ${selectedAction === 'notifications' ? 'text-white' : 'text-neutral-700 group-hover:text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    {unreadCount}
+                  </span>
+                )}
+              </button>
+              {showNotifications && (
+                <NotificationPanel onClose={() => { setShowNotifications(false); setSelectedAction(null) }} />
+              )}
+            </div>
+            {/* Gym Button */}
             <button
-              onClick={() => setShowGym(true)}
-              className="p-3 bg-neutral-900 rounded-xl shadow-soft hover:bg-neutral-800 transition-all duration-200"
+              onClick={() => {
+                setShowGym((v) => {
+                  const next = !v
+                  setSelectedAction(next ? 'gym' : null)
+                  return next
+                })
+                setShowNotifications(false)
+                setShowProfile(false)
+                setShowWorkout(false)
+              }}
+              className={`group p-3 rounded-xl shadow-soft transition-all duration-200 hover:scale-110 active:scale-95 ${
+                selectedAction === 'gym'
+                  ? 'bg-neutral-900 text-white hover:bg-neutral-800'
+                  : 'bg-white/90 backdrop-blur-sm border border-neutral-200 hover:bg-neutral-900 hover:text-white text-neutral-700'
+              }`}
               aria-label="Gym"
             >
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-5 h-5 transition-colors ${selectedAction === 'gym' ? 'text-white' : 'text-neutral-700 group-hover:text-white'}`} fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
               </svg>
             </button>
 
             {/* Achievements Button */}
             <button
-              onClick={() => setShowProfile(true)}
-              className="p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+              onClick={() => {
+                setShowProfile((v) => {
+                  const next = !v
+                  setSelectedAction(next ? 'profile' : null)
+                  return next
+                })
+                setShowNotifications(false)
+                setShowGym(false)
+                setShowWorkout(false)
+              }}
+              className={`group p-3 rounded-xl shadow-soft transition-all duration-200 hover:scale-110 active:scale-95 ${
+                selectedAction === 'profile'
+                  ? 'bg-neutral-900 text-white hover:bg-neutral-800'
+                  : 'bg-white/90 backdrop-blur-sm border border-neutral-200 hover:bg-neutral-900 hover:text-white text-neutral-700'
+              }`}
               aria-label="Achievements"
             >
-              <svg className="w-5 h-5 text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-5 h-5 transition-colors ${selectedAction === 'profile' ? 'text-white' : 'text-neutral-700 group-hover:text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>
             </button>
 
             {/* Workout Button with Badge */}
             <button
-              onClick={() => setShowWorkout(true)}
-              className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+              onClick={() => {
+                setShowWorkout((v) => {
+                  const next = !v
+                  setSelectedAction(next ? 'workout' : null)
+                  return next
+                })
+                setShowNotifications(false)
+                setShowGym(false)
+                setShowProfile(false)
+              }}
+              className={`group relative p-3 rounded-xl shadow-soft transition-all duration-200 hover:scale-110 active:scale-95 ${
+                selectedAction === 'workout'
+                  ? 'bg-neutral-900 text-white hover:bg-neutral-800'
+                  : 'bg-white/90 backdrop-blur-sm border border-neutral-200 hover:bg-neutral-900 hover:text-white text-neutral-700'
+              }`}
               aria-label="Workout"
             >
-              <svg className="w-5 h-5 text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-5 h-5 transition-colors ${selectedAction === 'workout' ? 'text-white' : 'text-neutral-700 group-hover:text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
               {workoutExercises.length > 0 && (
@@ -180,12 +258,12 @@ function Dashboard() {
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-            onClick={() => setShowWorkout(false)}
+            onClick={() => { setShowWorkout(false); setSelectedAction(null) }}
           />
 
           {/* Modal */}
           <div className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-lg md:h-[80vh] bg-white rounded-2xl shadow-elevated z-50 overflow-hidden">
-            <WorkoutPanel onClose={() => setShowWorkout(false)} />
+            <WorkoutPanel onClose={() => { setShowWorkout(false); setSelectedAction(null) }} />
           </div>
         </>
       )}
@@ -196,12 +274,12 @@ function Dashboard() {
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-            onClick={() => setShowProfile(false)}
+            onClick={() => { setShowProfile(false); setSelectedAction(null) }}
           />
 
           {/* Modal */}
           <div className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:h-[85vh] bg-white rounded-2xl shadow-elevated z-50 overflow-hidden">
-            <ProfilePanel onClose={() => setShowProfile(false)} />
+            <ProfilePanel onClose={() => { setShowProfile(false); setSelectedAction(null) }} />
           </div>
         </>
       )}
@@ -212,12 +290,12 @@ function Dashboard() {
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-            onClick={() => setShowGym(false)}
+            onClick={() => { setShowGym(false); setSelectedAction(null) }}
           />
 
           {/* Modal - Almost Fullscreen */}
           <div className="fixed inset-2 md:inset-4 bg-white rounded-2xl shadow-elevated z-50 overflow-hidden">
-            <GymPanel onClose={() => setShowGym(false)} />
+            <GymPanel onClose={() => { setShowGym(false); setSelectedAction(null) }} />
           </div>
         </>
       )}

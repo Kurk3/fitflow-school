@@ -109,8 +109,22 @@ function MuscleInfoPopup({ muscleName, onClose }) {
                     </span>
 
                     {/* Equipment badge */}
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
-                      {getEquipmentLabel(exercise.equipment)}
+                    <span className="px-3 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-700 flex items-center gap-2">
+                      {exercise.equipment === 'barbell' || exercise.equipment === 'dumbbells' || exercise.equipment === 'dumbbell' ? (
+                        <img src="/icons/barbel.png" alt="Činka" className="w-5 h-5" title="Činka" />
+                      ) : exercise.equipment === 'pullup bar' || exercise.equipment === 'bodyweight' ? (
+                        <img src="/icons/bodyweight.png" alt="Vlastná váha" className="w-5 h-5" title="Vlastná váha" />
+                      ) : exercise.equipment === 'machine' ? (
+                        <img src="/icons/gym.png" alt="Stroj" className="w-5 h-5" title="Stroj" />
+                      ) : exercise.equipment === 'cable' ? (
+                        <img src="/icons/pulley.png" alt="Kladka" className="w-5 h-5" title="Kladka" />
+                      ) : exercise.equipment === 'mat' ? (
+                        <img src="/icons/mat.png" alt="Podložka" className="w-5 h-5" title="Podložka" />
+                      ) : exercise.equipment === 'gymnastics rings' ? (
+                        <img src="/icons/rings.png" alt="Kruhy" className="w-5 h-5" title="Kruhy" />
+                      ) : (
+                        getEquipmentLabel(exercise.equipment)
+                      )}
                     </span>
                   </div>
 

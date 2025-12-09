@@ -2,6 +2,7 @@
   "Hrudník (Pectorals)": [
     {
       "name": "Bench Press",
+      "animation": "/gifs/bp.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Klasický cvik na hrudník s činkou na lavici",
@@ -15,6 +16,7 @@
     },
     {
       "name": "Incline Bench Press",
+      "animation": "/gifs/inclinebp.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Tlak na šikmej lavici pre horný hrudník",
@@ -28,6 +30,7 @@
     },
     {
       "name": "Decline Bench Press",
+      "animation": "/gifs/decline-bench-press.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Tlak na klesajúcej lavici pre dolný hrudník",
@@ -41,6 +44,7 @@
     },
     {
       "name": "Dumbbell Bench Press",
+      "animation": "/gifs/dumbbell-bench-press.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Tlak s jednoručkami pre väčší rozsah pohybu",
@@ -54,6 +58,7 @@
     },
     {
       "name": "Incline Dumbbell Press",
+      "animation": "/gifs/incline-dumbbell-press.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Tlak jednoručkami na šikmej lavici",
@@ -67,6 +72,7 @@
     },
     {
       "name": "Dumbbell Fly",
+      "animation": "/gifs/dumbbell-fly.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Rozpaženia s jednoručkami na lavici",
@@ -80,6 +86,7 @@
     },
     {
       "name": "Incline Dumbbell Fly",
+      "animation": "/gifs/incline-dumbbell-fly.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Rozpaženia na šikmej lavici pre horný hrudník",
@@ -93,6 +100,7 @@
     },
     {
       "name": "Cable Crossover",
+      "animation": "/gifs/cable-crossover.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Prekríženie na kladke pre stred hrudníka",
@@ -106,6 +114,7 @@
     },
     {
       "name": "Low Cable Fly",
+      "animation": "/gifs/low-cable-fly.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Ťahy zdola nahor na kladke pre horný hrudník",
@@ -119,6 +128,7 @@
     },
     {
       "name": "High Cable Fly",
+      "animation": "/gifs/high-cable-fly.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Ťahy zhora nadol na kladke pre dolný hrudník",
@@ -132,6 +142,7 @@
     },
     {
       "name": "Machine Chest Press",
+      "animation": "/gifs/machine-chest-press.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Tlak na stroji pre bezpečný tréning hrudníka",
@@ -145,6 +156,7 @@
     },
     {
       "name": "Pec Deck",
+      "animation": "/gifs/pec-deck.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Stroj na rozpažovanie pre izoláciu hrudníka",
@@ -158,6 +170,7 @@
     },
     {
       "name": "Dips",
+      "animation": "/gifs/dips.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Kliky na bradlách s naklonom pre hrudník",
@@ -171,6 +184,7 @@
     },
     {
       "name": "Push-ups",
+      "animation": "/gifs/push-ups.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Kliky - základný cvik s vlastnou váhou",
@@ -184,6 +198,7 @@
     },
     {
       "name": "Wide Push-ups",
+      "animation": "/gifs/wide-push-ups.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Kliky so širokým úchopom pre väčšie zapojenie prsných svalov",
@@ -197,6 +212,7 @@
     },
     {
       "name": "Diamond Push-ups",
+      "animation": "/gifs/diamond-push-ups.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Kliky s úzkym postavením rúk pre stred hrudníka a triceps",
@@ -210,6 +226,7 @@
     },
     {
       "name": "Decline Push-ups",
+      "animation": "/gifs/decline-push-ups.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Kliky s nohami vyloženými vyššie na lavičke alebo stole",
@@ -223,6 +240,7 @@
     },
     {
       "name": "Incline Push-ups",
+      "animation": "/gifs/incline-push-ups.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Kliky s rukami na vyvýšenej ploche - ľahšia verzia",
@@ -236,6 +254,7 @@
     },
     {
       "name": "Archer Push-ups",
+      "animation": "/gifs/archer-push-ups.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Kliky s prenášaním váhy na jednu stranu, druhá ruka je vystretá",
@@ -249,6 +268,7 @@
     },
     {
       "name": "Explosive Push-ups",
+      "animation": "/gifs/explosive-push-ups.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Výbušné kliky s odlepením rúk od zeme",
@@ -262,6 +282,7 @@
     },
     {
       "name": "Clap Push-ups",
+      "animation": "/gifs/clap-push-ups.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Kliky s tlesknutím vo vzduchu",
@@ -275,6 +296,7 @@
     },
     {
       "name": "Pseudo Planche Push-ups",
+      "animation": "/gifs/pseudo-planche-push-ups.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Kliky s telom naklopeným dopredu a váhou prenesenou viac na ruky",
@@ -288,6 +310,7 @@
     },
     {
       "name": "One Arm Push-up",
+      "animation": "/gifs/one-arm-push-up.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Klik na jednej ruke - pokročilý cvik",
@@ -301,6 +324,7 @@
     },
     {
       "name": "Ring Push-ups",
+      "animation": "/gifs/ring-push-ups.gif",
       "difficulty": "advanced",
       "equipment": "gymnastics rings",
       "description": "Kliky na kruhoch pre nestabilnú záťaž",
@@ -314,6 +338,7 @@
     },
     {
       "name": "Pilates Push Up",
+      "animation": "/gifs/pilates-push-up.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Plynulý prechod zo stoja do planku, kľuk a návrat späť",
@@ -327,6 +352,7 @@
     },
     {
       "name": "Chest Expansion",
+      "animation": "/gifs/chest-expansion.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Otváranie hrudníka v kľaku alebo stoji pre lepšie držanie tela",
@@ -340,6 +366,7 @@
     },
     {
       "name": "Pilates Swimming",
+      "animation": "/gifs/pilates-swimming.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Plavecký pohyb rukami a nohami v ľahu na bruchu",
@@ -353,6 +380,7 @@
     },
     {
       "name": "Rolling Like a Ball",
+      "animation": "/gifs/rolling-like-a-ball.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Valcovanie sa vzadu a dopredu v zbalenom položení",
@@ -368,6 +396,7 @@
   "Biceps": [
     {
       "name": "Barbell Curl",
+      "animation": "/gifs/barbell-curl.gif",
       "difficulty": "beginner",
       "equipment": "barbell",
       "description": "Zdvíhanie činky na biceps v stoji",
@@ -381,6 +410,7 @@
     },
     {
       "name": "EZ Bar Curl",
+      "animation": "/gifs/ez-bar-curl.gif",
       "difficulty": "beginner",
       "equipment": "barbell",
       "description": "Zdvíhanie EZ činky pre menšie zaťaženie zápästí",
@@ -394,6 +424,7 @@
     },
     {
       "name": "Preacher Curl",
+      "animation": "/gifs/preacher-curl.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Zdvíhanie na scott lavičke pre izoláciu bicepsu",
@@ -407,6 +438,7 @@
     },
     {
       "name": "Dumbbell Curl",
+      "animation": "/gifs/dumbbell-curl.gif",
       "difficulty": "beginner",
       "equipment": "dumbbells",
       "description": "Zdvíhanie jednoručiek striedavo alebo súčasne",
@@ -420,6 +452,7 @@
     },
     {
       "name": "Hammer Curl",
+      "animation": "/gifs/hammer-curl.gif",
       "difficulty": "beginner",
       "equipment": "dumbbells",
       "description": "Neutrálny úchop pre biceps a predlaktie",
@@ -433,6 +466,7 @@
     },
     {
       "name": "Incline Dumbbell Curl",
+      "animation": "/gifs/incline-dumbbell-curl.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Zdvíhanie na šikmej lavici pre dlhú hlavu bicepsu",
@@ -446,6 +480,7 @@
     },
     {
       "name": "Concentration Curl",
+      "animation": "/gifs/concentration-curl.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbell",
       "description": "Zdvíhanie v sede s opretým lakťom o stehno",
@@ -459,6 +494,7 @@
     },
     {
       "name": "Cable Curl",
+      "animation": "/gifs/cable-curl.gif",
       "difficulty": "beginner",
       "equipment": "cable",
       "description": "Zdvíhanie na spodnej kladke pre konštantný odpor",
@@ -472,6 +508,7 @@
     },
     {
       "name": "High Cable Curl",
+      "animation": "/gifs/high-cable-curl.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Zdvíhanie z vysokej kladky pre peak bicepsu",
@@ -485,6 +522,7 @@
     },
     {
       "name": "Spider Curl",
+      "animation": "/gifs/spider-curl.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Zdvíhanie na lavici lícom nadol",
@@ -498,6 +536,7 @@
     },
     {
       "name": "21s",
+      "animation": "/gifs/21s.gif",
       "difficulty": "advanced",
       "equipment": "barbell",
       "description": "7 dolných + 7 horných + 7 plných opakovaní",
@@ -511,6 +550,7 @@
     },
     {
       "name": "Chin-ups",
+      "animation": "/gifs/chin-ups.gif",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
       "description": "Zhyby podhmatom (dlaňami k sebe), dominantný biceps",
@@ -524,6 +564,7 @@
     },
     {
       "name": "Close Grip Chin-ups",
+      "animation": "/gifs/close-grip-chin-ups.gif",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
       "description": "Zhyby s úzkym úchopom pre maximálny biceps",
@@ -537,6 +578,7 @@
     },
     {
       "name": "Archer Chin-ups",
+      "animation": "/gifs/archer-chin-ups.gif",
       "difficulty": "advanced",
       "equipment": "pullup bar",
       "description": "Zhyby s pohybom ku jednej ruke, druhá je viac vystretá",
@@ -550,6 +592,7 @@
     },
     {
       "name": "Headbangers",
+      "animation": "/gifs/headbangers.gif",
       "difficulty": "advanced",
       "equipment": "pullup bar",
       "description": "Zhyb a následné odtláčanie tela od hrazdy a späť",
@@ -563,6 +606,7 @@
     },
     {
       "name": "Commando Chin-ups",
+      "animation": "/gifs/commando-chin-ups.gif",
       "difficulty": "advanced",
       "equipment": "pullup bar",
       "description": "Zhyby s telom kolmo k hrazde, striedaj strany",
@@ -576,6 +620,7 @@
     },
     {
       "name": "Ring Curls",
+      "animation": "/gifs/ring-curls.gif",
       "difficulty": "intermediate",
       "equipment": "gymnastics rings",
       "description": "Zdvíhanie na kruhoch s vlastnou váhou",
@@ -589,6 +634,7 @@
     },
     {
       "name": "Resistance Band Curls",
+      "animation": "/gifs/resistance-band-curls.gif",
       "difficulty": "beginner",
       "equipment": "resistance band",
       "description": "Zdvíhanie s gumenou páskou na biceps",
@@ -602,6 +648,7 @@
     },
     {
       "name": "Pelvic Curl",
+      "animation": "/gifs/pelvic-curl.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Mostík s dôrazom na zapojenie rúk pri stabilizácii",
@@ -615,6 +662,7 @@
     },
     {
       "name": "Pilates Boxing",
+      "animation": "/gifs/pilates-boxing.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Boxovanie v stoji s dôrazom na kontrolu pohybu rúk",
@@ -628,6 +676,7 @@
     },
     {
       "name": "Arm Pulses",
+      "animation": "/gifs/arm-pulses.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Malé kmitavé pohyby paží v ľahu na boku pre posilnenie bicepsu",
@@ -643,6 +692,7 @@
   "Triceps": [
     {
       "name": "Close Grip Bench Press",
+      "animation": "/gifs/close-grip-bench-press.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Bench press s úzkym úchopom pre triceps",
@@ -656,6 +706,7 @@
     },
     {
       "name": "Skull Crushers",
+      "animation": "/gifs/skull-crushers.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Francúzsky tlak v ľahu pre triceps",
@@ -669,6 +720,7 @@
     },
     {
       "name": "EZ Bar Skull Crushers",
+      "animation": "/gifs/ez-bar-skull-crushers.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Francúzsky tlak s EZ činkou pre pohodlnejší úchop",
@@ -682,6 +734,7 @@
     },
     {
       "name": "Overhead Extension",
+      "animation": "/gifs/overhead-extension.gif",
       "difficulty": "beginner",
       "equipment": "dumbbell",
       "description": "Jednoručné vystieranie ruky za hlavou",
@@ -695,6 +748,7 @@
     },
     {
       "name": "Two Hand Dumbbell Extension",
+      "animation": "/gifs/two-hand-dumbbell-extension.gif",
       "difficulty": "beginner",
       "equipment": "dumbbell",
       "description": "Obojručné vystieranie za hlavou s jednou jednoručkou",
@@ -708,6 +762,7 @@
     },
     {
       "name": "Tricep Pushdown",
+      "animation": "/gifs/tricep-pushdown.gif",
       "difficulty": "beginner",
       "equipment": "cable",
       "description": "Tlačenie na kladke nadol pre triceps",
@@ -721,6 +776,7 @@
     },
     {
       "name": "Rope Pushdown",
+      "animation": "/gifs/rope-pushdown.gif",
       "difficulty": "beginner",
       "equipment": "cable",
       "description": "Tlačenie lana na kladke s rotáciou na konci",
@@ -734,6 +790,7 @@
     },
     {
       "name": "Overhead Cable Extension",
+      "animation": "/gifs/overhead-cable-extension.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Vystieranie nad hlavou na spodnej kladke",
@@ -747,6 +804,7 @@
     },
     {
       "name": "Kickbacks",
+      "animation": "/gifs/kickbacks.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbell",
       "description": "Vystieranie ruky dozadu v predklone",
@@ -760,6 +818,7 @@
     },
     {
       "name": "Machine Tricep Extension",
+      "animation": "/gifs/machine-tricep-extension.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Tricepsový stroj pre bezpečnú izoláciu",
@@ -773,6 +832,7 @@
     },
     {
       "name": "Tricep Dips",
+      "animation": "/gifs/tricep-dips.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Kliky na bradlách pre triceps",
@@ -786,6 +846,7 @@
     },
     {
       "name": "Bench Dips",
+      "animation": "/gifs/bench-dips.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Kliky o lavičku s nohami na zemi",
@@ -799,6 +860,7 @@
     },
     {
       "name": "Diamond Push-ups",
+      "animation": "/gifs/diamond-push-ups.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Kliky s rukami v tvare diamantu pre triceps",
@@ -812,6 +874,7 @@
     },
     {
       "name": "Sphinx Push-ups",
+      "animation": "/gifs/sphinx-push-ups.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Z planku na lakťoch sa vytláčate do planku na dlaniach",
@@ -825,6 +888,7 @@
     },
     {
       "name": "Tiger Push-ups",
+      "animation": "/gifs/tiger-push-ups.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Kliky s prechodom do pozície na predlaktiach",
@@ -838,6 +902,7 @@
     },
     {
       "name": "Ring Dips",
+      "animation": "/gifs/ring-dips.gif",
       "difficulty": "advanced",
       "equipment": "gymnastics rings",
       "description": "Kliky na krúžkoch s vyšším stresom na stabilitu",
@@ -851,6 +916,7 @@
     },
     {
       "name": "Korean Dips",
+      "animation": "/gifs/korean-dips.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Kliky za chrbtom na nízkej hrazde",
@@ -864,6 +930,7 @@
     },
     {
       "name": "Close Grip Push-ups",
+      "animation": "/gifs/close-grip-push-ups.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Kliky s úzkym postavením rúk",
@@ -877,6 +944,7 @@
     },
     {
       "name": "Tricep Press",
+      "animation": "/gifs/tricep-press.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "V sede tlačenie dlaní dozadu pre aktiváciu tricepsu",
@@ -890,6 +958,7 @@
     },
     {
       "name": "Tricep Dips on Mat",
+      "animation": "/gifs/tricep-dips-on-mat.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Kliky v sede s dlaňami o podložku za chrbtom",
@@ -903,6 +972,7 @@
     },
     {
       "name": "Back Arm Pulses",
+      "animation": "/gifs/back-arm-pulses.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Malé kmitavé pohyby paží vzadu v ľahu na bruchu",
@@ -918,6 +988,7 @@
   "Ramená (Shoulders)": [
     {
       "name": "Overhead Press",
+      "animation": "/gifs/overhead-press.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Tlak nad hlavu s veľkou činkou",
@@ -931,6 +1002,7 @@
     },
     {
       "name": "Military Press",
+      "animation": "/gifs/military-press.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Prísny tlak nad hlavu bez pomoci nôh",
@@ -944,6 +1016,7 @@
     },
     {
       "name": "Push Press",
+      "animation": "/gifs/push-press.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Tlak nad hlavu s pomocou nôh",
@@ -957,6 +1030,7 @@
     },
     {
       "name": "Dumbbell Shoulder Press",
+      "animation": "/gifs/dumbbell-shoulder-press.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Tlak jednoručiek nad hlavu v sede alebo stoji",
@@ -970,6 +1044,7 @@
     },
     {
       "name": "Arnold Press",
+      "animation": "/gifs/arnold-press.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Tlak s rotáciou pre všetky časti deltoidov",
@@ -997,6 +1072,7 @@
     },
     {
       "name": "Front Raises",
+      "animation": "/gifs/front-raises.gif",
       "difficulty": "beginner",
       "equipment": "dumbbells",
       "description": "Predpažovanie pre predný deltoid",
@@ -1010,6 +1086,7 @@
     },
     {
       "name": "Rear Delt Fly",
+      "animation": "/gifs/rear-delt-fly.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Rozpažovanie v predklone pre zadný deltoid",
@@ -1023,6 +1100,7 @@
     },
     {
       "name": "Cable Lateral Raise",
+      "animation": "/gifs/cable-lateral-raise.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Upažovanie na kladke pre konštantný odpor",
@@ -1036,6 +1114,7 @@
     },
     {
       "name": "Face Pull",
+      "animation": "/gifs/face-pull.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Ťahy k tvári pre zadné deltoidy a rotátory",
@@ -1049,6 +1128,7 @@
     },
     {
       "name": "Upright Row",
+      "animation": "/gifs/upright-row.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Ťahanie činky pozdĺž tela nahor",
@@ -1062,6 +1142,7 @@
     },
     {
       "name": "Machine Shoulder Press",
+      "animation": "/gifs/machine-shoulder-press.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Tlak na stroji pre bezpečný tréning ramien",
@@ -1075,6 +1156,7 @@
     },
     {
       "name": "Reverse Pec Deck",
+      "animation": "/gifs/reverse-pec-deck.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Stroj na zadné deltoidy",
@@ -1088,6 +1170,7 @@
     },
     {
       "name": "Pike Push-ups",
+      "animation": "/gifs/pike-push-ups.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Kľuky v pozícii striešky (hlavou dole) na ramená",
@@ -1101,6 +1184,7 @@
     },
     {
       "name": "Elevated Pike Push-ups",
+      "animation": "/gifs/elevated-pike-push-ups.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Pike push-upy s nohami na vyvýšenej ploche",
@@ -1114,6 +1198,7 @@
     },
     {
       "name": "Handstand Push-ups",
+      "animation": "/gifs/handstand-push-ups.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Kľuky v stojke pri stene",
@@ -1127,6 +1212,7 @@
     },
     {
       "name": "Wall Handstand Hold",
+      "animation": "/gifs/wall-handstand-hold.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Výdrž v stojke pri stene",
@@ -1140,6 +1226,7 @@
     },
     {
       "name": "Pseudo Planche Lean",
+      "animation": "/gifs/pseudo-planche-lean.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Predklonenie telom dopredu s oprením o ruky",
@@ -1153,6 +1240,7 @@
     },
     {
       "name": "Shoulder Shrugs",
+      "animation": "/gifs/shoulder-shrugs.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Zdvíhanie ramien smerom k ušiam v stoji",
@@ -1166,6 +1254,7 @@
     },
     {
       "name": "Y-T-W Raises",
+      "animation": "/gifs/y-t-w-raises.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Zdvíhanie rúk do tvaru písmen v predklone",
@@ -1179,6 +1268,7 @@
     },
     {
       "name": "Arm Circles",
+      "animation": "/gifs/arm-circles.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Krúženie paží pre mobilitu a výdrž ramien",
@@ -1192,6 +1282,7 @@
     },
     {
       "name": "The Scarecrow",
+      "animation": "/gifs/the-scarecrow.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Rotácia ramien v pravom uhle pre stabilitu",
@@ -1205,6 +1296,7 @@
     },
     {
       "name": "Shoulder Bridge with Pulses",
+      "animation": "/gifs/shoulder-bridge-with-pulses.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Mostík s vibráciami ramien na podložke",
@@ -1218,6 +1310,7 @@
     },
     {
       "name": "Overhead Arm Reaches",
+      "animation": "/gifs/overhead-arm-reaches.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Natiahnutie paží nad hlavu v ľahu na chrbte",
@@ -1233,6 +1326,7 @@
   "Brucho (Abs)": [
     {
       "name": "Crunches",
+      "animation": "/gifs/crunches.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Skracovačky na brucho",
@@ -1246,6 +1340,7 @@
     },
     {
       "name": "Bicycle Crunches",
+      "animation": "/gifs/bicycle-crunches.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Skracovačky s rotáciou a bicyklovaním",
@@ -1259,6 +1354,7 @@
     },
     {
       "name": "Reverse Crunches",
+      "animation": "/gifs/reverse-crunches.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Zdvíhanie panvy k hrudníku pre dolné brucho",
@@ -1272,6 +1368,7 @@
     },
     {
       "name": "Cable Crunch",
+      "animation": "/gifs/cable-crunch.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Skracovačky na kladke s odporom",
@@ -1285,6 +1382,7 @@
     },
     {
       "name": "Ab Rollout",
+      "animation": "/gifs/ab-rollout.gif",
       "difficulty": "advanced",
       "equipment": "ab wheel",
       "description": "Vyvaľovanie s kolieskom pre celé brucho",
@@ -1298,6 +1396,7 @@
     },
     {
       "name": "Decline Sit-ups",
+      "animation": "/gifs/decline-sit-ups.gif",
       "difficulty": "intermediate",
       "equipment": "bench",
       "description": "Sed-ľahy na klesajúcej lavici",
@@ -1311,6 +1410,7 @@
     },
     {
       "name": "Plank",
+      "animation": "/gifs/plank.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Výdrž v podporu na predlaktiach",
@@ -1324,6 +1424,7 @@
     },
     {
       "name": "Side Plank",
+      "animation": "/gifs/side-plank.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Bočná výdrž pre šikmé svaly",
@@ -1337,6 +1438,7 @@
     },
     {
       "name": "Mountain Climbers",
+      "animation": "/gifs/mountain-climbers.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Dynamický plank s priťahovaním kolien",
@@ -1350,6 +1452,7 @@
     },
     {
       "name": "Dead Bug",
+      "animation": "/gifs/dead-bug.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Striedavé spúšťanie rúk a nôh v ľahu",
@@ -1363,6 +1466,7 @@
     },
     {
       "name": "Hanging Leg Raises",
+      "animation": "/gifs/hanging-leg-raises.gif",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
       "description": "Zdvíhanie nôh vo vise na hrazde",
@@ -1376,6 +1480,7 @@
     },
     {
       "name": "Hanging Knee Raises",
+      "animation": "/gifs/hanging-knee-raises.gif",
       "difficulty": "beginner",
       "equipment": "pullup bar",
       "description": "Zdvíhanie pokrčených kolien vo vise",
@@ -1389,6 +1494,7 @@
     },
     {
       "name": "Toes to Bar",
+      "animation": "/gifs/toes-to-bar.gif",
       "difficulty": "advanced",
       "equipment": "pullup bar",
       "description": "Zdvíhanie nôh až k hrazde",
@@ -1402,6 +1508,7 @@
     },
     {
       "name": "L-Sit",
+      "animation": "/gifs/l-sit.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Výdrž v sede s nohami vo vzduchu na bradlách alebo zemi",
@@ -1415,6 +1522,7 @@
     },
     {
       "name": "V-Sit",
+      "animation": "/gifs/v-sit.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "L-sit s nohami vyššie pre väčšiu náročnosť",
@@ -1428,6 +1536,7 @@
     },
     {
       "name": "Dragon Flag",
+      "animation": "/gifs/dragon-flag.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Výdrž telom vo vzduchu v ľahu s oprením o hlavu",
@@ -1441,6 +1550,7 @@
     },
     {
       "name": "Hollow Body Hold",
+      "animation": "/gifs/hollow-body-hold.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Výdrž v pozícii dutého tela (celé telo v linke)",
@@ -1454,6 +1564,7 @@
     },
     {
       "name": "Hollow Body Rocks",
+      "animation": "/gifs/hollow-body-rocks.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Hojdanie v hollow body pozícii",
@@ -1467,6 +1578,7 @@
     },
     {
       "name": "V-Ups",
+      "animation": "/gifs/v-ups.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Súčasné zdvíhanie trupu a nôh do V",
@@ -1480,6 +1592,7 @@
     },
     {
       "name": "Windshield Wipers",
+      "animation": "/gifs/windshield-wipers.gif",
       "difficulty": "advanced",
       "equipment": "pullup bar",
       "description": "Rotácia nôh do strán vo vise",
@@ -1493,6 +1606,7 @@
     },
     {
       "name": "The Hundred",
+      "animation": "/gifs/the-hundred.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Kmitanie rukami v ľahu s nohami vo vzduchu, dýchanie",
@@ -1506,6 +1620,7 @@
     },
     {
       "name": "Criss-Cross",
+      "animation": "/gifs/criss-cross.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Pomalé bicyklovanie s vytáčaním trupu",
@@ -1519,6 +1634,7 @@
     },
     {
       "name": "Teaser",
+      "animation": "/gifs/teaser.gif",
       "difficulty": "advanced",
       "equipment": "mat",
       "description": "Komplexný cvik - dvíhanie trupu a nôh do tvaru V",
@@ -1532,6 +1648,7 @@
     },
     {
       "name": "Single Leg Circle",
+      "animation": "/gifs/single-leg-circle.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Krúženie jednou nohou v ľahu na chrbte",
@@ -1545,6 +1662,7 @@
     },
     {
       "name": "Rolling Back",
+      "animation": "/gifs/rolling-back.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Valcovanie sa po chrbtici s rukmi skrížením",
@@ -1558,6 +1676,7 @@
     },
     {
       "name": "Double Leg Stretch",
+      "animation": "/gifs/double-leg-stretch.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Striedavé ohýbanie a otváranie nôh v ľahu",
@@ -1571,6 +1690,7 @@
     },
     {
       "name": "Single Leg Stretch",
+      "animation": "/gifs/single-leg-stretch.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Striedavé priťahovanie kolien k hrudníku",
@@ -1584,6 +1704,7 @@
     },
     {
       "name": "Scissors",
+      "animation": "/gifs/scissors.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Strihanie nohami vo vzduchu",
@@ -1599,6 +1720,7 @@
   "Chrbát (Back)": [
     {
       "name": "Pull-ups",
+      "animation": "/gifs/pullup.gif",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
       "description": "Zhyby nadhmatom na šírku ramien",
@@ -1612,6 +1734,7 @@
     },
     {
       "name": "Wide Grip Pull-ups",
+      "animation": "/gifs/wide-grip-pull-ups.gif",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
       "description": "Zhyby so širokým úchopom pre šírku chrbta",
@@ -1625,6 +1748,7 @@
     },
     {
       "name": "Close Grip Pull-ups",
+      "animation": "/gifs/close-grip-pull-ups.gif",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
       "description": "Zhyby s úzkym úchopom",
@@ -1638,6 +1762,7 @@
     },
     {
       "name": "Neutral Grip Pull-ups",
+      "animation": "/gifs/neutral-grip-pull-ups.gif",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
       "description": "Zhyby s neutrálnym úchopom (dlane k sebe)",
@@ -1651,6 +1776,7 @@
     },
     {
       "name": "Lat Pulldown",
+      "animation": "/gifs/lat-pulldown.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Ťahy hornej kladky k hrudníku",
@@ -1664,6 +1790,7 @@
     },
     {
       "name": "Close Grip Lat Pulldown",
+      "animation": "/gifs/close-grip-lat-pulldown.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Ťahy s úzkym úchopom pre strednú časť chrbta",
@@ -1677,6 +1804,7 @@
     },
     {
       "name": "Barbell Row",
+      "animation": "/gifs/barbell-row.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Veslovanie s veľkou činkou v predklone",
@@ -1690,6 +1818,7 @@
     },
     {
       "name": "Pendlay Row",
+      "animation": "/gifs/pendlay-row.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Explozívne veslovanie zo zeme",
@@ -1703,6 +1832,7 @@
     },
     {
       "name": "Dumbbell Row",
+      "animation": "/gifs/dumbbell-row.gif",
       "difficulty": "beginner",
       "equipment": "dumbbell",
       "description": "Jednoručné veslovanie s oporou o lavičku",
@@ -1716,6 +1846,7 @@
     },
     {
       "name": "Chest Supported Row",
+      "animation": "/gifs/chest-supported-row.gif",
       "difficulty": "beginner",
       "equipment": "dumbbells",
       "description": "Veslovanie na šikmej lavici lícom nadol",
@@ -1729,6 +1860,7 @@
     },
     {
       "name": "Seated Cable Row",
+      "animation": "/gifs/seated-cable-row.gif",
       "difficulty": "beginner",
       "equipment": "cable",
       "description": "Veslovanie na spodnej kladke v sede",
@@ -1742,6 +1874,7 @@
     },
     {
       "name": "Single Arm Cable Row",
+      "animation": "/gifs/single-arm-cable-row.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Jednoručné veslovanie na kladke",
@@ -1755,6 +1888,7 @@
     },
     {
       "name": "T-Bar Row",
+      "animation": "/gifs/t-bar-row.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Veslovanie na T-bar stroji alebo činke v rohu",
@@ -1768,6 +1902,7 @@
     },
     {
       "name": "Deadlift",
+      "animation": "/gifs/deadlift.gif",
       "difficulty": "advanced",
       "equipment": "barbell",
       "description": "Mŕtvy ťah - kráľ cvikov na chrbát",
@@ -1781,6 +1916,7 @@
     },
     {
       "name": "Rack Pull",
+      "animation": "/gifs/rack-pull.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Deadlift z vyvýšenej pozície",
@@ -1794,6 +1930,7 @@
     },
     {
       "name": "Good Morning",
+      "animation": "/gifs/good-morning.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Predklony s činkou na chrbte pre vzpriamovače",
@@ -1807,6 +1944,7 @@
     },
     {
       "name": "Machine Row",
+      "animation": "/gifs/machine-row.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Veslovanie na stroji pre bezpečný tréning",
@@ -1820,6 +1958,7 @@
     },
     {
       "name": "Australian Pull-ups",
+      "animation": "/gifs/australian-pull-ups.gif",
       "difficulty": "beginner",
       "equipment": "pullup bar",
       "description": "Horizontálne príťahy k nízkej hrazde",
@@ -1833,6 +1972,7 @@
     },
     {
       "name": "Archer Pull-ups",
+      "animation": "/gifs/archer-pull-ups.gif",
       "difficulty": "advanced",
       "equipment": "pullup bar",
       "description": "Zhyby s pohybom ku jednej ruke, druhá je viac vystretá",
@@ -1846,6 +1986,7 @@
     },
     {
       "name": "Muscle-up",
+      "animation": "/gifs/muscle-up.gif",
       "difficulty": "advanced",
       "equipment": "pullup bar",
       "description": "Výmyk - vytiahnutie sa až nad hrazdu",
@@ -1859,6 +2000,7 @@
     },
     {
       "name": "Front Lever",
+      "animation": "/gifs/front-lever.gif",
       "difficulty": "advanced",
       "equipment": "pullup bar",
       "description": "Výdrž telom vo vzduchu kolmo pod hrazdu",
@@ -1872,6 +2014,7 @@
     },
     {
       "name": "Back Lever",
+      "animation": "/gifs/back-lever.gif",
       "difficulty": "advanced",
       "equipment": "pullup bar",
       "description": "Výdrž telom za hrazdou vo vodorovnej pozícii",
@@ -1885,6 +2028,7 @@
     },
     {
       "name": "Skin the Cat",
+      "animation": "/gifs/skin-the-cat.gif",
       "difficulty": "intermediate",
       "equipment": "pullup bar",
       "description": "Pretočenie telom pod hrazdou a späť",
@@ -1898,6 +2042,7 @@
     },
     {
       "name": "Ring Rows",
+      "animation": "/gifs/ring-rows.gif",
       "difficulty": "beginner",
       "equipment": "gymnastics rings",
       "description": "Horizontálne príťahy na kruhoch",
@@ -1911,6 +2056,7 @@
     },
     {
       "name": "Swimming",
+      "animation": "/gifs/swimming.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Kmitanie rukami a nohami v ľahu na bruchu",
@@ -1924,6 +2070,7 @@
     },
     {
       "name": "Swan Dive",
+      "animation": "/gifs/swan-dive.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Záklony chrbta v ľahu na bruchu",
@@ -1937,6 +2084,7 @@
     },
     {
       "name": "Back Extension",
+      "animation": "/gifs/back-extension.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Zdvíhanie hornej polovice tela v ľahu na bruchu",
@@ -1950,6 +2098,7 @@
     },
     {
       "name": "Spine Stretch Forward",
+      "animation": "/gifs/spine-stretch-forward.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Natiahnutie chrbta v sede s predklonom",
@@ -1963,6 +2112,7 @@
     },
     {
       "name": "Saw",
+      "animation": "/gifs/saw.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Pílenie chrbta s rotáciou trupu v sede",
@@ -1978,11 +2128,11 @@
   "Stehná (Quads)": [
     {
       "name": "Barbell Squat",
+      "animation": "/gifs/barbell-squat.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Drepy s činkou na chrbte",
       "modes": ["bodybuilding"],
-      "animation": "/squats.gif",
       "tips": [
         "Činku polož na trapézy, nie na krk",
         "Kolená smerujú rovnako ako špičky",
@@ -1992,6 +2142,7 @@
     },
     {
       "name": "Front Squat",
+      "animation": "/gifs/front-squat.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Drepy s činkou vpredu na ramenách",
@@ -2005,6 +2156,7 @@
     },
     {
       "name": "Goblet Squat",
+      "animation": "/gifs/goblet-squat.gif",
       "difficulty": "beginner",
       "equipment": "dumbbell",
       "description": "Drep s jednoručkou pri hrudníku",
@@ -2018,6 +2170,7 @@
     },
     {
       "name": "Leg Press",
+      "animation": "/gifs/leg-press.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Tlačenie nohami na stroji v sede",
@@ -2031,6 +2184,7 @@
     },
     {
       "name": "Hack Squat",
+      "animation": "/gifs/hack-squat.gif",
       "difficulty": "intermediate",
       "equipment": "machine",
       "description": "Drep na hack squat stroji",
@@ -2044,6 +2198,7 @@
     },
     {
       "name": "Leg Extension",
+      "animation": "/gifs/leg-extension.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Vystieranie nôh na stroji pre izoláciu quadricepsov",
@@ -2057,6 +2212,7 @@
     },
     {
       "name": "Walking Lunges",
+      "animation": "/gifs/walking-lunges.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Výpady v chôdzi",
@@ -2070,6 +2226,7 @@
     },
     {
       "name": "Stationary Lunges",
+      "animation": "/gifs/stationary-lunges.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Výpady na mieste",
@@ -2083,6 +2240,7 @@
     },
     {
       "name": "Reverse Lunges",
+      "animation": "/gifs/reverse-lunges.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Výpady dozadu",
@@ -2096,6 +2254,7 @@
     },
     {
       "name": "Bulgarian Split Squat",
+      "animation": "/gifs/bulgarian-split-squat.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Drep s jednou nohou na lavičke za sebou",
@@ -2109,6 +2268,7 @@
     },
     {
       "name": "Step-ups",
+      "animation": "/gifs/step-ups.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Výstupy na lavičku alebo box",
@@ -2122,6 +2282,7 @@
     },
     {
       "name": "Pistol Squat",
+      "animation": "/gifs/pistol-squat.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Drep na jednej nohe",
@@ -2135,6 +2296,7 @@
     },
     {
       "name": "Shrimp Squat",
+      "animation": "/gifs/shrimp-squat.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Drep na jednej nohe so zadnou nohou chytenou za sebou",
@@ -2148,6 +2310,7 @@
     },
     {
       "name": "Jump Squat",
+      "animation": "/gifs/jump-squat.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Výbušné drepy s výskokom",
@@ -2161,6 +2324,7 @@
     },
     {
       "name": "Box Jump",
+      "animation": "/gifs/box-jump.gif",
       "difficulty": "intermediate",
       "equipment": "box",
       "description": "Výskok na box alebo vyvýšenú plochu",
@@ -2174,6 +2338,7 @@
     },
     {
       "name": "Wall Sit",
+      "animation": "/gifs/wall-sit.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Výdrž v sede s chrbtom opretým o stenu",
@@ -2187,6 +2352,7 @@
     },
     {
       "name": "Sissy Squat",
+      "animation": "/gifs/sissy-squat.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Drep s telom naklopeným dozadu",
@@ -2200,6 +2366,7 @@
     },
     {
       "name": "Side Leg Kicks",
+      "animation": "/gifs/side-leg-kicks.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Unožovanie v ľahu na boku",
@@ -2213,6 +2380,7 @@
     },
     {
       "name": "Double Leg Kick",
+      "animation": "/gifs/double-leg-kick.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Zakopávanie oboch nôh v ľahu na bruchu",
@@ -2226,6 +2394,7 @@
     },
     {
       "name": "Inner Thigh Lifts",
+      "animation": "/gifs/inner-thigh-lifts.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Zdvíhanie vnútorného stehenného svalu v ľahu na boku",
@@ -2239,6 +2408,7 @@
     },
     {
       "name": "Front Leg Raises",
+      "animation": "/gifs/front-leg-raises.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Zdvíhanie nôh dopredu v ľahu na chrbte",
@@ -2252,6 +2422,7 @@
     },
     {
       "name": "Leg Circles",
+      "animation": "/gifs/leg-circles.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Krúženie nohou v ľahu na boku",
@@ -2267,6 +2438,7 @@
   "Zadné stehenné svaly (Hamstrings)": [
     {
       "name": "Romanian Deadlift",
+      "animation": "/gifs/romanian-deadlift.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Rumunský mŕtvy ťah s vystretými nohami",
@@ -2280,6 +2452,7 @@
     },
     {
       "name": "Stiff Leg Deadlift",
+      "animation": "/gifs/stiff-leg-deadlift.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Mŕtvy ťah s takmer vystretými nohami",
@@ -2293,6 +2466,7 @@
     },
     {
       "name": "Dumbbell Romanian Deadlift",
+      "animation": "/gifs/dumbbell-romanian-deadlift.gif",
       "difficulty": "beginner",
       "equipment": "dumbbells",
       "description": "RDL s jednoručkami pre lepšiu kontrolu",
@@ -2306,6 +2480,7 @@
     },
     {
       "name": "Single Leg Romanian Deadlift",
+      "animation": "/gifs/single-leg-romanian-deadlift.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbell",
       "description": "RDL na jednej nohe pre stabilitu a izoláciu",
@@ -2319,6 +2494,7 @@
     },
     {
       "name": "Lying Leg Curl",
+      "animation": "/gifs/lying-leg-curl.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Zakopávanie na stroji v ľahu na bruchu",
@@ -2332,6 +2508,7 @@
     },
     {
       "name": "Seated Leg Curl",
+      "animation": "/gifs/seated-leg-curl.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Zakopávanie na stroji v sede",
@@ -2345,6 +2522,7 @@
     },
     {
       "name": "Nordic Curl",
+      "animation": "/gifs/nordic-curl.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Spúšťanie tela s fixovanými členkami",
@@ -2358,6 +2536,7 @@
     },
     {
       "name": "Glute Ham Raise",
+      "animation": "/gifs/glute-ham-raise.gif",
       "difficulty": "advanced",
       "equipment": "machine",
       "description": "Zdvíhanie trupu pomocou hamstringov na GHD",
@@ -2371,6 +2550,7 @@
     },
     {
       "name": "Swiss Ball Leg Curl",
+      "animation": "/gifs/swiss-ball-leg-curl.gif",
       "difficulty": "intermediate",
       "equipment": "ball",
       "description": "Zakopávanie na fitlopte",
@@ -2384,6 +2564,7 @@
     },
     {
       "name": "Good Morning",
+      "animation": "/gifs/good-morning.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Predklony v stoji pre hamstringy a spodný chrbát",
@@ -2397,6 +2578,7 @@
     },
     {
       "name": "Single Leg Deadlift",
+      "animation": "/gifs/single-leg-deadlift.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Mŕtvy ťah na jednej nohe bez záťaže",
@@ -2410,6 +2592,7 @@
     },
     {
       "name": "Slider Leg Curl",
+      "animation": "/gifs/slider-leg-curl.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Zakopávanie so slidrami alebo uterákom",
@@ -2423,6 +2606,7 @@
     },
     {
       "name": "Shoulder Bridge",
+      "animation": "/gifs/shoulder-bridge.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Mostík na ramenách so zdvíhaním jednej nohy",
@@ -2436,6 +2620,7 @@
     },
     {
       "name": "Bridge with Leg Lifts",
+      "animation": "/gifs/bridge-with-leg-lifts.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Mostík s striedavým zdvíhaním nôh",
@@ -2449,6 +2634,7 @@
     },
     {
       "name": "Hamstring Curls on Mat",
+      "animation": "/gifs/hamstring-curls-on-mat.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Zakopávanie v ľahu na bruchu na podložke",
@@ -2462,6 +2648,7 @@
     },
     {
       "name": "Donkey Kicks",
+      "animation": "/gifs/donkey-kicks.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Kopanie nohou dozadu v podpore na štyroch",
@@ -2477,6 +2664,7 @@
   "Lýtka (Calves)": [
     {
       "name": "Standing Calf Raise",
+      "animation": "/gifs/standing-calf-raise.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Výpony na stroji v stoji",
@@ -2490,6 +2678,7 @@
     },
     {
       "name": "Seated Calf Raise",
+      "animation": "/gifs/seated-calf-raise.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Výpony v sede pre soleus",
@@ -2503,6 +2692,7 @@
     },
     {
       "name": "Donkey Calf Raise",
+      "animation": "/gifs/donkey-calf-raise.gif",
       "difficulty": "intermediate",
       "equipment": "machine",
       "description": "Výpony v predklone s váhou na chrbte",
@@ -2516,6 +2706,7 @@
     },
     {
       "name": "Leg Press Calf Raise",
+      "animation": "/gifs/leg-press-calf-raise.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Výpony na leg press stroji",
@@ -2529,6 +2720,7 @@
     },
     {
       "name": "Smith Machine Calf Raise",
+      "animation": "/gifs/smith-machine-calf-raise.gif",
       "difficulty": "beginner",
       "equipment": "machine",
       "description": "Výpony na Smith stroji",
@@ -2542,6 +2734,7 @@
     },
     {
       "name": "Single Leg Calf Raise",
+      "animation": "/gifs/single-leg-calf-raise.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Výpony na jednej nohe",
@@ -2555,6 +2748,7 @@
     },
     {
       "name": "Dumbbell Calf Raise",
+      "animation": "/gifs/dumbbell-calf-raise.gif",
       "difficulty": "beginner",
       "equipment": "dumbbells",
       "description": "Výpony s jednoručkami v rukách",
@@ -2568,6 +2762,7 @@
     },
     {
       "name": "Bodyweight Calf Raise",
+      "animation": "/gifs/bodyweight-calf-raise.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Výpony s vlastnou váhou",
@@ -2581,6 +2776,7 @@
     },
     {
       "name": "Calf Raises on Stairs",
+      "animation": "/gifs/calf-raises-on-stairs.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Výpony na schodíku",
@@ -2594,6 +2790,7 @@
     },
     {
       "name": "Jump Rope",
+      "animation": "/gifs/jump-rope.gif",
       "difficulty": "intermediate",
       "equipment": "rope",
       "description": "Skákanie cez švihadlo",
@@ -2607,6 +2804,7 @@
     },
     {
       "name": "Box Jump",
+      "animation": "/gifs/box-jump.gif",
       "difficulty": "intermediate",
       "equipment": "box",
       "description": "Výskoky na box s dôrazom na odraz",
@@ -2620,6 +2818,7 @@
     },
     {
       "name": "Pogo Jumps",
+      "animation": "/gifs/pogo-jumps.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Rýchle malé výskoky na mieste",
@@ -2633,6 +2832,7 @@
     },
     {
       "name": "Farmer's Walk on Toes",
+      "animation": "/gifs/farmers-walk-on-toes.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Chôdza na špičkách s činkami",
@@ -2646,6 +2846,7 @@
     },
     {
       "name": "Relevé",
+      "animation": "/gifs/releve.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Výpony v baletnej pozícii",
@@ -2659,6 +2860,7 @@
     },
     {
       "name": "Relevé March",
+      "animation": "/gifs/releve-march.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Chôdza na prstoch s vysokými výponmi",
@@ -2672,6 +2874,7 @@
     },
     {
       "name": "Calf Stretch",
+      "animation": "/gifs/calf-stretch.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Natiahnutie lýtok",
@@ -2687,6 +2890,7 @@
   "Zadok (Glutes)": [
     {
       "name": "Hip Thrust",
+      "animation": "/gifs/hip-thrust.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Zdvíhanie panvy s činkou na bokoch",
@@ -2700,6 +2904,7 @@
     },
     {
       "name": "Barbell Hip Thrust",
+      "animation": "/gifs/barbell-hip-thrust.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Hip thrust s veľkou činkou",
@@ -2713,6 +2918,7 @@
     },
     {
       "name": "Single Leg Hip Thrust",
+      "animation": "/gifs/single-leg-hip-thrust.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Hip thrust na jednej nohe",
@@ -2726,6 +2932,7 @@
     },
     {
       "name": "Cable Pull Through",
+      "animation": "/gifs/cable-pull-through.gif",
       "difficulty": "intermediate",
       "equipment": "cable",
       "description": "Preťahovanie na spodnej kladke",
@@ -2739,6 +2946,7 @@
     },
     {
       "name": "Cable Kickback",
+      "animation": "/gifs/cable-kickback.gif",
       "difficulty": "beginner",
       "equipment": "cable",
       "description": "Kopanie nohou dozadu na kladke",
@@ -2752,6 +2960,7 @@
     },
     {
       "name": "Sumo Deadlift",
+      "animation": "/gifs/sumo-deadlift.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "Mŕtvy ťah so širokým postojom",
@@ -2765,6 +2974,7 @@
     },
     {
       "name": "Romanian Deadlift",
+      "animation": "/gifs/romanian-deadlift.gif",
       "difficulty": "intermediate",
       "equipment": "barbell",
       "description": "RDL aktivuje aj glutey pri extenzii",
@@ -2778,6 +2988,7 @@
     },
     {
       "name": "Bulgarian Split Squat",
+      "animation": "/gifs/bulgarian-split-squat.gif",
       "difficulty": "intermediate",
       "equipment": "dumbbells",
       "description": "Drep s jednou nohou na lavičke",
@@ -2791,6 +3002,7 @@
     },
     {
       "name": "Walking Lunges",
+      "animation": "/gifs/walking-lunges.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Výpady v chôdzi pre glutey",
@@ -2804,6 +3016,7 @@
     },
     {
       "name": "Glute Bridge",
+      "animation": "/gifs/glute-bridge.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Zdvíhanie panvy v ľahu na chrbte",
@@ -2817,6 +3030,7 @@
     },
     {
       "name": "Single Leg Glute Bridge",
+      "animation": "/gifs/single-leg-glute-bridge.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Glute bridge na jednej nohe",
@@ -2830,6 +3044,7 @@
     },
     {
       "name": "Donkey Kicks",
+      "animation": "/gifs/donkey-kicks.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Kopanie nohou dozadu na štyroch",
@@ -2843,6 +3058,7 @@
     },
     {
       "name": "Fire Hydrants",
+      "animation": "/gifs/fire-hydrants.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Zdvíhanie kolena do strany na štyroch",
@@ -2856,6 +3072,7 @@
     },
     {
       "name": "Frog Pumps",
+      "animation": "/gifs/frog-pumps.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Glute bridge s chodidlami spolu",
@@ -2869,6 +3086,7 @@
     },
     {
       "name": "Reverse Lunge",
+      "animation": "/gifs/reverse-lunge.gif",
       "difficulty": "beginner",
       "equipment": "bodyweight",
       "description": "Výpad dozadu pre glutey",
@@ -2882,6 +3100,7 @@
     },
     {
       "name": "Step-ups",
+      "animation": "/gifs/step-ups.gif",
       "difficulty": "intermediate",
       "equipment": "bodyweight",
       "description": "Výstupy na lavičku",
@@ -2895,6 +3114,7 @@
     },
     {
       "name": "Jump Lunges",
+      "animation": "/gifs/jump-lunges.gif",
       "difficulty": "advanced",
       "equipment": "bodyweight",
       "description": "Výpady s výskokom",
@@ -2908,6 +3128,7 @@
     },
     {
       "name": "Clam Shells",
+      "animation": "/gifs/clam-shells.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Otváranie kolien v ľahu na boku",
@@ -2921,6 +3142,7 @@
     },
     {
       "name": "Side Lying Hip Abduction",
+      "animation": "/gifs/side-lying-hip-abduction.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Zdvíhanie nohy do strany v ľahu na boku",
@@ -2934,6 +3156,7 @@
     },
     {
       "name": "Heel Beats",
+      "animation": "/gifs/heel-beats.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Búchanie pätami o seba v ľahu na bruchu",
@@ -2947,6 +3170,7 @@
     },
     {
       "name": "Side Kick Circles",
+      "animation": "/gifs/side-kick-circles.gif",
       "difficulty": "intermediate",
       "equipment": "mat",
       "description": "Krúženie nohou v ľahu na boku",
@@ -2960,6 +3184,7 @@
     },
     {
       "name": "Glute Lifts",
+      "animation": "/gifs/glute-lifts.gif",
       "difficulty": "beginner",
       "equipment": "mat",
       "description": "Zdvíhanie nôh v ľahu na bruchu",
