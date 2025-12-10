@@ -76,8 +76,53 @@ function getExercisesForMuscle(muscle, mode, difficulty) {
   return filtered
 }
 
+// Get age modifier based on age category
+function getAgeModifier(ageCategory) {
+  switch(ageCategory) {
+    case '50+': return { setsMultiplier: 0.7, restMultiplier: 1.5 }
+    case '40-50': return { setsMultiplier: 0.85, restMultiplier: 1.25 }
+    default: return { setsMultiplier: 1, restMultiplier: 1 }
+  }
+}
+
+// Get equipment filter based on available equipment
+function getEquipmentFilter(availableEquipment) {
+  switch(availableEquipment) {
+    case 'none': return ['bodyweight', 'mat', 'none', 'pullup bar']
+    case 'home-basic': return ['bodyweight', 'mat', 'none', 'dumbbells', 'dumbbell', 'kettlebell', 'resistance band', 'ball', 'pullup bar', 'box']
+    default: return null // null means all equipment allowed
+  }
+}
+
+// Get exercise count based on workout duration
+function getExerciseCountModifier(workoutDuration) {
+  switch(workoutDuration) {
+    case '15-20': return 0.5
+    case '30-45': return 0.75
+    case '45-60': return 1
+    case '60+': return 1.25
+    default: return 1
+  }
+}
+
+// Check if exercise should be avoided based on health limitations
+function shouldAvoidExercise(exercise, healthLimitations) {
+  if (!healthLimitations || healthLimitations === 'none') return false
+
+  const avoidPatterns = {
+    'back': ['deadlift', 'mŕtvy', 'bent over', 'predklon', 'good morning', 'hyperextenz'],
+    'knees': ['squat', 'drep', 'lunge', 'výpad', 'leg press', 'leg extension'],
+    'shoulders': ['overhead', 'nad hlavou', 'military press', 'tlaky', 'upright row']
+  }
+
+  const patterns = avoidPatterns[healthLimitations] || []
+  const exerciseName = exercise.name.toLowerCase()
+
+  return patterns.some(pattern => exerciseName.includes(pattern.toLowerCase()))
+}
+
 // Calculate sets and reps based on goal
-function getSetsReps(goal, experience) {
+function getSetsReps(goal, experience, ageCategory) {
   const configs = {
     'lose-weight': { sets: 3, reps: '12-15', rest: '45-60s' },
     'build-muscle': { sets: 4, reps: '8-12', rest: '60-90s' },
@@ -86,26 +131,51 @@ function getSetsReps(goal, experience) {
     'strength': { sets: 5, reps: '3-6', rest: '2-3min' }
   }
 
-  const config = configs[goal] || configs['build-muscle']
+  const config = { ...configs[goal] || configs['build-muscle'] }
 
   // Adjust for beginners
   if (experience === 'beginner') {
     config.sets = Math.max(2, config.sets - 1)
   }
 
+  // Adjust for age
+  const ageModifier = getAgeModifier(ageCategory)
+  config.sets = Math.max(2, Math.round(config.sets * ageModifier.setsMultiplier))
+
   return config
 }
 
 // Generate workout for a single day
-function generateDayWorkout(dayConfig, mode, difficulty, goal) {
-  const { sets, reps, rest } = getSetsReps(goal, difficulty)
+function generateDayWorkout(dayConfig, mode, difficulty, goal, options = {}) {
+  const { ageCategory, availableEquipment, workoutDuration, healthLimitations } = options
+  const { sets, reps, rest } = getSetsReps(goal, difficulty, ageCategory)
   const dayExercises = []
 
+  // Get equipment filter
+  const equipmentFilter = getEquipmentFilter(availableEquipment)
+
+  // Get exercise count modifier based on duration
+  const durationModifier = getExerciseCountModifier(workoutDuration)
+
   // Get exercises per muscle (limit to keep workouts reasonable)
-  const exercisesPerMuscle = mode === 'pilates' ? 2 : 2
+  const baseExercisesPerMuscle = mode === 'pilates' ? 2 : 2
+  const exercisesPerMuscle = Math.max(1, Math.round(baseExercisesPerMuscle * durationModifier))
 
   for (const muscle of dayConfig.muscles) {
-    const muscleExercises = getExercisesForMuscle(muscle, mode, difficulty)
+    let muscleExercises = getExercisesForMuscle(muscle, mode, difficulty)
+
+    // Filter by equipment if needed
+    if (equipmentFilter) {
+      muscleExercises = muscleExercises.filter(ex => {
+        if (!ex.equipment) return true
+        return equipmentFilter.includes(ex.equipment.toLowerCase())
+      })
+    }
+
+    // Filter out exercises based on health limitations
+    if (healthLimitations && healthLimitations !== 'none') {
+      muscleExercises = muscleExercises.filter(ex => !shouldAvoidExercise(ex, healthLimitations))
+    }
 
     // Take top exercises for this muscle
     const selected = muscleExercises.slice(0, exercisesPerMuscle)
@@ -132,14 +202,23 @@ function generateDayWorkout(dayConfig, mode, difficulty, goal) {
 
 // Main function to generate a training plan
 export function generatePlan(profile, goals) {
-  const { trainingStyle, workoutFrequency, experienceLevel, primaryGoal } = goals
+  const { trainingStyle, workoutFrequency, experienceLevel, primaryGoal, availableEquipment, workoutDuration, healthLimitations } = goals
+  const { ageCategory } = profile || {}
 
   // Get split configuration
   const splitConfig = SPLIT_CONFIGS[workoutFrequency] || SPLIT_CONFIGS['4-5']
 
+  // Options for workout generation
+  const options = {
+    ageCategory,
+    availableEquipment,
+    workoutDuration,
+    healthLimitations
+  }
+
   // Generate schedule
   const schedule = splitConfig.days.map(dayConfig =>
-    generateDayWorkout(dayConfig, trainingStyle, experienceLevel, primaryGoal)
+    generateDayWorkout(dayConfig, trainingStyle, experienceLevel, primaryGoal, options)
   )
 
   // Calculate stats

@@ -4,14 +4,12 @@ import { useNavigate } from 'react-router-dom'
 function GoalsWizard() {
   const navigate = useNavigate()
   const [step, setStep] = useState(1)
-  const totalSteps = 8
+  const totalSteps = 11
 
   // Personal profile data
   const [profile, setProfile] = useState({
     gender: '',
-    birthDay: '',
-    birthMonth: '',
-    birthYear: '',
+    ageCategory: '',
     height: 170,
     currentWeight: 70,
     targetWeight: 70,
@@ -24,23 +22,33 @@ function GoalsWizard() {
     experienceLevel: '',
     workoutFrequency: '',
     trainingStyle: '',
+    availableEquipment: '',
+    workoutDuration: '',
+    healthLimitations: '',
     focusAreas: []
   })
+
+  // Age categories
+  const ageCategories = [
+    { value: '15-20', label: '15-20 rokov' },
+    { value: '20-25', label: '20-25 rokov' },
+    { value: '25-30', label: '25-30 rokov' },
+    { value: '30-35', label: '30-35 rokov' },
+    { value: '35-40', label: '35-40 rokov' },
+    { value: '40-50', label: '40-50 rokov' },
+    { value: '50+', label: '50+ rokov' }
+  ]
 
   const handleNext = () => {
     if (step < totalSteps) {
       setStep(step + 1)
     } else {
       // Save profile
-      const birthDate = profile.birthYear && profile.birthMonth && profile.birthDay
-        ? `${profile.birthYear}-${profile.birthMonth.padStart(2, '0')}-${profile.birthDay.padStart(2, '0')}`
-        : null
-
       const existingProfile = JSON.parse(localStorage.getItem('userProfile') || '{}')
       localStorage.setItem('userProfile', JSON.stringify({
         ...existingProfile,
         gender: profile.gender,
-        birthDate,
+        ageCategory: profile.ageCategory,
         height: profile.height,
         currentWeight: profile.currentWeight,
         targetWeight: profile.targetWeight,
@@ -68,30 +76,21 @@ function GoalsWizard() {
   const isStepValid = () => {
     switch(step) {
       case 1: return profile.gender !== ''
-      case 2: return profile.birthDay && profile.birthMonth && profile.birthYear
+      case 2: return profile.ageCategory !== ''
       case 3: return profile.height > 0 && profile.currentWeight > 0
       case 4: return profile.activityLevel !== ''
-      case 5: return goals.primaryGoal !== ''
-      case 6: return goals.experienceLevel !== ''
-      case 7: return goals.workoutFrequency !== ''
-      case 8: return goals.trainingStyle !== ''
+      case 5: return goals.availableEquipment !== ''
+      case 6: return goals.workoutDuration !== ''
+      case 7: return goals.healthLimitations !== ''
+      case 8: return goals.primaryGoal !== ''
+      case 9: return goals.experienceLevel !== ''
+      case 10: return goals.workoutFrequency !== ''
+      case 11: return goals.trainingStyle !== ''
       default: return false
     }
   }
 
   const progress = Math.round((step / totalSteps) * 100)
-
-  // Generate year options (1940-2010)
-  const years = Array.from({ length: 71 }, (_, i) => 2010 - i)
-  const months = [
-    { value: '1', label: 'Január' }, { value: '2', label: 'Február' },
-    { value: '3', label: 'Marec' }, { value: '4', label: 'Apríl' },
-    { value: '5', label: 'Máj' }, { value: '6', label: 'Jún' },
-    { value: '7', label: 'Júl' }, { value: '8', label: 'August' },
-    { value: '9', label: 'September' }, { value: '10', label: 'Október' },
-    { value: '11', label: 'November' }, { value: '12', label: 'December' }
-  ]
-  const days = Array.from({ length: 31 }, (_, i) => i + 1)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-50 flex items-center justify-center p-4">
@@ -156,54 +155,28 @@ function GoalsWizard() {
             </div>
           )}
 
-          {/* Step 2: Birth Date */}
+          {/* Step 2: Age Category */}
           {step === 2 && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-neutral-900 mb-2">Kedy si sa narodil/a?</h2>
-                <p className="text-neutral-500">Použijeme to na výpočet veku a odporúčaní</p>
+                <h2 className="text-2xl font-bold text-neutral-900 mb-2">Koľko máš rokov?</h2>
+                <p className="text-neutral-500">Pomôže nám prispôsobiť náročnosť tréningu</p>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 mb-2">Deň</label>
-                  <select
-                    value={profile.birthDay}
-                    onChange={(e) => setProfile({ ...profile, birthDay: e.target.value })}
-                    className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all outline-none bg-neutral-50 focus:bg-white"
+              <div className="space-y-3">
+                {ageCategories.map(option => (
+                  <button
+                    key={option.value}
+                    onClick={() => setProfile({ ...profile, ageCategory: option.value })}
+                    className={`w-full p-4 rounded-xl border-2 transition-all text-left ${
+                      profile.ageCategory === option.value
+                        ? 'border-neutral-900 bg-neutral-50 shadow-soft'
+                        : 'border-neutral-200 hover:border-neutral-300'
+                    }`}
                   >
-                    <option value="">-</option>
-                    {days.map(day => (
-                      <option key={day} value={day}>{day}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 mb-2">Mesiac</label>
-                  <select
-                    value={profile.birthMonth}
-                    onChange={(e) => setProfile({ ...profile, birthMonth: e.target.value })}
-                    className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all outline-none bg-neutral-50 focus:bg-white"
-                  >
-                    <option value="">-</option>
-                    {months.map(month => (
-                      <option key={month.value} value={month.value}>{month.label}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-neutral-700 mb-2">Rok</label>
-                  <select
-                    value={profile.birthYear}
-                    onChange={(e) => setProfile({ ...profile, birthYear: e.target.value })}
-                    className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all outline-none bg-neutral-50 focus:bg-white"
-                  >
-                    <option value="">-</option>
-                    {years.map(year => (
-                      <option key={year} value={year}>{year}</option>
-                    ))}
-                  </select>
-                </div>
+                    <span className="text-lg font-semibold text-neutral-900">{option.label}</span>
+                  </button>
+                ))}
               </div>
             </div>
           )}
@@ -309,8 +282,104 @@ function GoalsWizard() {
             </div>
           )}
 
-          {/* Step 5: Primary Goal */}
+          {/* Step 5: Available Equipment */}
           {step === 5 && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold text-neutral-900 mb-2">Aké vybavenie máš k dispozícii?</h2>
+                <p className="text-neutral-500">Pomôže nám vybrať vhodné cviky</p>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  { value: 'none', label: 'Žiadne vybavenie', desc: 'Len vlastná váha tela' },
+                  { value: 'home-basic', label: 'Základné doma', desc: 'Činky, kettlebell, gumy' },
+                  { value: 'full-gym', label: 'Plne vybavená posilňovňa', desc: 'Stroje, činky, všetko vybavenie' }
+                ].map(option => (
+                  <button
+                    key={option.value}
+                    onClick={() => setGoals({ ...goals, availableEquipment: option.value })}
+                    className={`w-full p-4 rounded-xl border-2 transition-all text-left ${
+                      goals.availableEquipment === option.value
+                        ? 'border-neutral-900 bg-neutral-50 shadow-soft'
+                        : 'border-neutral-200 hover:border-neutral-300'
+                    }`}
+                  >
+                    <div className="font-semibold text-neutral-900">{option.label}</div>
+                    <div className="text-sm text-neutral-500">{option.desc}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Step 6: Workout Duration */}
+          {step === 6 && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold text-neutral-900 mb-2">Koľko času máš na tréning?</h2>
+                <p className="text-neutral-500">Prispôsobíme dĺžku tvojich tréningov</p>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  { value: '15-20', label: '15-20 minút', desc: 'Krátke, intenzívne tréningy' },
+                  { value: '30-45', label: '30-45 minút', desc: 'Štandardná dĺžka tréningu' },
+                  { value: '45-60', label: '45-60 minút', desc: 'Dlhšie, komplexné tréningy' },
+                  { value: '60+', label: '60+ minút', desc: 'Rozsiahle tréningy s oddychom' }
+                ].map(option => (
+                  <button
+                    key={option.value}
+                    onClick={() => setGoals({ ...goals, workoutDuration: option.value })}
+                    className={`w-full p-4 rounded-xl border-2 transition-all text-left ${
+                      goals.workoutDuration === option.value
+                        ? 'border-neutral-900 bg-neutral-50 shadow-soft'
+                        : 'border-neutral-200 hover:border-neutral-300'
+                    }`}
+                  >
+                    <div className="font-semibold text-neutral-900">{option.label}</div>
+                    <div className="text-sm text-neutral-500">{option.desc}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Step 7: Health Limitations */}
+          {step === 7 && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold text-neutral-900 mb-2">Máš nejaké zdravotné obmedzenia?</h2>
+                <p className="text-neutral-500">Vyhneme sa cvikom, ktoré by ti mohli uškodiť</p>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  { value: 'none', label: 'Žiadne obmedzenia', desc: 'Môžem cvičiť bez obmedzení' },
+                  { value: 'back', label: 'Problémy s chrbtom', desc: 'Bolesti chrbta, platničky' },
+                  { value: 'knees', label: 'Problémy s kolenami', desc: 'Bolesti kolien, artróza' },
+                  { value: 'shoulders', label: 'Problémy s ramenami', desc: 'Bolesti ramien, rotátorová manžeta' },
+                  { value: 'other', label: 'Iné obmedzenia', desc: 'Iné zdravotné problémy' }
+                ].map(option => (
+                  <button
+                    key={option.value}
+                    onClick={() => setGoals({ ...goals, healthLimitations: option.value })}
+                    className={`w-full p-4 rounded-xl border-2 transition-all text-left ${
+                      goals.healthLimitations === option.value
+                        ? 'border-neutral-900 bg-neutral-50 shadow-soft'
+                        : 'border-neutral-200 hover:border-neutral-300'
+                    }`}
+                  >
+                    <div className="font-semibold text-neutral-900">{option.label}</div>
+                    <div className="text-sm text-neutral-500">{option.desc}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Step 8: Primary Goal */}
+          {step === 8 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-neutral-900 mb-2">Aký je tvoj hlavný cieľ?</h2>
@@ -341,8 +410,8 @@ function GoalsWizard() {
             </div>
           )}
 
-          {/* Step 6: Experience Level */}
-          {step === 6 && (
+          {/* Step 9: Experience Level */}
+          {step === 9 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-neutral-900 mb-2">Aká je tvoja úroveň skúseností?</h2>
@@ -372,8 +441,8 @@ function GoalsWizard() {
             </div>
           )}
 
-          {/* Step 7: Workout Frequency */}
-          {step === 7 && (
+          {/* Step 10: Workout Frequency */}
+          {step === 10 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-neutral-900 mb-2">Ako často plánuješ cvičiť?</h2>
@@ -403,8 +472,8 @@ function GoalsWizard() {
             </div>
           )}
 
-          {/* Step 8: Training Style */}
-          {step === 8 && (
+          {/* Step 11: Training Style */}
+          {step === 11 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-neutral-900 mb-2">Aký štýl tréningu preferuješ?</h2>
