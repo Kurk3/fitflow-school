@@ -334,6 +334,38 @@ END:VCALENDAR`
     }
   }
 
+  // Export to Notion (copies to clipboard for pasting into Notion)
+  const exportToNotion = async () => {
+    if (workoutExercises.length === 0) {
+      return { success: false, error: 'Žiadne cviky na export' }
+    }
+
+    const stats = getWorkoutStats()
+
+    // Build markdown for Notion
+    let md = `# ${workoutName}\n\n`
+    md += `📅 ${new Date().toLocaleDateString('sk', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}\n\n`
+    md += `---\n\n`
+    md += `## Cviky\n\n`
+
+    workoutExercises.forEach(ex => {
+      md += `- [ ] **${ex.name}** — ${ex.sets}×${ex.reps}${ex.weight > 0 ? ` @ ${ex.weight}${ex.unit}` : ''}\n`
+    })
+
+    md += `\n---\n\n`
+    md += `## Štatistiky\n\n`
+    md += `- Cvikov: ${stats.totalExercises}\n`
+    md += `- Sérií: ${stats.totalSets}\n`
+    md += `- Odhadované trvanie: ~${stats.estimatedDuration} min\n`
+
+    try {
+      await navigator.clipboard.writeText(md)
+      return { success: true }
+    } catch (error) {
+      return { success: false, error: error.message }
+    }
+  }
+
   // Share workout (uses Web Share API if available)
   const shareWorkout = async () => {
     const text = exportToText()
@@ -459,6 +491,7 @@ END:VCALENDAR`
       exportToICS,
       exportToText,
       exportForNotion,
+      exportToNotion,
       shareWorkout,
       getWorkoutStats,
       getWorkoutCalendarData,

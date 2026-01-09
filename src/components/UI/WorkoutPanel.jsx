@@ -567,7 +567,7 @@ function WorkoutPanel({ onClose }) {
 
                 {/* Actions */}
                 <div className="px-5 pb-5">
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 mb-4">
                     <button
                       onClick={handleEditPlan}
                       className="flex-1 py-3 text-sm font-semibold text-gray-900 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
@@ -581,6 +581,20 @@ function WorkoutPanel({ onClose }) {
                       Zmazať
                     </button>
                   </div>
+
+                  {/* Notion Export */}
+                  <button
+                    onClick={async () => {
+                      const success = await copyPlanToNotion()
+                      if (success) setClipboardModal(true)
+                    }}
+                    className="w-full flex items-center justify-center gap-2 py-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                  >
+                    <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466l1.823 1.447zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952l1.448.327s0 .84-1.168.84l-3.22.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933l3.222-.187zM2.83.14L16.042 0c1.634-.047 2.055.046 2.802.605l3.875 2.706c.42.327.56.607.56 1.026v16.304c0 .84-.233 1.354-1.4 1.448L6.326 23.02c-1.121.046-1.775-.14-2.428-.933L1.336 19.1c-.746-.887-.98-1.634-.98-2.428V1.74c0-.793.233-1.4.98-1.6h1.494z"/>
+                    </svg>
+                    <span className="text-sm font-medium text-gray-700">Kopírovať do Notion</span>
+                  </button>
                 </div>
               </div>
             )}
