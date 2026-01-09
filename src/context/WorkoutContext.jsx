@@ -334,96 +334,6 @@ END:VCALENDAR`
     }
   }
 
-  // Export directly to Notion via API
-  const exportToNotion = async (parentPageId) => {
-    if (workoutExercises.length === 0) {
-      return { success: false, error: 'Žiadne cviky na export' }
-    }
-
-    const stats = getWorkoutStats()
-
-    // Build Notion blocks
-    const children = [
-      // Callout with date
-      {
-        object: 'block',
-        type: 'callout',
-        callout: {
-          icon: { emoji: '📅' },
-          rich_text: [{
-            text: {
-              content: new Date().toLocaleDateString('sk', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })
-            }
-          }]
-        }
-      },
-      { object: 'block', type: 'divider', divider: {} },
-      // Exercises heading
-      {
-        object: 'block',
-        type: 'heading_2',
-        heading_2: { rich_text: [{ text: { content: 'Cviky' } }] }
-      },
-      // Exercise to-do items
-      ...workoutExercises.map(ex => ({
-        object: 'block',
-        type: 'to_do',
-        to_do: {
-          rich_text: [
-            { text: { content: ex.name }, annotations: { bold: true } },
-            { text: { content: ` — ${ex.sets}×${ex.reps}${ex.weight > 0 ? ` @ ${ex.weight}${ex.unit}` : ''}` } }
-          ],
-          checked: false
-        }
-      })),
-      { object: 'block', type: 'divider', divider: {} },
-      // Stats heading
-      {
-        object: 'block',
-        type: 'heading_2',
-        heading_2: { rich_text: [{ text: { content: 'Štatistiky' } }] }
-      },
-      // Stats as bulleted list
-      {
-        object: 'block',
-        type: 'bulleted_list_item',
-        bulleted_list_item: { rich_text: [{ text: { content: `Cvikov: ${stats.totalExercises}` } }] }
-      },
-      {
-        object: 'block',
-        type: 'bulleted_list_item',
-        bulleted_list_item: { rich_text: [{ text: { content: `Sérií: ${stats.totalSets}` } }] }
-      },
-      {
-        object: 'block',
-        type: 'bulleted_list_item',
-        bulleted_list_item: { rich_text: [{ text: { content: `Odhadované trvanie: ~${stats.estimatedDuration} min` } }] }
-      }
-    ]
-
-    try {
-      const response = await fetch('/api/notion', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: workoutName,
-          content: children,
-          parentPageId
-        })
-      })
-
-      const data = await response.json()
-      return data
-    } catch (error) {
-      return { success: false, error: error.message }
-    }
-  }
-
   // Share workout (uses Web Share API if available)
   const shareWorkout = async () => {
     const text = exportToText()
@@ -549,7 +459,6 @@ END:VCALENDAR`
       exportToICS,
       exportToText,
       exportForNotion,
-      exportToNotion,
       shareWorkout,
       getWorkoutStats,
       getWorkoutCalendarData,
