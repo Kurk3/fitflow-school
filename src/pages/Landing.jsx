@@ -66,7 +66,7 @@ function Landing() {
               Prihlásiť sa
             </button>
             <button
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate('/demo')}
               className="px-4 py-2 bg-neutral-900 text-white text-sm font-semibold rounded-lg hover:bg-neutral-800 transition-colors"
             >
               Vyskúšať demo
@@ -95,14 +95,14 @@ function Landing() {
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
             <button
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate('/demo')}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-900 text-white font-semibold rounded-xl hover:bg-neutral-800 transition-all"
             >
               Spustiť aplikáciu
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
-              onClick={() => navigate('/login')}
+              onClick={() => navigate('/register')}
               className="px-6 py-3 bg-white text-neutral-900 font-semibold rounded-xl border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 transition-all"
             >
               Vytvoriť účet
@@ -192,7 +192,7 @@ function Landing() {
               Spusti aplikáciu a začni trénovať efektívnejšie už dnes. Žiadna registrácia nie je potrebná.
             </p>
             <button
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate('/demo')}
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-neutral-900 font-semibold rounded-xl hover:bg-neutral-100 transition-all"
             >
               Spustiť FitFlow

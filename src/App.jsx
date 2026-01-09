@@ -3,6 +3,7 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import DemoDashboard from './pages/DemoDashboard'
 import GoalsWizard from './pages/GoalsWizard'
 import MyPlan from './pages/MyPlan'
 import { WorkoutProvider } from './context/WorkoutContext'
@@ -68,7 +69,8 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/" element={<Navigate to="/login" replace />} />
+              <Route path="/demo" element={<DemoDashboard />} />
+              <Route path="/" element={<Navigate to="/landing" replace />} />
             </Routes>
           </WorkoutProvider>
         </NotificationProvider>
