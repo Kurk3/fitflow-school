@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import { useNavigate } from 'react-router-dom'
 import { Dumbbell, Target, Calendar, BarChart3, Users, Sparkles, ArrowRight, Check } from 'lucide-react'
 import FloatingLines from '../components/UI/FloatingLines'
+import StaggeredMenu from '../components/UI/StaggeredMenu'
 
 const LINES_GRADIENT = ["#ab25f4", "#2a3fdf", "#2ddfeb"]
 const LINE_COUNT = [5, 5, 5]
@@ -82,10 +83,39 @@ function Landing() {
     'Kompletne zadarmo'
   ]
 
+  const menuItems = [
+    { label: 'Domov', ariaLabel: 'Domov', link: '#home' },
+    { label: 'O FitFlow', ariaLabel: 'O FitFlow', link: '#about' },
+    { label: 'Návod', ariaLabel: 'Návod', link: '#tutorial' },
+    { label: 'Prihlás sa', ariaLabel: 'Prihlás sa', link: '/login' },
+    { label: 'Vyskúšaj demo', ariaLabel: 'Vyskúšaj demo', link: '/demo' }
+  ];
+
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Navigation */}
-      <nav className="fixed md:top-5 md:left-[50%] md:translate-x-[-50%] border border-neutral-500 rounded-2xl z-50 bg-white/10 backdrop-blur-md">
+      <div className="z-[99] relative">
+        <StaggeredMenu
+          items={menuItems}
+          logoContent={
+            <div className="flex items-center gap-2">
+              <div className="p-1.5 bg-[#2969ff] rounded-lg">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
+                </svg>
+              </div>
+              <span className={'text-lg md:text-3xl transition-colors font-medium text-[#2969ff]'}>FitFlow</span>
+            </div>
+          }
+          displaySocials={false}
+          accentColor="#2969ff"
+          menuButtonColor="#2969ff"
+          isFixed={true}
+        />
+      </div>
+
+      {/* Legacy Navigation */}
+      <nav className="hidden top-5 left-[50%] translate-x-[-50%] border border-neutral-500 rounded-2xl z-50 bg-white/10 backdrop-blur-md">
         <div className="w-min px-4 md:px-6 py-4 flex md:gap-20 items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="p-1.5 bg-neutral-900 rounded-lg">
@@ -115,7 +145,7 @@ function Landing() {
       </nav>
 
       {/* Hero Section */}
-      <section className="h-screen w-full flex flex-col justify-center px-6 relative bg-black">
+      <section id="home" className="h-screen w-full flex flex-col justify-center px-6 relative bg-black">
         <FloatingLines
           linesGradient={LINES_GRADIENT}
           enabledWaves={['top', 'middle', 'bottom']}
@@ -134,8 +164,8 @@ function Landing() {
             <span className="text-sm font-medium text-neutral-600">Nová verzia 2.0</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Tvoj osobný
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 leading-tight">
+            FitFlow - Tvoj osobný
             <br />
             <span className="text-white">tréningový asistent</span>
           </h1>
@@ -169,10 +199,10 @@ function Landing() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Features Section */}
-      <section className="px-6 py-20 bg-white border-y border-neutral-200">
+      < section id="about" className="px-6 py-20 bg-white border-y border-neutral-200" >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4">
@@ -198,10 +228,10 @@ function Landing() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* How it works */}
-      <section className="px-6 py-20">
+      < section id="tutorial" className="px-6 py-20" >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4">
@@ -230,10 +260,10 @@ function Landing() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* CTA Section */}
-      <section className="px-6 py-20">
+      < section className="px-6 py-20" >
         <div className="max-w-4xl mx-auto">
           <div className="bg-blue-600 rounded-2xl p-8 md:p-12 text-center">
             <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
@@ -251,10 +281,10 @@ function Landing() {
             </button>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Footer */}
-      <footer className="px-6 py-8 border-t border-neutral-200">
+      < footer className="px-6 py-8 border-t border-neutral-200" >
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="p-1.5 bg-neutral-900 rounded-lg">
@@ -268,8 +298,8 @@ function Landing() {
             © 2024 FitFlow. Všetky práva vyhradené.
           </p>
         </div>
-      </footer>
-    </div>
+      </footer >
+    </div >
   )
 }
 
