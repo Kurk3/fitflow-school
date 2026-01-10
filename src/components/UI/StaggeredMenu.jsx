@@ -18,7 +18,8 @@ export const StaggeredMenu = ({
     accentColor = '#2969ff',
     closeOnClickAway = true,
     onMenuOpen,
-    onMenuClose
+    onMenuClose,
+    onItemClick
 }) => {
     const [open, setOpen] = useState(false);
     const openRef = useRef(false);
@@ -344,9 +345,20 @@ export const StaggeredMenu = ({
         };
     }, [closeOnClickAway, open, closeMenu]);
 
+    React.useEffect(() => {
+        if (open) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [open]);
+
     return (
         <div
-            className={`sm-scope z-40 ${isFixed ? 'fixed top-0 left-0 w-screen h-screen overflow-hidden' : 'w-full h-full'}`}
+            className={`sm-scope z-40 pointer-events-none ${isFixed ? 'fixed top-0 left-0 w-screen h-screen overflow-hidden' : 'w-full h-full'}`}
         >
             <div
                 className={
@@ -458,6 +470,16 @@ export const StaggeredMenu = ({
                                             href={it.link}
                                             aria-label={it.ariaLabel}
                                             data-index={idx + 1}
+                                            onClick={(e) => {
+                                                if (it.link.startsWith('#')) {
+                                                    e.preventDefault();
+                                                    closeMenu();
+                                                    onItemClick?.(it.link);
+                                                } else {
+                                                    // For regular links, allow navigation but close menu
+                                                    closeMenu();
+                                                }
+                                            }}
                                         >
                                             <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
                                                 {it.label}
@@ -508,13 +530,13 @@ export const StaggeredMenu = ({
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }
 .sm-scope .sm-logo-img { display: block; height: 32px; width: auto; object-fit: contain; }
-.sm-scope .sm-toggle { position: relative; display: inline-flex; align-items: center; gap: 0.3rem; background: transparent; border: none; cursor: pointer; color: #e9e9ef; font-weight: 500; line-height: 1; overflow: visible; }
+.sm-scope .sm-toggle { position: relative; display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; border: none; cursor: pointer; color: #e9e9ef; font-size: 1.2rem; font-weight: 500; line-height: 1; overflow: visible; }
 .sm-scope .sm-toggle:focus-visible { outline: 2px solid #ffffffaa; outline-offset: 4px; border-radius: 4px; }
 .sm-scope .sm-line:last-of-type { margin-top: 6px; }
 .sm-scope .sm-toggle-textWrap { position: relative; margin-right: 0.5em; display: inline-block; height: 1em; overflow: hidden; white-space: nowrap; width: var(--sm-toggle-width, auto); min-width: var(--sm-toggle-width, auto); }
 .sm-scope .sm-toggle-textInner { display: flex; flex-direction: column; line-height: 1; }
 .sm-scope .sm-toggle-line { display: block; height: 1em; line-height: 1; }
-.sm-scope .sm-icon { position: relative; width: 14px; height: 14px; flex: 0 0 14px; display: inline-flex; align-items: center; justify-content: center; will-change: transform; }
+.sm-scope .sm-icon { position: relative; width: 18px; height: 18px; flex: 0 0 18px; display: inline-flex; align-items: center; justify-content: center; will-change: transform; }
 .sm-scope .sm-panel-itemWrap { position: relative; overflow: hidden; line-height: 1; }
 .sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform; }
 .sm-scope .sm-line { display: none !important; }
@@ -537,13 +559,13 @@ export const StaggeredMenu = ({
 .sm-scope .sm-socials-link:hover { color: var(--sm-accent, #ff0000); }
 .sm-scope .sm-panel-title { margin: 0; font-size: 1rem; font-weight: 600; color: #fff; text-transform: uppercase; }
 .sm-scope .sm-panel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-.sm-scope .sm-panel-item { position: relative; color: #000; font-weight: 600; font-size: 4rem; cursor: pointer; line-height: 1; letter-spacing: -2px; text-transform: uppercase; transition: background 0.25s, color 0.25s; display: inline-block; text-decoration: none; padding-right: 1.4em; }
+.sm-scope .sm-panel-item { position: relative; color: #000; font-weight: 600; font-size: 3rem; cursor: pointer; line-height: 1.1; letter-spacing: -1px; text-transform: uppercase; transition: background 0.25s, color 0.25s; display: inline-block; text-decoration: none; padding-right: 1.2em; }
 .sm-scope .sm-panel-itemLabel { display: inline-block; will-change: transform; transform-origin: 50% 100%; }
 .sm-scope .sm-panel-item:hover { color: var(--sm-accent, #ff0000); }
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
-.sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; right: 3.2em; font-size: 18px; font-weight: 400; color: var(--sm-accent, #ff0000); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
-@media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
-@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
+.sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; right: 1em; font-size: 18px; font-weight: 400; color: var(--sm-accent, #ff0000); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
+@media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } .sm-scope .sm-toggle { font-size: 1rem; } .sm-scope .sm-icon { width: 14px; height: 14px; flex: 0 0 14px; } }
+@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } .sm-scope .sm-panel-item { font-size: 2.5rem; } }
       `}</style>
         </div>
     );

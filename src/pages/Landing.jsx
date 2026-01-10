@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import { useNavigate } from 'react-router-dom'
 import { Dumbbell, Target, Calendar, BarChart3, Users, Sparkles, ArrowRight, Check } from 'lucide-react'
@@ -12,22 +12,11 @@ const LINE_DISTANCE = [2, 2, 2]
 function Landing() {
   const navigate = useNavigate()
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Check if we've scrolled past the viewport height (hero section)
-      setIsScrolledPastHero(window.scrollY > (window.innerHeight * 0.9))
-    }
-
-    // Initial check
-    handleScroll()
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const lenisRef = useRef(null)
 
   useEffect(() => {
     const lenis = new Lenis()
+    lenisRef.current = lenis
     let rafId
 
     function raf(time) {
@@ -40,8 +29,18 @@ function Landing() {
     return () => {
       cancelAnimationFrame(rafId)
       lenis.destroy()
+      lenisRef.current = null
     }
   }, [])
+
+  const handleScrollTo = (targetId) => {
+    if (targetId.startsWith('#') && lenisRef.current) {
+      const element = document.querySelector(targetId);
+      if (element) {
+        lenisRef.current.scrollTo(element);
+      }
+    }
+  }
 
   const features = [
     {
@@ -88,15 +87,16 @@ function Landing() {
     { label: 'O FitFlow', ariaLabel: 'O FitFlow', link: '#about' },
     { label: 'Návod', ariaLabel: 'Návod', link: '#tutorial' },
     { label: 'Prihlás sa', ariaLabel: 'Prihlás sa', link: '/login' },
-    { label: 'Vyskúšaj demo', ariaLabel: 'Vyskúšaj demo', link: '/demo' }
+    { label: 'Demo', ariaLabel: 'Demo', link: '/demo' }
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 raleway">
       {/* Navigation */}
-      <div className="z-[99] relative">
+      <div className="z-99 relative font-sans">
         <StaggeredMenu
           items={menuItems}
+          onItemClick={handleScrollTo}
           logoContent={
             <div className="flex items-center gap-2">
               <div className="p-1.5 bg-[#2969ff] rounded-lg">
