@@ -4,7 +4,7 @@ import { OrbitControls, useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
 function Model({ onMuscleClick, selectedMuscle }) {
-  const { scene, nodes } = useGLTF('/models/naselectovany_model.glb')
+  const { scene, nodes } = useGLTF('/models/naselectovany_model_menej_plosok.glb')
   const [hoveredMesh, setHoveredMesh] = useState(null)
   const modelRef = useRef()
 
@@ -190,6 +190,6 @@ function HumanModel3D({ onMuscleClick, selectedMuscle }) {
 }
 
 // Preload model
-useGLTF.preload('/models/naselectovany_model.glb')
+useGLTF.preload('/models/naselectovany_model_menej_plosok.glb')
 
 export default HumanModel3D
