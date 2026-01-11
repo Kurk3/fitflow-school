@@ -151,16 +151,16 @@ function Model({ onMuscleClick, selectedMuscle }) {
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
       scale={0.01}
-      position={[0, -0.2, 0]}
+      position={[0, 0, 0]}
     />
   )
 }
 
 function HumanModel3D({ onMuscleClick, selectedMuscle }) {
   return (
-    <div className="w-4/5 h-4/5 relative mx-auto">
+    <div className="h-full relative mx-auto">
       <Canvas
-        camera={{ position: [10, 10, 5], fov: 40 }}
+        camera={{ position: [1, 1, 3], fov: 40 }}
         shadows
         style={{ background: 'transparent' }}
       >
@@ -179,7 +179,7 @@ function HumanModel3D({ onMuscleClick, selectedMuscle }) {
           enableZoom={true}
           enableRotate={true}
           minDistance={3}
-          maxDistance={10}
+          maxDistance={5}
           target={[0, 1, 0]}
           maxPolarAngle={Math.PI / 1.5}
           minPolarAngle={Math.PI / 4}

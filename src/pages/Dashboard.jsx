@@ -75,11 +75,11 @@ function Dashboard() {
             {/* Logo */}
             <button
               onClick={() => navigate('/landing')}
-              className="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+              className="flex items-center gap-2 cursor-pointer bg-white/90 backdrop-blur-sm px-3 py-2 rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
             >
               <div className="p-1.5 bg-neutral-900 rounded-lg">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
+                  <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
                 </svg>
               </div>
               <div className="hidden sm:block">
@@ -91,7 +91,7 @@ function Dashboard() {
             <div className="relative" ref={quickWorkoutRef}>
               <button
                 onClick={() => setShowQuickWorkout(!showQuickWorkout)}
-                className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+                className="relative p-3 cursor-pointer bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
                 aria-label="Aktuálny tréning"
               >
                 <ClipboardList className="w-5 h-5 text-neutral-700" />
@@ -116,7 +116,7 @@ function Dashboard() {
                     />
                     <button
                       onClick={() => setShowQuickWorkout(false)}
-                      className="p-1 hover:bg-neutral-100 rounded-lg transition-colors flex-shrink-0"
+                      className="p-1 cursor-pointer hover:bg-neutral-100 rounded-lg transition-colors flex-shrink-0"
                     >
                       <X className="w-4 h-4 text-neutral-400" />
                     </button>
@@ -147,10 +147,10 @@ function Dashboard() {
                             </div>
                             <button
                               onClick={() => {
-                              removeExercise(exercise.id)
-                              showToast('Cvik odstránený', 'info')
-                            }}
-                              className="p-2 opacity-0 group-hover:opacity-100 hover:bg-neutral-200 rounded-lg transition-all"
+                                removeExercise(exercise.id)
+                                showToast('Cvik odstránený', 'info')
+                              }}
+                              className="p-2 cursor-pointer opacity-0 group-hover:opacity-100 hover:bg-neutral-200 rounded-lg transition-all"
                             >
                               <Trash2 className="w-4 h-4 text-neutral-400" />
                             </button>
@@ -169,7 +169,7 @@ function Dashboard() {
                           showToast('Tréning uložený', 'success')
                           setShowQuickWorkout(false)
                         }}
-                        className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-semibold py-3 px-4 rounded-xl transition-colors"
+                        className="w-full cursor-pointer bg-neutral-900 hover:bg-neutral-800 text-white font-semibold py-3 px-4 rounded-xl transition-colors"
                       >
                         Uložiť tréning
                       </button>
@@ -186,11 +186,10 @@ function Dashboard() {
               <button
                 key={mode}
                 onClick={() => setActiveMode(mode)}
-                className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 ${
-                  activeMode === mode
-                    ? 'bg-neutral-900 text-white shadow-soft'
-                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
-                }`}
+                className={`px-3 cursor-pointer md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 ${activeMode === mode
+                  ? 'bg-neutral-900 text-white shadow-soft'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
+                  }`}
               >
                 <span className="hidden sm:inline">{getModeLabel(mode)}</span>
                 <span className="sm:hidden">{mode.slice(0, 4).toUpperCase()}</span>
@@ -204,7 +203,7 @@ function Dashboard() {
             <div className="relative" ref={notificationRef}>
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+                className="cursor-pointer relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
                 aria-label="Notifikácie"
               >
                 <Bell className="w-5 h-5 text-neutral-700" />
@@ -223,18 +222,18 @@ function Dashboard() {
             {/* Gym Button - Black */}
             <button
               onClick={() => setShowGym(true)}
-              className="p-3 bg-neutral-900 rounded-xl shadow-soft hover:bg-neutral-800 transition-all duration-200"
+              className="cursor-pointer p-3 bg-neutral-900 rounded-xl shadow-soft hover:bg-neutral-800 transition-all duration-200"
               aria-label="Gym"
             >
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
+                <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
               </svg>
             </button>
 
             {/* Achievements Button */}
             <button
               onClick={() => setShowProfile(true)}
-              className="p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+              className="cursor-pointer p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
               aria-label="Achievements"
             >
               <svg className="w-5 h-5 text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -245,7 +244,7 @@ function Dashboard() {
             {/* Workout Button with Badge */}
             <button
               onClick={() => setShowWorkout(true)}
-              className="relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
+              className="cursor-pointer relative p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
               aria-label="Workout"
             >
               <svg className="w-5 h-5 text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
