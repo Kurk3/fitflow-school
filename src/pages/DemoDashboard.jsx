@@ -7,7 +7,7 @@ import ExerciseDetailModal from '../components/UI/ExerciseDetailModal'
 import { useWorkout } from '../context/WorkoutContext'
 import { useToast } from '../context/ToastContext'
 import { ClipboardList, X, Trash2 } from 'lucide-react'
-import { GridScan } from '../components/UI/GridScan'
+import FloatingLines from '../components/UI/FloatingLines'
 
 function DemoDashboard() {
   const navigate = useNavigate()
@@ -44,27 +44,45 @@ function DemoDashboard() {
     }
   }
 
+  const LINES_GRADIENT = ["#ab25f4", "#2a3fdf", "#2ddfeb"]
+  const LINE_COUNT = [6, 6, 6]
+  const LINE_DISTANCE = [2, 2, 2]
+
   return (
     <div className="w-full h-screen bg-black relative overflow-hidden">
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      {/* <div className="absolute inset-0 z-0 pointer-events-none">
         <GridScan
           sensitivity={0}
           lineThickness={0}
-          linesColor="#ffffff"
-          scanColor="#0c8097"
-          scanOpacity={0.4}
+          linesColor="#00aaff"
+          scanColor="#00aaff"
+          scanOpacity={0.2}
           gridScale={0.08}
           lineStyle="solid"
           lineJitter={0.1}
           scanDirection="forward"
           noiseIntensity={0}
           scanGlow={0.5}
-          scanSoftness={2}
+          scanSoftness={3}
           scanDuration={2}
           scanDelay={5}
           scanOnClick={false}
         />
-      </div>
+      </div> */}
+      <section className="absolute inset-0 z-0 pointer-events-none">
+        <FloatingLines
+          linesGradient={LINES_GRADIENT}
+          enabledWaves={['top', 'middle', 'bottom']}
+          // Array - specify line count per wave; Number - same count for all waves
+          lineCount={LINE_COUNT}
+          // Array - specify line distance per wave; Number - same distance for all waves
+          lineDistance={LINE_DISTANCE}
+          bendRadius={5.0}
+          bendStrength={-0.5}
+          interactive={false}
+          parallax={true}
+        />
+      </section>
 
       {/* Floating Header */}
       <header className="absolute top-0 left-0 right-0 z-30 p-4 md:p-6">
