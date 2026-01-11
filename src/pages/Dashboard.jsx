@@ -12,6 +12,7 @@ import { useToast } from '../context/ToastContext'
 import { useNotifications } from '../context/NotificationContext'
 import NotificationPanel from '../components/UI/NotificationPanel'
 import { ClipboardList, X, Trash2, Bell } from 'lucide-react'
+import FloatingLines from '../components/UI/FloatingLines'
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -65,8 +66,28 @@ function Dashboard() {
     }
   }
 
+  const LINES_GRADIENT = ["#ab25f4", "#2a3fdf", "#2ddfeb"]
+  const LINE_COUNT = [6, 6, 6]
+  const LINE_DISTANCE = [2, 2, 2]
+
   return (
     <div className="w-full h-screen bg-neutral-50 relative overflow-hidden">
+      <section className="absolute inset-0 z-0 pointer-events-none">
+        <FloatingLines
+          linesGradient={LINES_GRADIENT}
+          enabledWaves={['top', 'middle', 'bottom']}
+          // Array - specify line count per wave; Number - same count for all waves
+          lineCount={LINE_COUNT}
+          // Array - specify line distance per wave; Number - same distance for all waves
+          lineDistance={LINE_DISTANCE}
+          bendRadius={5.0}
+          bendStrength={-0.5}
+          interactive={false}
+          parallax={true}
+        />
+      </section>
+
+
       {/* Floating Header */}
       <header className="absolute top-0 left-0 right-0 z-30 p-4 md:p-6">
         <div className="flex items-start justify-between">

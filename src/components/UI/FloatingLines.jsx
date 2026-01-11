@@ -251,6 +251,12 @@ export default function FloatingLines({
     const currentInfluenceRef = useRef(0);
     const targetParallaxRef = useRef(new Vector2(0, 0));
     const currentParallaxRef = useRef(new Vector2(0, 0));
+    const clockRef = useRef(null);
+
+    // Initialize clock once and persist across re-renders
+    if (!clockRef.current) {
+        clockRef.current = new Clock();
+    }
 
     const getLineCount = waveType => {
         if (typeof lineCount === 'number') return lineCount;
@@ -359,7 +365,7 @@ export default function FloatingLines({
         const mesh = new Mesh(geometry, material);
         scene.add(mesh);
 
-        const clock = new Clock();
+        const clock = clockRef.current;
 
         const setSize = () => {
             const el = containerRef.current;
