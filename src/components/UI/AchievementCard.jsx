@@ -73,7 +73,7 @@ function AchievementCard({ achievement }) {
         <div
           className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${
             unlocked
-              ? 'bg-neutral-900 text-white'
+              ? 'bg-fit-500 text-white'
               : 'bg-neutral-300 text-neutral-500'
           }`}
         >
@@ -106,7 +106,7 @@ function AchievementCard({ achievement }) {
           </div>
           <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
             <div
-              className="h-full bg-primary-900 transition-all duration-500"
+              className="h-full bg-fit-500 transition-all duration-500"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>

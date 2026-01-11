@@ -96,7 +96,7 @@ function Dashboard() {
               >
                 <ClipboardList className="w-5 h-5 text-neutral-700" />
                 {workoutExercises.length > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-fit-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                     {workoutExercises.length}
                   </span>
                 )}
@@ -169,7 +169,7 @@ function Dashboard() {
                           showToast('Tréning uložený', 'success')
                           setShowQuickWorkout(false)
                         }}
-                        className="w-full cursor-pointer bg-neutral-900 hover:bg-neutral-800 text-white font-semibold py-3 px-4 rounded-xl transition-colors"
+                        className="w-full cursor-pointer bg-fit-500 hover:bg-fit-600 text-white font-semibold py-3 px-4 rounded-xl transition-colors"
                       >
                         Uložiť tréning
                       </button>
@@ -187,8 +187,8 @@ function Dashboard() {
                 key={mode}
                 onClick={() => setActiveMode(mode)}
                 className={`px-3 cursor-pointer md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 ${activeMode === mode
-                  ? 'bg-neutral-900 text-white shadow-soft'
-                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
+                  ? 'bg-fit-500 text-white shadow-soft'
+                  : 'text-neutral-600 hover:text-fit-500 hover:bg-fit-50'
                   }`}
               >
                 <span className="hidden sm:inline">{getModeLabel(mode)}</span>
@@ -208,7 +208,7 @@ function Dashboard() {
               >
                 <Bell className="w-5 h-5 text-neutral-700" />
                 {notifications.length > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-fit-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                     {notifications.length}
                   </span>
                 )}
@@ -219,10 +219,10 @@ function Dashboard() {
               )}
             </div>
 
-            {/* Gym Button - Black */}
+            {/* Gym Button - Accent */}
             <button
               onClick={() => setShowGym(true)}
-              className="cursor-pointer p-3 bg-neutral-900 rounded-xl shadow-soft hover:bg-neutral-800 transition-all duration-200"
+              className="cursor-pointer p-3 bg-fit-500 rounded-xl shadow-soft hover:bg-fit-600 transition-all duration-200"
               aria-label="Gym"
             >
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -251,7 +251,7 @@ function Dashboard() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
               {workoutExercises.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-fit-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                   {workoutExercises.length}
                 </span>
               )}
@@ -273,7 +273,7 @@ function Dashboard() {
         <div className="absolute left-4 md:left-6 bottom-8 z-20">
           <button
             onClick={() => setShowOnboarding(true)}
-            className="flex items-center gap-2 bg-neutral-900 text-white px-4 py-2.5 rounded-xl shadow-soft hover:bg-neutral-800 transition-all duration-200"
+            className="flex items-center gap-2 bg-fit-500 text-white px-4 py-2.5 rounded-xl shadow-soft hover:bg-fit-600 transition-all duration-200"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

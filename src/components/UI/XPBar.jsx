@@ -26,7 +26,7 @@ function XPBar({ currentXP, maxXP, level, showLabel = true }) {
       <div className="relative h-3 bg-gray-200 rounded-full overflow-hidden">
         {/* Animated progress bar */}
         <div
-          className="absolute top-0 left-0 h-full bg-primary-900 rounded-full transition-all duration-1000 ease-out"
+          className="absolute top-0 left-0 h-full bg-fit-500 rounded-full transition-all duration-1000 ease-out"
           style={{ width: `${animatedWidth}%` }}
         >
           {/* Shimmer effect */}

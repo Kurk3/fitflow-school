@@ -201,7 +201,7 @@ function GoalsWizard() {
                     max="220"
                     value={profile.height}
                     onChange={(e) => setProfile({ ...profile, height: parseInt(e.target.value) })}
-                    className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-neutral-900"
+                    className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer fit-neutral-900"
                   />
                   <div className="flex justify-between text-xs text-neutral-400 mt-1">
                     <span>140 cm</span>
@@ -220,7 +220,7 @@ function GoalsWizard() {
                     max="150"
                     value={profile.currentWeight}
                     onChange={(e) => setProfile({ ...profile, currentWeight: parseInt(e.target.value) })}
-                    className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-neutral-900"
+                    className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer fit-neutral-900"
                   />
                   <div className="flex justify-between text-xs text-neutral-400 mt-1">
                     <span>40 kg</span>
@@ -239,7 +239,7 @@ function GoalsWizard() {
                     max="150"
                     value={profile.targetWeight}
                     onChange={(e) => setProfile({ ...profile, targetWeight: parseInt(e.target.value) })}
-                    className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-neutral-900"
+                    className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer fit-neutral-900"
                   />
                   <div className="flex justify-between text-xs text-neutral-400 mt-1">
                     <span>40 kg</span>

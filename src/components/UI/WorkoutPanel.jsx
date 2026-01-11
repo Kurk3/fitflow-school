@@ -177,8 +177,8 @@ function WorkoutPanel({ onClose }) {
             onClick={() => setTab(t.id)}
             className={`px-4 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors ${
               tab === t.id
-                ? 'text-gray-900 border-gray-900'
-                : 'text-gray-400 border-transparent hover:text-gray-600'
+                ? 'text-fit-500 border-fit-500'
+                : 'text-gray-400 border-transparent hover:text-fit-500'
             }`}
           >
             {t.label}
@@ -262,7 +262,7 @@ function WorkoutPanel({ onClose }) {
                     <p className="text-gray-500 text-sm mb-6">Najprv ulož niekoľko tréningov,<br/>potom ich rozplánuj na týždeň</p>
                     <button
                       onClick={() => setTab('build')}
-                      className="px-6 py-3 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-gray-800 transition-colors"
+                      className="px-6 py-3 bg-fit-500 text-white text-sm font-semibold rounded-xl hover:bg-fit-600 transition-colors"
                     >
                       Vytvoriť tréning
                     </button>
@@ -280,8 +280,8 @@ function WorkoutPanel({ onClose }) {
                           onClick={() => setSelectedWorkoutForPlan(null)}
                           className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                             selectedWorkoutForPlan === null
-                              ? 'bg-gray-900 text-white shadow-lg ring-2 ring-gray-900 ring-offset-2'
-                              : 'bg-white text-gray-500 border border-gray-200 hover:border-gray-300'
+                              ? 'bg-fit-500 text-white shadow-lg ring-2 ring-fit-500 ring-offset-2'
+                              : 'bg-white text-gray-500 border border-gray-200 hover:border-fit-300'
                           }`}
                         >
                           Voľno
@@ -294,8 +294,8 @@ function WorkoutPanel({ onClose }) {
                             onClick={() => setSelectedWorkoutForPlan(workout.id)}
                             className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all whitespace-nowrap ${
                               selectedWorkoutForPlan === workout.id
-                                ? 'bg-gray-900 text-white shadow-lg ring-2 ring-gray-900 ring-offset-2'
-                                : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300'
+                                ? 'bg-fit-500 text-white shadow-lg ring-2 ring-fit-500 ring-offset-2'
+                                : 'bg-white text-gray-700 border border-gray-200 hover:border-fit-300'
                             }`}
                           >
                             {workout.name || 'Tréning'}
@@ -317,8 +317,8 @@ function WorkoutPanel({ onClose }) {
                               onClick={() => handleDayClick(index)}
                               className={`relative aspect-square rounded-2xl flex flex-col items-center justify-center transition-all active:scale-95 ${
                                 assignedWorkout
-                                  ? 'bg-gray-900 text-white'
-                                  : 'bg-gray-100 hover:bg-gray-200 text-gray-400'
+                                  ? 'bg-fit-500 text-white'
+                                  : 'bg-gray-100 hover:bg-fit-50 hover:text-fit-500 text-gray-400'
                               }`}
                             >
                               {/* Day name */}
@@ -356,7 +356,7 @@ function WorkoutPanel({ onClose }) {
                               key={index}
                               className={`flex items-center gap-2 rounded-xl transition-all ${
                                 assignedWorkout
-                                  ? 'bg-gray-900 text-white'
+                                  ? 'bg-fit-500 text-white'
                                   : 'bg-gray-50'
                               }`}
                             >
@@ -405,7 +405,7 @@ function WorkoutPanel({ onClose }) {
                           setIsEditingPlan(false)
                           setSelectedWorkoutForPlan(null)
                         }}
-                        className="w-full py-3.5 bg-gray-900 text-white font-bold rounded-xl hover:bg-gray-800 transition-colors"
+                        className="w-full py-3.5 bg-fit-500 text-white font-bold rounded-xl hover:bg-fit-600 transition-colors"
                       >
                         {isEditingPlan ? 'Uložiť zmeny' : 'Vytvoriť plán'}
                       </button>
@@ -449,7 +449,7 @@ function WorkoutPanel({ onClose }) {
                         </span>
                         <span className={`text-xs px-3 py-1 rounded-full font-semibold ${
                           todayWorkout?.workoutId
-                            ? 'bg-emerald-500/20 text-emerald-400'
+                            ? 'bg-fit-500/20 text-fit-300'
                             : 'bg-white/10 text-gray-400'
                         }`}>
                           {todayWorkout?.workoutId ? 'Tréningový deň' : 'Deň oddychu'}
@@ -871,7 +871,7 @@ function WorkoutPanel({ onClose }) {
             <div className="bg-white rounded-2xl shadow-xl p-6">
               {/* Header */}
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-full bg-gray-900 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-fit-500 flex items-center justify-center">
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                   </svg>
@@ -919,7 +919,7 @@ function WorkoutPanel({ onClose }) {
               {/* Close button */}
               <button
                 onClick={() => setClipboardModal(false)}
-                className="w-full py-3 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-gray-800 transition-colors"
+                className="w-full py-3 bg-fit-500 text-white text-sm font-medium rounded-xl hover:bg-fit-600 transition-colors"
               >
                 Rozumiem
               </button>

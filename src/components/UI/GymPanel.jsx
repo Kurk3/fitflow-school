@@ -18,9 +18,9 @@ const trainingPlans = {
   push: {
     name: 'Push',
     description: 'Hrudník, ramená, triceps',
-    color: 'bg-neutral-900',
-    colorLight: 'bg-neutral-100',
-    colorText: 'text-neutral-700',
+    color: 'bg-fit-900',
+    colorLight: 'bg-fit-900',
+    colorText: 'text-white',  
     icon: 'P',
     muscles: ['Hrudník', 'Ramená', 'Triceps'],
     exercises: [
@@ -36,9 +36,9 @@ const trainingPlans = {
   pull: {
     name: 'Pull',
     description: 'Chrbát, biceps, zadné delty',
-    color: 'bg-neutral-700',
-    colorLight: 'bg-neutral-100',
-    colorText: 'text-neutral-600',
+    color: 'bg-fit-500',
+    colorLight: 'bg-fit-500',
+    colorText: 'text-white',
     icon: 'P',
     muscles: ['Chrbát', 'Biceps', 'Ramená'],
     exercises: [
@@ -54,9 +54,9 @@ const trainingPlans = {
   legs: {
     name: 'Legs',
     description: 'Stehná, hamstringy, lýtka, zadok',
-    color: 'bg-neutral-500',
-    colorLight: 'bg-neutral-50',
-    colorText: 'text-neutral-500',
+    color: 'bg-fit-300',
+    colorLight: 'bg-fit-300',
+    colorText: 'text-neutral-900',
     icon: 'L',
     muscles: ['Stehná', 'Zadné stehenné svaly', 'Lýtka', 'Zadok'],
     exercises: [
@@ -183,11 +183,11 @@ function GymPanel({ onClose }) {
 
   const getWorkoutStyle = (workout) => {
     switch(workout) {
-      case 'push': return { bg: 'bg-neutral-900', text: 'text-white' }
-      case 'pull': return { bg: 'bg-neutral-700', text: 'text-white' }
-      case 'legs': return { bg: 'bg-neutral-500', text: 'text-white' }
-      case 'rest': return { bg: 'bg-neutral-300', text: 'text-neutral-600' }
-      default: return { bg: 'bg-neutral-300', text: 'text-neutral-600' }
+      case 'push': return { bg: 'bg-fit-900', text: 'text-white' }
+      case 'pull': return { bg: 'bg-fit-500', text: 'text-white' }
+      case 'legs': return { bg: 'bg-fit-300', text: 'text-neutral-900' }
+      case 'rest': return { bg: 'bg-green-700', text: 'text-white' }
+      default: return { bg: 'bg-fit-300', text: 'text-neutral-600' }
     }
   }
 
@@ -350,19 +350,19 @@ function GymPanel({ onClose }) {
               <h4 className="text-sm font-semibold text-neutral-700 mb-3">Legenda</h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="flex items-center gap-3 p-3 bg-neutral-50 rounded-lg border border-neutral-200">
-                  <div className="w-8 h-8 bg-neutral-900 rounded-lg flex items-center justify-center">
+                  <div className="w-8 h-8 bg-fit-900 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-sm">P</span>
                   </div>
                   <span className="text-sm text-neutral-700 font-medium">Push - Tlakové</span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-neutral-50 rounded-lg border border-neutral-200">
-                  <div className="w-8 h-8 bg-neutral-700 rounded-lg flex items-center justify-center">
+                  <div className="w-8 h-8 bg-fit-500 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-sm">P</span>
                   </div>
                   <span className="text-sm text-neutral-700 font-medium">Pull - Ťahové</span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-neutral-50 rounded-lg border border-neutral-200">
-                  <div className="w-8 h-8 bg-neutral-500 rounded-lg flex items-center justify-center">
+                  <div className="w-8 h-8 bg-fit-300 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-sm">L</span>
                   </div>
                   <span className="text-sm text-neutral-700 font-medium">Legs - Nohy</span>

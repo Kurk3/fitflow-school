@@ -118,25 +118,25 @@ function Landing() {
       <nav className="hidden top-5 left-[50%] translate-x-[-50%] border border-neutral-500 rounded-2xl z-50 bg-white/10 backdrop-blur-md">
         <div className="w-min px-4 md:px-6 py-4 flex md:gap-20 items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 bg-neutral-900 rounded-lg">
+            <div className="p-1.5 bg-fit-500 rounded-lg">
               <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
               </svg>
             </div>
-            <span className={`text-lg md:text-3xl transition-colors font-medium 
-              ${!isScrolledPastHero ? 'text-white' : 'text-neutral-900'}`
+            <span className={`text-lg md:text-3xl transition-colors font-medium
+              ${!isScrolledPastHero ? 'text-white' : 'text-fit-500'}`
             }>FitFlow</span>
           </div>
 
           <div className="flex items-center gap-3">
             <button
               onClick={() => navigate('/login')}
-              className={`px-4 py-2 text-sm font-medium ${!isScrolledPastHero ? 'text-white hover:text-blue-400 hover:border-blue-400' : 'text-neutral-900 hover:text-blue-600 hover:border-blue-600'} cursor-pointer whitespace-nowrap border rounded-xl border-transparent transition-colors`}>
+              className={`px-4 py-2 text-sm font-medium ${!isScrolledPastHero ? 'text-white hover:text-fit-400 hover:border-fit-400' : 'text-neutral-900 hover:text-fit-500 hover:border-fit-500'} cursor-pointer whitespace-nowrap border rounded-xl border-transparent transition-colors`}>
               Prihlásiť sa
             </button>
             <button
               onClick={() => navigate('/demo')}
-              className="px-4 py-2 bg-black/90 text-white text-sm font-semibold whitespace-nowrap cursor-pointer rounded-xl hover:bg-blue-600 hover:text-white transition-colors"
+              className="px-4 py-2 bg-black/90 text-white text-sm font-semibold whitespace-nowrap cursor-pointer rounded-xl hover:bg-fit-500 hover:text-white transition-colors"
             >
               Vyskúšať demo
             </button>
@@ -177,14 +177,14 @@ function Landing() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
             <button
               onClick={() => navigate('/demo')}
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3 cursor-pointer bg-white/10 border border-white/10 backdrop-blur-md text-white font-semibold rounded-xl hover:text-blue-400 hover:border-blue-400 transition-all"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3 cursor-pointer bg-white/10 border border-white/10 backdrop-blur-md text-white font-semibold rounded-xl hover:text-fit-300 hover:border-fit-400 transition-all"
             >
               Spustiť aplikáciu
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
             </button>
             <button
               onClick={() => navigate('/register')}
-              className="px-6 py-3 bg-white/10 border border-white/10 backdrop-blur-md text-white font-semibold rounded-xl cursor-pointer hover:text-blue-400 hover:border-blue-400 transition-all"
+              className="px-6 py-3 bg-white/10 border border-white/10 backdrop-blur-md text-white font-semibold rounded-xl cursor-pointer hover:text-fit-300 hover:border-fit-400 transition-all"
             >
               Vytvoriť účet
             </button>
@@ -217,9 +217,9 @@ function Landing() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="p-6 bg-neutral-50 border border-neutral-400 rounded-2xl hover:border-blue-600 hover:bg-blue-100 transition-colors"
+                className="p-6 bg-neutral-50 border border-neutral-400 rounded-2xl hover:border-fit-500 hover:bg-fit-50 transition-colors"
               >
-                <div className="w-10 h-10 bg-neutral-900 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-10 h-10 bg-fit-500 rounded-xl flex items-center justify-center mb-4">
                   <feature.icon className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-base font-bold text-neutral-900 mb-2">{feature.title}</h3>
@@ -248,9 +248,9 @@ function Landing() {
               { step: '02', title: 'Prezri cviky', desc: 'Získaj zoznam cvikov prispôsobených tvojmu tréningovému štýlu - bodybuilding, calisthenics alebo pilates.' },
               { step: '03', title: 'Trénuj', desc: 'Pridaj cviky do svojho tréningového plánu a sleduj svoj pokrok.' }
             ].map((item, index) => (
-              <div key={index} className="flex gap-6 p-6 bg-blue-50 rounded-2xl border border-blue-500">
+              <div key={index} className="flex gap-6 p-6 bg-fit-50 rounded-2xl border border-fit-500">
                 <div className="flex-shrink-0">
-                  <span className="text-3xl font-bold text-blue-600">{item.step}</span>
+                  <span className="text-3xl font-bold text-fit-500">{item.step}</span>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-neutral-900 mb-1">{item.title}</h3>
@@ -265,7 +265,7 @@ function Landing() {
       {/* CTA Section */}
       < section className="px-6 py-20" >
         <div className="max-w-4xl mx-auto">
-          <div className="bg-blue-600 rounded-2xl p-8 md:p-12 text-center">
+          <div className="bg-fit-500 rounded-2xl p-8 md:p-12 text-center">
             <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
               Pripravený začať?
             </h2>
@@ -287,12 +287,12 @@ function Landing() {
       < footer className="px-6 py-8 border-t border-neutral-200" >
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 bg-neutral-900 rounded-lg">
+            <div className="p-1.5 bg-fit-500 rounded-lg">
               <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
               </svg>
             </div>
-            <span className="font-semibold text-neutral-900">FitFlow</span>
+            <span className="font-semibold text-fit-500">FitFlow</span>
           </div>
           <p className="text-sm text-neutral-400">
             © 2024 FitFlow. Všetky práva vyhradené.

@@ -35,7 +35,7 @@ function ProfilePanel({ onClose }) {
         <div className="flex items-start justify-between mb-4">
           {/* User info */}
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-primary-900 rounded-full flex items-center justify-center text-white font-bold text-xl">
+            <div className="w-16 h-16 bg-fit-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
               FIT
             </div>
             <div>
@@ -74,8 +74,8 @@ function ProfilePanel({ onClose }) {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-3 font-medium text-sm transition-colors whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'text-gray-900 border-b-2 border-gray-900'
-                  : 'text-gray-500 hover:text-gray-700'
+                  ? 'text-fit-500 border-b-2 border-fit-500'
+                  : 'text-gray-500 hover:text-fit-500'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -171,7 +171,7 @@ function ProfilePanel({ onClose }) {
                     <span className="font-semibold text-gray-900">87%</span>
                   </div>
                   <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-primary-900 w-[87%]" />
+                    <div className="h-full bg-fit-500 w-[87%]" />
                   </div>
                 </div>
                 <div>
@@ -180,7 +180,7 @@ function ProfilePanel({ onClose }) {
                     <span className="font-semibold text-gray-900">50%</span>
                   </div>
                   <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-primary-900 w-[50%]" />
+                    <div className="h-full bg-fit-500 w-[50%]" />
                   </div>
                 </div>
               </div>
@@ -201,7 +201,7 @@ function ProfilePanel({ onClose }) {
               </div>
               <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-primary-900"
+                  className="h-full bg-fit-500"
                   style={{
                     width: `${(mockUserProgress.unlockedAchievements / mockUserProgress.totalAchievements) * 100}%`,
                   }}
@@ -291,7 +291,7 @@ function ProfilePanel({ onClose }) {
                         </div>
                         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-primary-900"
+                            className="h-full bg-fit-500"
                             style={{ width: `${percentage}%` }}
                           />
                         </div>

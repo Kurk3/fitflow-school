@@ -119,7 +119,7 @@ function WorkoutCalendar({ workoutData }) {
   return (
     <div className="space-y-4" ref={calendarRef}>
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-3">
         <h3 className="text-lg font-semibold text-gray-900">Aktivita</h3>
 
         <div className="flex items-center gap-4">
