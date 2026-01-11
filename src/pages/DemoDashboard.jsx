@@ -7,6 +7,7 @@ import ExerciseDetailModal from '../components/UI/ExerciseDetailModal'
 import { useWorkout } from '../context/WorkoutContext'
 import { useToast } from '../context/ToastContext'
 import { ClipboardList, X, Trash2 } from 'lucide-react'
+import { GridScan } from '../components/UI/GridScan'
 
 function DemoDashboard() {
   const navigate = useNavigate()
@@ -44,7 +45,27 @@ function DemoDashboard() {
   }
 
   return (
-    <div className="w-full h-screen bg-neutral-50 relative overflow-hidden">
+    <div className="w-full h-screen bg-black relative overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <GridScan
+          sensitivity={0}
+          lineThickness={0}
+          linesColor="#ffffff"
+          scanColor="#0c8097"
+          scanOpacity={0.4}
+          gridScale={0.08}
+          lineStyle="solid"
+          lineJitter={0.1}
+          scanDirection="forward"
+          noiseIntensity={0}
+          scanGlow={0.5}
+          scanSoftness={2}
+          scanDuration={2}
+          scanDelay={5}
+          scanOnClick={false}
+        />
+      </div>
+
       {/* Floating Header */}
       <header className="absolute top-0 left-0 right-0 z-30 p-4 md:p-6">
         <div className="flex items-start justify-between">
