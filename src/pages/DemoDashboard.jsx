@@ -55,7 +55,7 @@ function DemoDashboard() {
               onClick={() => navigate('/landing')}
               className="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-xl shadow-soft border border-neutral-200 hover:bg-white transition-all duration-200"
             >
-              <div className="p-1.5 bg-neutral-900 rounded-lg">
+              <div className="p-1.5 bg-fit-500 rounded-lg">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
                 </svg>
@@ -74,7 +74,7 @@ function DemoDashboard() {
               >
                 <ClipboardList className="w-5 h-5 text-neutral-700" />
                 {workoutExercises.length > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-fit-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                     {workoutExercises.length}
                   </span>
                 )}
@@ -147,7 +147,7 @@ function DemoDashboard() {
                           showToast('Tréning uložený', 'success')
                           setShowQuickWorkout(false)
                         }}
-                        className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-semibold py-3 px-4 rounded-xl transition-colors"
+                        className="w-full bg-fit-500 hover:bg-fit-600 text-white font-semibold py-3 px-4 rounded-xl transition-colors"
                       >
                         Uložiť tréning
                       </button>
@@ -166,8 +166,8 @@ function DemoDashboard() {
                 onClick={() => setActiveMode(mode)}
                 className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 ${
                   activeMode === mode
-                    ? 'bg-neutral-900 text-white shadow-soft'
-                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
+                    ? 'bg-fit-500 text-white shadow-soft'
+                    : 'text-neutral-600 hover:text-fit-500 hover:bg-fit-50'
                 }`}
               >
                 <span className="hidden sm:inline">{getModeLabel(mode)}</span>
@@ -188,7 +188,7 @@ function DemoDashboard() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
               {workoutExercises.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-neutral-900 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-fit-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                   {workoutExercises.length}
                 </span>
               )}
